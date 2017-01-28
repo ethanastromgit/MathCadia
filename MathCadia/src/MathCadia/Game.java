@@ -1,24 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MathCadia;
 import java.io.Serializable;
 import java.util.Objects;
-/**
- *
- * @author ethan
- */
-public class Game implements Serializable {
 
+public class Game implements Serializable {
+    
     //Instance of class so that getters and setters and access something
-    Game myGame = new Game();    
+    public Game(){
+    }    
     
     //Attributes
     private String player; 
     private int gamePoints;
 
+    //Getters and Setters
     public String getPlayer() {
         return player;
     }
@@ -61,6 +55,4 @@ public class Game implements Serializable {
         }
         return true;
     }
-}
-
 }
