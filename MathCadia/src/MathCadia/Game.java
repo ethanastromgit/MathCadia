@@ -3,23 +3,27 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Game implements Serializable {
+    //main
+    public static void main(String args[]) {
+        
+    }
     
     //Constructor
-    public Game(String player, int gamePoints) {
+    public Game(boolean player, int gamePoints) {
         this.player = player;
         this.gamePoints = gamePoints;
     }
     
     //Attributes
-    private String player; 
+    private boolean player; 
     private int gamePoints;
-
+    
     //Getters and Setters
-    public String getPlayer() {
+    public boolean isPlayer() {
         return player;
     }
 
-    public void setPlayer(String player) {
+    public void setPlayer(boolean player) {
         this.player = player;
     }
 
@@ -27,17 +31,20 @@ public class Game implements Serializable {
         return gamePoints;
     }
 
-    public void setGamePoints(int gamePoints) {
+    public void setGamePoints(int gamePoints) {    
         this.gamePoints = gamePoints;
     }
-    
+
     //hashcode()
+
     @Override
     public int hashCode() {
         int hash = 3;
+        hash = 97 * hash + (this.player ? 1 : 0);
+        hash = 97 * hash + this.gamePoints;
         return hash;
     }
-
+    
     //equals()
     @Override
     public boolean equals(Object obj) {
@@ -51,10 +58,10 @@ public class Game implements Serializable {
             return false;
         }
         final Game other = (Game) obj;
-        if (this.gamePoints != other.gamePoints) {
+        if (this.player != other.player) {
             return false;
         }
-        if (!Objects.equals(this.player, other.player)) {
+        if (this.gamePoints != other.gamePoints) {
             return false;
         }
         return true;
