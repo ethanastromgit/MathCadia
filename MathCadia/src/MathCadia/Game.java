@@ -4,9 +4,11 @@ import java.util.Objects;
 
 public class Game implements Serializable {
     
-    //Instance of class so that getters and setters and access something
-    public Game(){
-    }    
+    //Constructor
+    public Game(String player, int gamePoints) {
+        this.player = player;
+        this.gamePoints = gamePoints;
+    }
     
     //Attributes
     private String player; 
@@ -29,12 +31,14 @@ public class Game implements Serializable {
         this.gamePoints = gamePoints;
     }
     
+    //hashcode()
     @Override
     public int hashCode() {
         int hash = 3;
         return hash;
     }
 
+    //equals()
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -55,4 +59,11 @@ public class Game implements Serializable {
         }
         return true;
     }
+    
+    //toString()
+    @Override
+    public String toString() {
+        return "Game{" + "player=" + player + ", gamePoints=" + gamePoints + '}';
+    }
+    
 }

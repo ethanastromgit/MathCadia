@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package MathCadia;
-
 /**
  *
  * @author ethan
  */
+
 public class Main {
-    public static void main (String args[]) {
-        Game myGame = new Game();
+    public static void main(String args[]) {
+        
     }
 }
