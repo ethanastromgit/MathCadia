@@ -4,13 +4,19 @@
  * and open the template in the editor.
  */
 package MathCadia;
+
+import java.io.Serializable;
+
 /**
  *
  * @author ethan
  */
+public class Map implements Serializable{
 
-public class Main {
-    public static void main(String args[]) {
-        
-    }
+    
+    
+    //Attributes
+    private int rowCount;
+    private int columnCount;
+    
 }

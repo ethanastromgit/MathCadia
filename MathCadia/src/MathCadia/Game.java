@@ -36,7 +36,6 @@ public class Game implements Serializable {
     }
 
     //hashcode()
-
     @Override
     public int hashCode() {
         int hash = 3;
