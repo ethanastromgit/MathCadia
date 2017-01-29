@@ -13,10 +13,22 @@ import java.io.Serializable;
  */
 public class Location implements Serializable {
     
+    //Constructor
+    public Location(int row, int column, boolean visited, int amountRemaining, int bonusRoom, int number) {
+        this.row = row;
+        this.column = column;
+        this.visited = visited;
+        this.amountRemaining = amountRemaining;
+        this.bonusRoom = bonusRoom;
+        this.number = number;
+    }
+    
     //Attributes
     private int row;
     private int column;
     private boolean visited;
-    
+    private int amountRemaining;
+    private int bonusRoom;
+    private int number;
     
 }
