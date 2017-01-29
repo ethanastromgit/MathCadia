@@ -6,11 +6,8 @@
 package MathCadia;
 
 import java.io.Serializable;
+import java.util.Objects;
 
-/**
- *
- * @author ethan
- */
 public class Location implements Serializable {
     
     //Constructor
