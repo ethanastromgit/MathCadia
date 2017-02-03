@@ -7,8 +7,7 @@ public class Game implements Serializable {
 
     //Constructor
     public Game(boolean player, int gamePoints) {
-        this.player = player;
-        this.gamePoints = gamePoints;
+        
     }
 
     //Attributes

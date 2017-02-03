@@ -11,13 +11,8 @@ import java.util.Objects;
 public class Location implements Serializable {
     
     //Constructor
-    public Location(int row, int column, boolean visited, int amountRemaining, int bonusRoom, int number) {
-        this.row = row;
-        this.column = column;
-        this.visited = visited;
-        this.amountRemaining = amountRemaining;
-        this.bonusRoom = bonusRoom;
-        this.number = number;
+    public Location() {
+        
     }
     
     //Attributes
@@ -26,7 +21,7 @@ public class Location implements Serializable {
     private boolean visited;
     private int amountRemaining;
     private int bonusRoom;
-    private int number;
+    private int coordinateNumber;
 
     //Getters and Setters
     public int getRow() {
@@ -69,24 +64,25 @@ public class Location implements Serializable {
         this.bonusRoom = bonusRoom;
     }
 
-    public int getNumber() {
-        return number;
+    public int getCoordinateNumber() {
+        return coordinateNumber;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setCoordinateNumber(int coordinateNumber) {
+        this.coordinateNumber = coordinateNumber;
     }
+    
 
     //hashCode()
-    @Override
+    @Override    
     public int hashCode() {
-        int hash = 3;
-        hash = 73 * hash + this.row;
-        hash = 73 * hash + this.column;
-        hash = 73 * hash + (this.visited ? 1 : 0);
-        hash = 73 * hash + this.amountRemaining;
-        hash = 73 * hash + this.bonusRoom;
-        hash = 73 * hash + this.number;
+        int hash = 5;
+        hash = 11 * hash + this.row;
+        hash = 11 * hash + this.column;
+        hash = 11 * hash + (this.visited ? 1 : 0);
+        hash = 11 * hash + this.amountRemaining;
+        hash = 11 * hash + this.bonusRoom;
+        hash = 11 * hash + this.coordinateNumber;
         return hash;
     }
 
@@ -118,7 +114,7 @@ public class Location implements Serializable {
         if (this.bonusRoom != other.bonusRoom) {
             return false;
         }
-        if (this.number != other.number) {
+        if (this.coordinateNumber != other.coordinateNumber) {
             return false;
         }
         return true;
@@ -127,7 +123,7 @@ public class Location implements Serializable {
     //toString()
     @Override
     public String toString() {
-        return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", amountRemaining=" + amountRemaining + ", bonusRoom=" + bonusRoom + ", number=" + number + '}';
+        return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", amountRemaining=" + amountRemaining + ", bonusRoom=" + bonusRoom + ", coordinateNumber=" + coordinateNumber + '}';
     }
     
 }

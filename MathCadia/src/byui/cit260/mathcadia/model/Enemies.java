@@ -16,10 +16,7 @@ public class Enemies implements Serializable {
     
     //Constructor
     public Enemies(String nameOfMonster, String monsterDescription, int healthPoints, int coordinateNumber) {
-        this.nameOfMonster = nameOfMonster;
-        this.monsterDescription = monsterDescription;
-        this.healthPoints = healthPoints;
-        this.coordinateNumber = coordinateNumber;
+        
     }
     
     //Attributes

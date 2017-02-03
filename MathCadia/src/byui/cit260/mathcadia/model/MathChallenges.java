@@ -13,9 +13,7 @@ public class MathChallenges implements Serializable {
     //Attributes
     private double answer;
     private String description;
-    private String hintOption;
-    private String howToSolve;
-    
+
     //Getters and Setters
     public double getAnswer() {
         return answer;
@@ -33,34 +31,16 @@ public class MathChallenges implements Serializable {
         this.description = description;
     }
 
-    public String getHintOption() {
-        return hintOption;
-    }
-
-    public void setHintOption(String hintOption) {
-        this.hintOption = hintOption;
-    }
-
-    public String getHowToSolve() {
-        return howToSolve;
-    }
-
-    public void setHowToSolve(String howToSolve) {
-        this.howToSolve = howToSolve;
-    }
-
-    //hashCode()
+    //hashCode
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 71 * hash + (int) (Double.doubleToLongBits(this.answer) ^ (Double.doubleToLongBits(this.answer) >>> 32));
-        hash = 71 * hash + Objects.hashCode(this.description);
-        hash = 71 * hash + Objects.hashCode(this.hintOption);
-        hash = 71 * hash + Objects.hashCode(this.howToSolve);
+        int hash = 7;
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.answer) ^ (Double.doubleToLongBits(this.answer) >>> 32));
+        hash = 47 * hash + Objects.hashCode(this.description);
         return hash;
     }
 
-    //equals()
+    //equals
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -79,19 +59,16 @@ public class MathChallenges implements Serializable {
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (!Objects.equals(this.hintOption, other.hintOption)) {
-            return false;
-        }
-        if (!Objects.equals(this.howToSolve, other.howToSolve)) {
-            return false;
-        }
         return true;
     }
 
-    //toString()
+    //toString
     @Override
     public String toString() {
-        return "MathChallenges{" + "answer=" + answer + ", description=" + description + ", hintOption=" + hintOption + ", howToSolve=" + howToSolve + '}';
+        return "MathChallenges{" + "answer=" + answer + ", description=" + description + '}';
     }
     
-}
+}    
+    
+   
+    

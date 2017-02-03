@@ -6,9 +6,8 @@ import java.util.Objects;
 public class Map implements Serializable{
 
     //Constructor
-    public Map(int rowCount, int columnCount) {
-        this.rowCount = rowCount;
-        this.columnCount = columnCount;
+    public Map() {
+        
     }
     
     //Attributes

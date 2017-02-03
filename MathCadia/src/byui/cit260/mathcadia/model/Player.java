@@ -6,24 +6,18 @@ import java.util.Objects;
 public class Player implements Serializable {
     
     //Constructor
-    public Player(int points, String name, String description, int healthPoints, int coordinateNumber) {
-        this.points = points;
-        this.name = name;
-        this.description = description;
-        this.healthPoints = healthPoints;
-        this.coordinateNumber = coordinateNumber;
+    public Player() {
+        
     }
     
     //Attributes
     private int points;
     private String name;
     private String description;
-    private int healthPoints;            
-    //private inventory
+    private int healthPoints;
     private int coordinateNumber;
    
     //Getters & Setters
-
     public int getPoints() {
         return points;
     }
