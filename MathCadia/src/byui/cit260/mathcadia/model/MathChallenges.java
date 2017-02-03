@@ -6,11 +6,8 @@ import java.util.Objects;
 public class MathChallenges implements Serializable {
     
     //Constructor
-    public MathChallenges(double answer, String description, String hintOption, String howToSolve) {
-        this.answer = answer;
-        this.description = description;
-        this.hintOption = hintOption;
-        this.howToSolve = howToSolve;
+    public MathChallenges() {
+        
     }
     
     //Attributes
