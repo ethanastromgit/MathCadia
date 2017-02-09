@@ -12,10 +12,10 @@ import java.util.Objects;
  *
  * @author danielhernandez
  */
-public class Enemies implements Serializable {
+public class Enemy implements Serializable {
     
     //Constructor
-    public Enemies(String nameOfMonster, String monsterDescription, int healthPoints, int coordinateNumber) {
+    public Enemy(String nameOfMonster, String monsterDescription, int healthPoints, int coordinateNumber) {
         
     }
     
@@ -80,7 +80,7 @@ public class Enemies implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Enemies other = (Enemies) obj;
+        final Enemy other = (Enemy) obj;
         if (this.healthPoints != other.healthPoints) {
             return false;
         }
