@@ -12,20 +12,18 @@ import java.util.Objects;
  *
  * @author danielhernandez
  */
-public class Enemies implements Serializable {
+public class Inventory implements Serializable {
     
     //Constructor
-    public Enemies() {
+    public Inventory() {
         
     }
     
-    //Attributes
-    private String enemyName;
-    private int attackDamage;
-    private boolean isBoss;
-    private String enemyCoordinate;
-    private boolean hasKey;
+    //Atributes
+    private int potionAmt;
+    private int volume;
+    private int maxPotionAmt;
     
-    //Getter & Setters
+   //Getter & Setter
     
 }
