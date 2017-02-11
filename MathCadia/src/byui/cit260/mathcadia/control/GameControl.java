@@ -10,8 +10,9 @@ package byui.cit260.mathcadia.control;
  * @author ethan
  */
 public class GameControl {
+    
     public void gameOver() {
-        
+        System.out.println("You have died! Start a new game to continue.");
     }
     
     public void startNewGame() {

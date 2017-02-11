@@ -33,29 +33,29 @@ public class PlayerControl {
 		positionX++;
     }
     
-    public void recoverHealth(Inventory.potionAmt, Player.healthPoints) {
-        if(Inventory.potionAmt == 0) {
+    public void recoverHealth(potionAmt, healthPoints) {
+        if(potionAmt == 0) {
             System.out.println("You do not have any potions left!");
             break;
         }
-        else if(Inventory.potionAmt >= 1) {
-            Player.healthPoints += 2;
+        else if(potionAmt >= 1) {
+            healthPoints += 2;
             break;
         }
     }
     
-    public void skipMathChallenge(Player.skipAmt, MathChallenges.equationOneAnswer, MathChallenges.equationTwoAnswer, MathChallenges.equationThreeAnswer) {
-        if(Player.skipAmt = 0) {
+    public void skipMathChallenge(skipAmt, equationOneAnswer, equationTwoAnswer, equationThreeAnswer) {
+        if(skipAmt = 0) {
             System.out.println("You do not have any skips left!");
             break;
         }
         
     }
     
-    public void addKey(Location.hasKey, Player.keyAmt) {
+    public void addKey(hasKey, keyAmt) {
         if(hasKey == false) {
             break;
         }
-        Player.keyAmt++;
+        keyAmt++;
     }
 }

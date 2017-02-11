@@ -12,13 +12,22 @@ package byui.cit260.mathcadia.control;
 public class EnemiesControl {
     
     public void dealDamageToPlayer(healthPoints, answer, attackDamage) {
-	if("playerInput" != answer) 
+	
+    }
+    
+    public void isAnswerCorrect(equationOneAnswer, equationTwoAnswer, equationThreeAnswer, healthPoints, attackDamge) {
+        if() {
+            
+        }
+        else if("playerInput" != answer) 
 		healthPoints -= attackDamage;
-	if(healthPoints == 0)
+        else if(healthPoints == 0)
 		gameOver();
     }
     
-    public boolean isAnswerCorrect(MathChallenges.equationOneAnswer, MathChallenges.equationTwoAnswer, MathChallenges.equationThreeAnswer) {
-        if
+    public void cannotSkip(isBoss) {
+        if(isBoss == true) {
+            System.out.println("You cannot skip the boss question!");
+        }
     }
 }

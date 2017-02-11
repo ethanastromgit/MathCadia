@@ -25,6 +25,14 @@ public class Enemies implements Serializable {
     private boolean isBoss;
     private String enemyCoordinate;
     private boolean hasKey;
+    private String equationOne;
+    private double equationOneAnswer;
+    private String equationTwo;
+    private double equationTwoAnswer;
+    private String equationThree;
+    private double equationThreeAnswer;
+    private String bossEquation;
+    private double bossEquationAnswer;
     
     //Getter & Setters
     

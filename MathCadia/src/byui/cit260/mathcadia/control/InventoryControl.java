@@ -11,7 +11,7 @@ package byui.cit260.mathcadia.control;
  */
 public class InventoryControl {
     
-    public int calcInventoryVol (length, width, height) {
+    public int calcInventoryVol(length, width, height) {
 	if(length <= 0 || width <= 0 || height <= 0)
 		return -1;
         else if((length * width * height) > 1000)
@@ -19,22 +19,22 @@ public class InventoryControl {
 	return length * width * height;		
     }
     
-    public void addPotion(Inventory.potionAmt, Inventory.maxPotionAmt, Location.hasPotion) {
+    public void addPotion(potionAmt, maxPotionAmt, hasPotion) {
         
-        if(Location.hasPotion == true && Inventory.potionAmt != maxPotionAmt) {
-            Inventory.potionAmt++;
+        if(hasPotion == true && potionAmt != maxPotionAmt) {
+            potionAmt++;
         }
-        else if(Inventory.potionAmt >= Inventory.maxPotionAmt) {
+        else if(potionAmt >= maxPotionAmt) {
             System.out.println("You cannot exceed the maximum carrying capacity of your inventory.");
             break;
         }
-        else if(Location.hasPotion == false) {
+        else if(hasPotion == false) {
             break;
         }
         
     }
     
-    public void calcMaxPotionAmt(Inventory.volume, Inventory.maxPotionAmt) {
+    public void calcMaxPotionAmt(volume, maxPotionAmt) {
         maxPotionAmt = volume / 50;
         break;
     }
