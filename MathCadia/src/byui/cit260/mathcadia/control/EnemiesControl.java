@@ -11,4 +11,14 @@ package byui.cit260.mathcadia.control;
  */
 public class EnemiesControl {
     
+    public void dealDamageToPlayer(healthPoints, answer, attackDamage) {
+	if("playerInput" != answer) 
+		healthPoints -= attackDamage;
+	if(healthPoints == 0)
+		gameOver();
+    }
+    
+    public boolean isAnswerCorrect(MathChallenges.equationOneAnswer, MathChallenges.equationTwoAnswer, MathChallenges.equationThreeAnswer) {
+        if
+    }
 }

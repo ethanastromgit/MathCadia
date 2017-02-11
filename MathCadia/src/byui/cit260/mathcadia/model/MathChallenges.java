@@ -12,9 +12,13 @@ public class MathChallenges implements Serializable {
     
     //Attributes
     private String equationOne;
+    private double equationOneAnswer;
     private String equationTwo;
+    private double equationTwoAnswer;
     private String equationThree;
+    private double equationThreeAnswer;
     private String bossEquation;
+    private double bossEquationAnswer;
 
     //Getters and Setters
     
