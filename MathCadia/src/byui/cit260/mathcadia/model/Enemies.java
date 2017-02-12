@@ -35,5 +35,109 @@ public class Enemies implements Serializable {
     private double bossEquationAnswer;
     
     //Getter & Setters
+
+    public String getEnemyName() {
+        return enemyName;
+    }
+
+    public void setEnemyName(String enemyName) {
+        this.enemyName = enemyName;
+    }
+
+    public int getAttackDamage() {
+        return attackDamage;
+    }
+
+    public void setAttackDamage(int attackDamage) {
+        this.attackDamage = attackDamage;
+    }
+
+    public boolean isIsBoss() {
+        return isBoss;
+    }
+
+    public void setIsBoss(boolean isBoss) {
+        this.isBoss = isBoss;
+    }
+
+    public String getEnemyCoordinate() {
+        return enemyCoordinate;
+    }
+
+    public void setEnemyCoordinate(String enemyCoordinate) {
+        this.enemyCoordinate = enemyCoordinate;
+    }
+
+    public boolean isHasKey() {
+        return hasKey;
+    }
+
+    public void setHasKey(boolean hasKey) {
+        this.hasKey = hasKey;
+    }
+
+    public String getEquationOne() {
+        return equationOne;
+    }
+
+    public void setEquationOne(String equationOne) {
+        this.equationOne = equationOne;
+    }
+
+    public double getEquationOneAnswer() {
+        return equationOneAnswer;
+    }
+
+    public void setEquationOneAnswer(double equationOneAnswer) {
+        this.equationOneAnswer = equationOneAnswer;
+    }
+
+    public String getEquationTwo() {
+        return equationTwo;
+    }
+
+    public void setEquationTwo(String equationTwo) {
+        this.equationTwo = equationTwo;
+    }
+
+    public double getEquationTwoAnswer() {
+        return equationTwoAnswer;
+    }
+
+    public void setEquationTwoAnswer(double equationTwoAnswer) {
+        this.equationTwoAnswer = equationTwoAnswer;
+    }
+
+    public String getEquationThree() {
+        return equationThree;
+    }
+
+    public void setEquationThree(String equationThree) {
+        this.equationThree = equationThree;
+    }
+
+    public double getEquationThreeAnswer() {
+        return equationThreeAnswer;
+    }
+
+    public void setEquationThreeAnswer(double equationThreeAnswer) {
+        this.equationThreeAnswer = equationThreeAnswer;
+    }
+
+    public String getBossEquation() {
+        return bossEquation;
+    }
+
+    public void setBossEquation(String bossEquation) {
+        this.bossEquation = bossEquation;
+    }
+
+    public double getBossEquationAnswer() {
+        return bossEquationAnswer;
+    }
+
+    public void setBossEquationAnswer(double bossEquationAnswer) {
+        this.bossEquationAnswer = bossEquationAnswer;
+    }
     
 }

@@ -4,16 +4,18 @@
  * and open the template in the editor.
  */
 package byui.cit260.mathcadia.control;
-
+import byui.cit260.mathcadia.model.Enemies;
+import byui.cit260.mathcadia.model.Game;
+import byui.cit260.mathcadia.model.Inventory;
+import byui.cit260.mathcadia.model.Location;
+import byui.cit260.mathcadia.model.Map;
+import byui.cit260.mathcadia.model.Player;
 /**
  *
  * @author ethan
  */
 public class GameControl {
     
-    public void gameOver() {
-        System.out.println("You have died! Start a new game to continue.");
-    }
     
     public void startNewGame() {
         
@@ -31,7 +33,4 @@ public class GameControl {
         
     }
     
-    public String winGame() {
-        System.out.println("Congratulations! You have successfully defeated the boss!");
-    }
 }

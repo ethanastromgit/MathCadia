@@ -14,5 +14,13 @@ public class Game implements Serializable {
     private boolean player;
     
     //Getters and Setters
+
+    public boolean isPlayer() {
+        return player;
+    }
+
+    public void setPlayer(boolean player) {
+        this.player = player;
+    }
     
 }

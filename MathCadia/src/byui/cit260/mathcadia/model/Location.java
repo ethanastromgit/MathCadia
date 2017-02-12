@@ -24,5 +24,53 @@ public class Location implements Serializable {
     private boolean nullCoordinate;
 
     //Getters and Setters
-        
+
+    public boolean isIsEnemyHere() {
+        return isEnemyHere;
+    }
+
+    public void setIsEnemyHere(boolean isEnemyHere) {
+        this.isEnemyHere = isEnemyHere;
+    }
+
+    public boolean isHasPotion() {
+        return hasPotion;
+    }
+
+    public void setHasPotion(boolean hasPotion) {
+        this.hasPotion = hasPotion;
+    }
+
+    public String getCoordinate() {
+        return coordinate;
+    }
+
+    public void setCoordinate(String coordinate) {
+        this.coordinate = coordinate;
+    }
+
+    public int getLocationX() {
+        return locationX;
+    }
+
+    public void setLocationX(int locationX) {
+        this.locationX = locationX;
+    }
+
+    public int getLocationY() {
+        return locationY;
+    }
+
+    public void setLocationY(int locationY) {
+        this.locationY = locationY;
+    }
+
+    public boolean isNullCoordinate() {
+        return nullCoordinate;
+    }
+
+    public void setNullCoordinate(boolean nullCoordinate) {
+        this.nullCoordinate = nullCoordinate;
+    }
+    
 }

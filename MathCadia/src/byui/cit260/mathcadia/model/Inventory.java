@@ -28,5 +28,53 @@ public class Inventory implements Serializable {
     private int height;
     
    //Getter & Setter
+
+    public int getPotionAmt() {
+        return potionAmt;
+    }
+
+    public void setPotionAmt(int potionAmt) {
+        this.potionAmt = potionAmt;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    public int getMaxPotionAmt() {
+        return maxPotionAmt;
+    }
+
+    public void setMaxPotionAmt(int maxPotionAmt) {
+        this.maxPotionAmt = maxPotionAmt;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
     
 }

@@ -4,14 +4,19 @@
  * and open the template in the editor.
  */
 package byui.cit260.mathcadia.control;
-
+import byui.cit260.mathcadia.model.Enemies;
+import byui.cit260.mathcadia.model.Game;
+import byui.cit260.mathcadia.model.Inventory;
+import byui.cit260.mathcadia.model.Location;
+import byui.cit260.mathcadia.model.Map;
+import byui.cit260.mathcadia.model.Player;
 /**
  *
  * @author ethan
  */
 public class InventoryControl {
     
-    public int calcInventoryVol(length, width, height) {
+    public int calcInventoryVol(int length, int width, int height) {
 	if(length <= 0 || width <= 0 || height <= 0)
 		return -1;
         else if((length * width * height) > 1000)
@@ -19,24 +24,22 @@ public class InventoryControl {
 	return length * width * height;		
     }
     
-    public void addPotion(potionAmt, maxPotionAmt, hasPotion) {
+    public int addPotion(int potionAmt, int maxPotionAmt, boolean hasPotion) {
         
         if(hasPotion == true && potionAmt != maxPotionAmt) {
             potionAmt++;
         }
         else if(potionAmt >= maxPotionAmt) {
             System.out.println("You cannot exceed the maximum carrying capacity of your inventory.");
-            break;
         }
         else if(hasPotion == false) {
-            break;
+            System.out.println("You did not find a potion!");
         }
-        
+        return potionAmt;
     }
     
-    public void calcMaxPotionAmt(volume, maxPotionAmt) {
+    public void calcMaxPotionAmt(int volume, int maxPotionAmt) {
         maxPotionAmt = volume / 50;
-        break;
     }
     
 }
