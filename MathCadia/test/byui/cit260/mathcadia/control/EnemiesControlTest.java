@@ -49,8 +49,6 @@ public class EnemiesControlTest {
         int keyAmt = 0;
         EnemiesControl instance = new EnemiesControl();
         instance.isAnswerOneCorrect(equationOneAnswer, healthPoints, attackDamage, keyAmt);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -65,8 +63,6 @@ public class EnemiesControlTest {
         int keyAmt = 0;
         EnemiesControl instance = new EnemiesControl();
         instance.isAnswerTwoCorrect(equationTwoAnswer, healthPoints, attackDamage, keyAmt);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -81,8 +77,6 @@ public class EnemiesControlTest {
         int keyAmt = 0;
         EnemiesControl instance = new EnemiesControl();
         instance.isAnswerThreeCorrect(equationThreeAnswer, healthPoints, attackDamage, keyAmt);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -96,8 +90,6 @@ public class EnemiesControlTest {
         int attackDamage = 0;
         EnemiesControl instance = new EnemiesControl();
         instance.isBossAnswerCorrect(bossEquationAnswer, healthPoints, attackDamage);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -112,8 +104,6 @@ public class EnemiesControlTest {
         int expResult = 0;
         int result = instance.cannotSkip(isBoss, skipAmt);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
