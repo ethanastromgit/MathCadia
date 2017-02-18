@@ -10,6 +10,7 @@ import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Location;
 import byui.cit260.mathcadia.model.Map;
 import byui.cit260.mathcadia.model.Player;
+import byui.cit260.mathcadia.view.MessageDisplayView;
 /**
  *
  * @author ethan
@@ -25,7 +26,7 @@ public class EnemiesControl {
         else if(playerInput != equationOneAnswer) 
 		healthPoints -= attackDamage;
         if(healthPoints == 0)
-		System.out.println("You have died! Game over!");
+		playerDies();
     }
     public void isAnswerTwoCorrect(int equationTwoAnswer, int healthPoints, int attackDamage, int keyAmt) {
         if(playerInput == equationTwoAnswer) {
@@ -60,5 +61,9 @@ public class EnemiesControl {
             System.out.println("You cannot skip the boss question!");
         }
         return skipAmt;
+    }
+
+    private void playerDies() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
