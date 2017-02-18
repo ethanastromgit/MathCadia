@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.mathcadia.control;
+import MathCadia.MathCadia;
 import byui.cit260.mathcadia.model.Enemies;
 import byui.cit260.mathcadia.model.Game;
 import byui.cit260.mathcadia.model.Inventory;
@@ -16,9 +17,22 @@ import byui.cit260.mathcadia.model.Player;
  */
 public class GameControl {
     
-    
-    public void startNewGame() {
+    public static Player createPlayer(String name) {
         
+        if(name == null) {
+            return null;
+        }
+        
+        Player player = new Player();
+        player.setName(name);
+        
+        MathCadia.setPlayer(player); //Save the player
+        
+        return player;
+    }
+    
+    public static void createNewGame(Player player) {
+        System.out.println("\n*** createNewGame stub function called ***");
     }
     
     public void initializeMap() {
@@ -29,7 +43,11 @@ public class GameControl {
         
     }
     
-    public void loadGame() {
+    public void startSavedGame() {
+        
+    }
+    
+    public void exitGame() {
         
     }
     

@@ -9,6 +9,6 @@ package byui.cit260.mathcadia.view;
  *
  * @author ethan
  */
-public class PlayerActionView {
+public class TravelMenuView {
     
 }

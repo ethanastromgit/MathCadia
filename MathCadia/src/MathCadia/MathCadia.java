@@ -5,13 +5,38 @@
  */
 package MathCadia;
 
+import byui.cit260.mathcadia.model.Game;
+import byui.cit260.mathcadia.model.Player;
+import byui.cit260.mathcadia.view.StartProgramView;
+
 /**
  *
  * @author Daniel
  */
 public class MathCadia {
-    //main
-    public static void main(String args[]) {
-        
+    
+    private static Game currentGame = null;
+    private static Player player = null;
+    
+    public static Game getCurrentGame() {
+        return currentGame;
     }
+    
+    public static void setCurrentGame(Game currentGame) {
+        MathCadia.currentGame = currentGame;
+    }
+    
+    public static Player getPlayer() {
+        return player;
+    }
+    
+    public static void setPlayer(Player player) {
+        MathCadia.player = player;
+    }
+    
+    public static void main(String args[]) {
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.displayStartProgramView();
+    }
+
 }
