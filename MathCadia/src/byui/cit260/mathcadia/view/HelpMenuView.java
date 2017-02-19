@@ -35,8 +35,11 @@ public class HelpMenuView {
         
         boolean done = false; //Set flag to not done
         do {
-            //Prompt for and get help menu option
+            //Prompt for and get players name
             String helpMenuOption = this.getHelpMenuOption();
+            if (helpMenuOption.toUpperCase().equals("X")) { //User wants to quit
+                return; //Exit game
+            }
             
             //Do the requested action and display the next view
             done = this.doActionHelpMenu(helpMenuOption);
@@ -102,4 +105,5 @@ public class HelpMenuView {
     private void displayRules() {
         System.out.println("If you run of out health points, you lose. You may not move in a direction that would take you off the map. Having all three keys is a must to gain access to the boss room. Defeating the boss allows you to win.");
     }
+    
 }
