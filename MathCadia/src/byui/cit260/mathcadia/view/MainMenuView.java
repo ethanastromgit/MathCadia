@@ -6,6 +6,7 @@
 package byui.cit260.mathcadia.view;
 
 import MathCadia.MathCadia;
+import byui.cit260.mathcadia.view.HelpMenuView;
 import byui.cit260.mathcadia.view.GameMenuView;
 import byui.cit260.mathcadia.control.GameControl;
 import byui.cit260.mathcadia.model.Player;

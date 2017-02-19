@@ -6,6 +6,7 @@
 package byui.cit260.mathcadia.view;
 
 import MathCadia.MathCadia;
+import byui.cit260.mathcadia.view.MainMenuView;
 import byui.cit260.mathcadia.view.GameMenuView;
 import byui.cit260.mathcadia.control.GameControl;
 import byui.cit260.mathcadia.model.Player;
@@ -17,28 +18,25 @@ import java.util.Scanner;
  */
 public class HelpMenuView {
     
-    private String menu;
+    private String helpMenu;
     
-    private void HelpMenuView() {
-        this.menu = "\n-------------------------------------"
-                  + "\n Help Menu                           "
-                  + "\n-------------------------------------"
-                  + "\n P - What is the purpose of the game "
-                  + "\n M - How to move in the game         "
-                  + "\n R - Rules of the game               "
-                  + "\n Q - Return to Main Menu             "
-                  + "\n-------------------------------------";
+    public HelpMenuView() {
+        this.helpMenu = "\n-------------------------------------"
+                      + "\n Help Menu                           "
+                      + "\n-------------------------------------"
+                      + "\n P - What is the purpose of the game "
+                      + "\n M - How to move in the game         "
+                      + "\n R - Rules of the game               "
+                      + "\n Q - Return to Main Menu             "
+                      + "\n-------------------------------------";
     }
     
     public void displayHelpMenuView() {
         
         boolean done = false; //Set flag to not done
         do {
-            //Prompt for and get players name
+            //Prompt for and get help menu option
             String helpMenuOption = this.getHelpMenuOption();
-            if (helpMenuOption.toUpperCase().equals("X")) { //User wants to quit
-                return; //Exit game
-            }
             
             //Do the requested action and display the next view
             done = this.doActionHelpMenu(helpMenuOption);
@@ -53,7 +51,7 @@ public class HelpMenuView {
         boolean valid = false; //Initialize to not valid
         
         while (!valid) {
-            System.out.println("\n" + this.menu);
+            System.out.println("\n" + this.helpMenu);
             
             value = keyboard.nextLine(); //Get next line typed on keyboard
             value = value.trim(); //Trim off leading and trailing blanks
@@ -83,7 +81,8 @@ public class HelpMenuView {
                 this.displayRules();
                 break;
             case "Q": //Display Help Menu
-                this.displayHelpMenuView();
+                MainMenuView mainMenuView = new MainMenuView();
+                mainMenuView.displayMainMenuView();
                 break;
             default:
                 System.out.println("\n*** Invalid Selection *** Try Again");
