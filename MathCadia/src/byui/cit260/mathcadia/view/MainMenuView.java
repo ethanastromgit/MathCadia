@@ -18,7 +18,7 @@ import java.util.Scanner;
 public class MainMenuView {
 
     private String menu;
-    private String helpMenu;
+    //private String helpMenu;
     
     public MainMenuView() {
         this.menu = "\n--------------------------------"
@@ -120,7 +120,7 @@ public class MainMenuView {
     }
     
     private void HelpMenuView() {
-        this.helpMenu = "\n-------------------------------------"
+        this.menu = "\n-------------------------------------"
                   + "\n Help Menu                           "
                   + "\n-------------------------------------"
                   + "\n P - What is the purpose of the game "
@@ -156,7 +156,7 @@ public class MainMenuView {
         boolean valid = false; //Initialize to not valid
         
         while (!valid) {
-            System.out.println("\n" + this.helpMenu);
+            System.out.println("\n" + this.menu);
             
             value = keyboard.nextLine(); //Get next line typed on keyboard
             value = value.trim(); //Trim off leading and trailing blanks
@@ -215,17 +215,4 @@ public class MainMenuView {
         
     }
     
-    private void displayNextView(Player player) {
-        
-        //Display a custom welcome message
-        System.out.println(
-            "\n****************************************************"
-        );
-        
-        //Create MainMenuView object
-        MainMenuView mainMenuView = new MainMenuView();
-        
-        //Display the main menu view
-        //mainMenuView.displayMenuView();
-    }
 }
