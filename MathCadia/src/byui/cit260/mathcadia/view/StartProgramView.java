@@ -62,7 +62,7 @@ public class StartProgramView {
             );
     }
 
-    private String getPlayerName() {
+    /*private String getPlayerName() {
         Scanner keyboard = new Scanner(System.in); //Get infile for keyboard
         String value = ""; //Value to be returned
         boolean valid = false; //Initialize to not valid
@@ -80,7 +80,7 @@ public class StartProgramView {
             break; //End the loop
         }
         return value; //Return entered value
-    }
+    }*/
 
     private boolean doAction(String playersName) {
         
