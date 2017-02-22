@@ -19,7 +19,6 @@ import java.util.Scanner;
 public class MainMenuView {
 
     private String menu;
-    //private String helpMenu;
     
     public MainMenuView() {
         this.menu = "\n--------------------------------"

@@ -35,10 +35,10 @@ public class HelpMenuView {
         
         boolean done = false; //Set flag to not done
         do {
-            //Prompt for and get players name
+            
             String helpMenuOption = this.getHelpMenuOption();
-            if (helpMenuOption.toUpperCase().equals("X")) { //User wants to quit
-                return; //Exit game
+            if (helpMenuOption.toUpperCase().equals("Q")) { //User wants to back out
+                return; //Go back to Main Menu
             }
             
             //Do the requested action and display the next view
@@ -84,9 +84,10 @@ public class HelpMenuView {
                 this.displayRules();
                 break;
             case "Q": //Display Help Menu
-                MainMenuView mainMenuView = new MainMenuView();
+                return true;
+                /*MainMenuView mainMenuView = new MainMenuView();
                 mainMenuView.displayMainMenuView();
-                break;
+                break;*/
             default:
                 System.out.println("\n*** Invalid Selection *** Try Again");
                 break;
