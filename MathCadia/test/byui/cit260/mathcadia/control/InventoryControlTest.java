@@ -51,7 +51,6 @@ public class InventoryControlTest {
         int result = instance.calcInventoryVol(length, width, height);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -68,7 +67,6 @@ public class InventoryControlTest {
         int result = instance.addPotion(potionAmt, maxPotionAmt, hasPotion);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -82,7 +80,6 @@ public class InventoryControlTest {
         InventoryControl instance = new InventoryControl();
         instance.calcMaxPotionAmt(volume, maxPotionAmt);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
