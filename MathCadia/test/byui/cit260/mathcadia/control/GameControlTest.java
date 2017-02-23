@@ -44,7 +44,7 @@ public class GameControlTest {
     public void testStartNewGame() {
         System.out.println("startNewGame");
         GameControl instance = new GameControl();
-        instance.startNewGame();
+//        instance.startNewGame();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -80,7 +80,7 @@ public class GameControlTest {
     public void testLoadGame() {
         System.out.println("loadGame");
         GameControl instance = new GameControl();
-        instance.loadGame();
+//        instance.loadGame();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
