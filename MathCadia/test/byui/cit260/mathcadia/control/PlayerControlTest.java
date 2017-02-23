@@ -49,7 +49,6 @@ public class PlayerControlTest {
         PlayerControl instance = new PlayerControl();
         instance.movePlayer(direction, positionX, positionY);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -63,7 +62,6 @@ public class PlayerControlTest {
         PlayerControl instance = new PlayerControl();
         instance.recoverHealth(potionAmt, healthPoints);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -79,7 +77,6 @@ public class PlayerControlTest {
         PlayerControl instance = new PlayerControl();
         instance.skipMathChallenge(skipAmt, equationOneAnswer, equationTwoAnswer, equationThreeAnswer);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
