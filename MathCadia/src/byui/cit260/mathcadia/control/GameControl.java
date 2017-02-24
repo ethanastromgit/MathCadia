@@ -39,7 +39,7 @@ public class GameControl {
         //game.setPlayer(player);
         //game.setMap(buildMap());
         
-        //MathCadia.getCurrentGame().getMap().getPlaces().get(5);
+       // MathCadia.getCurrentGame().getMap().getPlaces().get(5);
         
         
     }

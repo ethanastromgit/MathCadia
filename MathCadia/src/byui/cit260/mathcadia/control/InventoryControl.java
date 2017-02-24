@@ -18,13 +18,17 @@ import byui.cit260.mathcadia.model.Player;
  */
 public class InventoryControl {
 
-    public int calcInventoryVol(int length, int width, int height) {
+    public void calcInventoryVol(int length, int width, int height) {
         if (length <= 0 || width <= 0 || height <= 0) {
-            return -1;
+            return;
         } else if ((length * width * height) > 1000) {
-            return -1;
+            return;
         }
-        return length * width * height;
+        
+        int volume = length * width * height;
+        
+        Inventory i = new Inventory();
+        i.setVolume(volume);
     }
 
     public int addPotion(int potionAmt, int maxPotionAmt, boolean hasPotion) {

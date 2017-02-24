@@ -76,7 +76,7 @@ public class GameMenuView {
                 break;
             case "S": 
                 InventoryView iv = new InventoryView();
-                iv.display();
+                iv.displayLength();
                 break;
             case "V":
                 MapView mv = new MapView();
