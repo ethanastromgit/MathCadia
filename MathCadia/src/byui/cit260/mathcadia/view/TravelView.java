@@ -13,6 +13,8 @@ import java.util.Scanner;
  */
 class TravelView {
     
+    private String menu;
+    
     public TravelView() {
         
     }
@@ -55,8 +57,8 @@ class TravelView {
         return value; //Return entered value
     }
     
-    private boolean doAction() {
-        
+    private boolean doAction(String choice) {
+        return false;
     }
     
 }

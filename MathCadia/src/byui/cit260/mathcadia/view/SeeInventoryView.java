@@ -13,8 +13,10 @@ import java.util.Scanner;
  */
 public class SeeInventoryView {
 
+    private String menu;
+    
     public SeeInventoryView() {
-        
+        this.menu = "";
     }
     
     public void display() {
@@ -55,8 +57,8 @@ public class SeeInventoryView {
         return value; //Return entered value
     }
     
-    private boolean doAction() {
-        
+    private boolean doAction(String choice) {
+        return false;
     }
     
 }

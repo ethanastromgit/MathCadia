@@ -18,8 +18,6 @@ import byui.cit260.mathcadia.model.Player;
  */
 public class InventoryControl {
     
-    Inventory i = new Inventory();
-    
     public InventoryControl() {
         
     }
@@ -60,15 +58,11 @@ public class InventoryControl {
         
     }
     
-    public void calcInventoryVol(int length, int width, int height) {
-        
-        length = i.getLength();
-        width = i.getWidth();
-        height = i.getHeight();
+    public int calcInventoryVol(int length, int width, int height) {
     
         int volume = length * width * height;
       
-        i.setVolume(volume);
+        return volume;
     }
 
     public int addPotion(int potionAmt, int maxPotionAmt, boolean hasPotion) {

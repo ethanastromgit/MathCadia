@@ -13,6 +13,8 @@ import java.util.Scanner;
  */
 public class EnemyView {
     
+    private String menu;
+    
     public EnemyView() {
         
     }
@@ -55,8 +57,8 @@ public class EnemyView {
         return value; //Return entered value
     }
     
-    private boolean doAction() {
-        
+    private boolean doAction(String choice) {
+        return false;
     }
     
     /*public String menu;

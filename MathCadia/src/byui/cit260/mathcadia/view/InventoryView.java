@@ -242,10 +242,11 @@ public class InventoryView {
         
         if (valid = true) {
             i.setHeight(input);
+            int volume = ic.calcInventoryVol(length, width, height);
+            i.setVolume(volume);
             return true;
         }
         else {
-            ic.calcInventoryVol(length, width, height);
             return false;
         }
         
@@ -263,15 +264,5 @@ public class InventoryView {
         }
         return false;
        
-        
-        
-        
-        //InventoryControl ic = new InventoryControl();
-        //ic.calcInventoryVol();
-        
-        //Inventory i = new Inventory();
-        //i.setVolume(playerInput);
-        
-        //return;
     }
 }

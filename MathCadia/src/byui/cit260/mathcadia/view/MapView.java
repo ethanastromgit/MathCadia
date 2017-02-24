@@ -12,9 +12,19 @@ import java.util.Scanner;
  * @author ethan
  */
 class MapView {
-
+    
+    private String menu;
+    
     public MapView() {
-        
+        this.menu = "\n___________"
+                  + "\n|    B    |"
+                  + "\n|    E    |"
+                  + "\n|         |"
+                  + "\n|    E    |"
+                  + "\n|         |"
+                  + "\n|    E    |"
+                  + "\n|         |"
+                  + "\n|___ X ___|";
     }    
     
     public void display() {
@@ -55,8 +65,8 @@ class MapView {
         return value; //Return entered value
     }
     
-    private boolean doAction() {
-        
+    private boolean doAction(String choice) {
+        return false;
     }
     
 }
