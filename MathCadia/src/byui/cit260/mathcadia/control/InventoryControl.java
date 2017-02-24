@@ -17,18 +17,59 @@ import byui.cit260.mathcadia.model.Player;
  * @author ethan
  */
 public class InventoryControl {
+    
+    Inventory i = new Inventory();
+    
+    public InventoryControl() {
+        
+    }
 
-    public void calcInventoryVol(int length, int width, int height) {
-        if (length <= 0 || width <= 0 || height <= 0) {
-            return;
-        } else if ((length * width * height) > 1000) {
-            return;
+    public boolean validateLength(int input) {
+        
+        if (input <= 0) {
+            return false;
         }
+        else if (input > 10) {
+            return false;
+        }
+        return true;
         
+    }
+    
+    public boolean validateWidth(int input) {
+        
+        if (input <= 0) {
+            return false;
+        }
+        else if (input > 10) {
+            return false;
+        }
+        return true;
+        
+    }
+    
+    public boolean validateHeight(int input) {
+        
+        if (input <= 0) {
+            return false;
+        }
+        else if (input > 10) {
+            return false;
+        }
+        return true;
+        
+    }
+    
+    public void calcInventoryVol(int length, int width, int height) {
+        
+        length = i.getLength();
+        width = i.getWidth();
+        height = i.getHeight();
+    
         int volume = length * width * height;
-        
-        Inventory i = new Inventory();
+      
         i.setVolume(volume);
+        
     }
 
     public int addPotion(int potionAmt, int maxPotionAmt, boolean hasPotion) {

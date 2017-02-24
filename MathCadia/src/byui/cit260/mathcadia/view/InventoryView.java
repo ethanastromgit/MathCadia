@@ -21,17 +21,19 @@ import java.util.Scanner;
  */
 public class InventoryView {
 
+    Inventory i = new Inventory();
+    InventoryControl ic = new InventoryControl();
+    
     private String menu;
     private String length;
     private String width;
     private String height;
     private String volume;
     
+    int volumeDisplay = i.getVolume();
+    
     
     public InventoryView() {
-        
-        Inventory i = new Inventory();
-        int volume = i.getVolume();
         
         this.menu = "\nNow you will set up your inventory volume. "
                   + "\nThe volume cannot be over 1000 and neither of the "
@@ -40,7 +42,7 @@ public class InventoryView {
         this.length = "Please enter the desired length:";
         this.width = "Please enter the desired width:";
         this.height = "Please enter the desired height:";
-        this.volume = "The volume of your bag is " + volume + "."
+        this.volume = "The volume of your bag is " + volumeDisplay + "."
                     + "\nPress Q to go back to Game Menu.";
                   
     }
@@ -76,12 +78,15 @@ public class InventoryView {
     public void displayHeight() {
         
         boolean done = false; //Set flag to not done
-        do {
+        while (!done) {
             String input = this.getInputHeight();
            
             done = this.doActionHeight(input);
             
-        } while (!done);
+            //if (done = false) {
+                //System.out.println("None of the dimensions can be zero and the volume cannot be greater than 1000!");
+            //}
+        }
         
         this.displayVolume();
         
@@ -194,43 +199,72 @@ public class InventoryView {
     
     private boolean doActionLength(String choice) {
         
-        int playerInput = Integer.parseInt(choice);
+        int input = Integer.parseInt(choice);
+        boolean valid = false;
         
-        Inventory i = new Inventory();
-        i.setLength(playerInput);
+        valid = ic.validateLength(input);
         
-        return true;
+        if (valid = true) {
+            i.setLength(input);
+            return true;
+        }
+        else {
+            return false;
+        }
+        
     }
     private boolean doActionWidth(String choice) {
         
-        int playerInput = Integer.parseInt(choice);
+        int input = Integer.parseInt(choice);
+        boolean valid = false;
         
-        Inventory i = new Inventory();
-        i.setLength(playerInput);
+        valid = ic.validateWidth(input);
         
-        return true;
+        if (valid = true) {
+            i.setWidth(input);
+            return true;
+        }
+        else {
+            return false;
+        }
+        
     }
+    
     private boolean doActionHeight(String choice) {
         
-        int playerInput = Integer.parseInt(choice);
+        int input = Integer.parseInt(choice);
+        boolean valid = false;
+        int length = i.getLength();
+        int width = i.getWidth();
+        int height = i.getHeight();
         
-        Inventory i = new Inventory();
-        i.setLength(playerInput);
+        valid = ic.validateHeight(input);
         
-        return true;
+        if (valid = true) {
+            i.setHeight(input);
+            return true;
+        }
+        else {
+            ic.calcInventoryVol(length, width, height);
+            return false;
+        }
+        
     }
     private boolean doActionVolume(String choice) {
         
         choice = choice.toUpperCase(); //Convert choice to upper case
         
         switch (choice) {
-            case "Q": //Start New Game
+            case "Q": //Return to Game Menu
                 return true;
             default:
                 System.out.println("\n*** Invalid Selection *** Try Again");
                 break;
         }
         return false;
+       
+        
+        
         
         //InventoryControl ic = new InventoryControl();
         //ic.calcInventoryVol();
