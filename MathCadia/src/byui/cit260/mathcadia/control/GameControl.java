@@ -32,7 +32,16 @@ public class GameControl {
     }
     
     public static void createNewGame(Player player) {
-        System.out.println("\n*** createNewGame stub function called ***");
+        
+        System.out.println("\n***  ***");
+        
+        //Game game = new Game();
+        //game.setPlayer(player);
+        //game.setMap(buildMap());
+        
+        //MathCadia.getCurrentGame().getMap().getPlaces().get(5);
+        
+        
     }
     
     public void initializeMap() {

@@ -90,7 +90,7 @@ public class MainMenuView {
                 helpMenuView.displayHelpMenuView();
                 break;
             case "R": //Return to Player Location
-                this.displayPlayerCurrentScene();
+                this.displayMap();
                 break;
             case "X": //Exit Game
                 this.exitGame();
@@ -109,7 +109,7 @@ public class MainMenuView {
         //Display the game menu view
         GameMenuView gameMenu = new GameMenuView();
         //Display the game menu
-        gameMenu.displayMenu();
+        gameMenu.display();
     }
     
     private void startExistingGame() {
@@ -120,8 +120,8 @@ public class MainMenuView {
         System.out.println("\n*** saveGame() function called ***");
     }
     
-    private void displayPlayerCurrentScene() {
-        System.out.println("\n*** displayPlayerCurrentScene() fucntion called ***");
+    private void displayMap() {
+        System.out.println("\n*** displayMap() fucntion called ***");
     }
     
     private void exitGame() {
