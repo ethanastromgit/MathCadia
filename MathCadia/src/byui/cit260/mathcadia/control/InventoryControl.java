@@ -69,7 +69,6 @@ public class InventoryControl {
         int volume = length * width * height;
       
         i.setVolume(volume);
-        
     }
 
     public int addPotion(int potionAmt, int maxPotionAmt, boolean hasPotion) {

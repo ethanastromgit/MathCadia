@@ -52,6 +52,10 @@ public class GameControl {
         
     }
     
+    public void returnToGame() {
+        
+    }    
+    
     public void startSavedGame() {
         
     }

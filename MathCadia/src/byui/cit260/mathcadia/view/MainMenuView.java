@@ -27,7 +27,7 @@ public class MainMenuView {
                   + "\n N - Start New Game             "
                   + "\n L - Load Game                  "
                   + "\n S - Save Game                  "
-                  + "\n R - Return to Player Location  "
+                  + "\n R - Return to Current Game     "
                   + "\n H - Help Menu                  "
                   + "\n X - Exit Game                  "
                   + "\n--------------------------------";
@@ -90,7 +90,7 @@ public class MainMenuView {
                 helpMenuView.displayHelpMenuView();
                 break;
             case "R": //Return to Player Location
-                this.displayMap();
+                this.returnToGame();
                 break;
             case "X": //Exit Game
                 this.exitGame();
@@ -120,7 +120,7 @@ public class MainMenuView {
         System.out.println("\n*** saveGame() function called ***");
     }
     
-    private void displayMap() {
+    private void returnToGame() {
         System.out.println("\n*** displayMap() fucntion called ***");
     }
     

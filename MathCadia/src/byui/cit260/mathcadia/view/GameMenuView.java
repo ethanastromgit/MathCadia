@@ -21,8 +21,9 @@ public class GameMenuView {
                   + "\n--------------------------------"
                   + "\n T - Move Player                "
                   + "\n S - Set Up Inventory           "
-                  + "\n V - View Inventory             "
-                  + "\n M - Main Menu                  "
+                  + "\n I - View Inventory             "
+                  + "\n M - View Map                   "
+                  + "\n Q - Main Menu                  "
                   + "\n H - Help Menu                  "
                   + "\n--------------------------------";
     }
@@ -78,11 +79,15 @@ public class GameMenuView {
                 InventoryView iv = new InventoryView();
                 iv.displayLength();
                 break;
-            case "V":
+            case "I": 
+                SeeInventoryView siv = new SeeInventoryView();
+                siv.display();
+                break;
+            case "M":
                 MapView mv = new MapView();
                 mv.display();
                 break;
-            case "M": 
+            case "Q": 
                 return true;
             case "H": 
                 HelpMenuView helpMenuView = new HelpMenuView();
