@@ -5,7 +5,9 @@
  */
 package MathCadia;
 
+import byui.cit260.mathcadia.control.InventoryControl;
 import byui.cit260.mathcadia.model.Game;
+import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Player;
 import byui.cit260.mathcadia.view.StartProgramView;
 
@@ -35,6 +37,7 @@ public class MathCadia {
     }
     
     public static void main(String args[]) {
+        
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.displayStartProgramView();
     }

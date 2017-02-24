@@ -32,7 +32,6 @@ public class InventoryView {
     
     int volumeDisplay = i.getVolume();
     
-    
     public InventoryView() {
         
         this.menu = "\nNow you will set up your inventory volume. "
