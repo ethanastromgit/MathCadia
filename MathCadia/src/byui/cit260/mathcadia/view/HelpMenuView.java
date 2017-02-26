@@ -27,6 +27,7 @@ public class HelpMenuView {
                       + "\n P - What is the purpose of the game "
                       + "\n M - How to move in the game         "
                       + "\n R - Rules of the game               "
+                      + "\n                                     "
                       + "\n Q - Return                          "
                       + "\n-------------------------------------";
     }

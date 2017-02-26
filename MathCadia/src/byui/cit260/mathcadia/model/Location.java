@@ -18,10 +18,8 @@ public class Location implements Serializable {
     //Attributes
     private boolean isEnemyHere;
     private boolean hasPotion;
-    private String coordinate;
-    private int locationX;
-    private int locationY;
-    private boolean nullCoordinate;
+    private int posX;
+    private int posY;
 
     //Getters and Setters
 
@@ -41,36 +39,20 @@ public class Location implements Serializable {
         this.hasPotion = hasPotion;
     }
 
-    public String getCoordinate() {
-        return coordinate;
+    public int getPosX() {
+        return posX;
     }
 
-    public void setCoordinate(String coordinate) {
-        this.coordinate = coordinate;
+    public void setPosX(int posX) {
+        this.posX = posX;
     }
 
-    public int getLocationX() {
-        return locationX;
+    public int getPosY() {
+        return posY;
     }
 
-    public void setLocationX(int locationX) {
-        this.locationX = locationX;
-    }
-
-    public int getLocationY() {
-        return locationY;
-    }
-
-    public void setLocationY(int locationY) {
-        this.locationY = locationY;
-    }
-
-    public boolean isNullCoordinate() {
-        return nullCoordinate;
-    }
-
-    public void setNullCoordinate(boolean nullCoordinate) {
-        this.nullCoordinate = nullCoordinate;
+    public void setPosY(int posY) {
+        this.posY = posY;
     }
     
 }

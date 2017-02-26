@@ -16,33 +16,41 @@ import byui.cit260.mathcadia.model.Player;
  */
 public class PlayerControl {
     
-    public void movePlayer(String direction, int positionX, int positionY) {
-	if(positionX == 0 && direction == "W") {
-		System.out.println("Invalid move!");
+    public PlayerControl() {
+        
+    }
+    
+    public boolean isMoveValid(String input, int playerPosX, int playerPosY) {
+        
+        if(playerPosX == 0 && input == "W") {
+            return false;
         }
-	if(positionX == 2 && direction == "E") {
-		System.out.println("Invalid move!");
+        else if(playerPosX == 2 && input == "E") {
+            return false;
         }
-	if(positionY == 0 && direction == "S") {
-		System.out.println("Invalid move!");
+        else if(playerPosY == 0 && input == "S") {
+            return false;
         }
-	if(positionX == 0 && positionY == 7 && direction == "N") {
-		System.out.println("Invalid move!");
+        else if(playerPosY == 8 && input == "N") {
+            return false;
         }
-	if(positionX == 2 && positionY == 7 && direction == "S") {
-		System.out.println("Invalid move!");
+        return true;
+                
+    }
+    
+    public void movePlayer(String input, int playerPosX, int playerPosY) {
+	
+	if(input == "N") {
+		playerPosY++;
         }
-	if(direction == "N") {
-		positionY++;
+        else if(input == "S") {
+		playerPosY--;
         }
-	if(direction == "S") {
-		positionY--;
+        else if(input == "W") {
+		playerPosX--;
         }
-	if(direction == "W") {
-		positionX--;
-        }
-	if(direction == "E") {
-		positionX++;
+        else if(input == "E") {
+		playerPosX++;
         }
     }
     

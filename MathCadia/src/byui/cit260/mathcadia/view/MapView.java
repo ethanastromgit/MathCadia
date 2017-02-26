@@ -24,7 +24,13 @@ class MapView {
                   + "\n|         |"
                   + "\n|    E    |"
                   + "\n|         |"
-                  + "\n|___ X ___|";
+                  + "\n|___ X ___|"
+                  + "\n           "
+                  + "\n B is the boss room."
+                  + "\n E represents the enemies who each possess a key."
+                  + "\n X represesnts the player's starting location."
+                  + "\n           "
+                  + "\n Q - Return to Game Menu";
     }    
     
     public void display() {
@@ -66,7 +72,18 @@ class MapView {
     }
     
     private boolean doAction(String choice) {
+        
+        choice = choice.toUpperCase(); //Convert choice to upper case
+        
+        switch (choice) {
+            case "Q":
+                return true;
+            default:
+                System.out.println("\n*** Invalid Selection *** Try Again");
+                break;
+        }
         return false;
+        
     }
     
 }

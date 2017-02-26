@@ -5,6 +5,15 @@
  */
 package byui.cit260.mathcadia.view;
 
+import MathCadia.MathCadia;
+import byui.cit260.mathcadia.view.HelpMenuView;
+import byui.cit260.mathcadia.view.GameMenuView;
+import byui.cit260.mathcadia.control.GameControl;
+import byui.cit260.mathcadia.control.PlayerControl;
+import byui.cit260.mathcadia.control.InventoryControl;
+import byui.cit260.mathcadia.model.Inventory;
+import byui.cit260.mathcadia.model.Player;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -13,17 +22,26 @@ import java.util.Scanner;
  */
 class TravelView {
     
+    PlayerControl pc = new PlayerControl();
+    Player p = new Player();
+    
     private String menu;
     
     public TravelView() {
-        
+        this.menu = "\n Choose which direction you would like to travel:"
+                  + "\n N - North"
+                  + "\n S - South"
+                  + "\n E - East"
+                  + "\n W - West"
+                  + "\n"
+                  + "\n Q - Return to Game Menu";
     }
     
     public void display() {
         
         boolean done = false; //Set flag to not done
         do {
-            //Prompt for and get players name
+            
             String input = this.getInput();
             if (input.toUpperCase().equals("X")) { //User wants to quit
                 return; //Exit game
@@ -58,6 +76,22 @@ class TravelView {
     }
     
     private boolean doAction(String choice) {
+        
+        choice = choice.toUpperCase(); //Convert choice to upper case
+        
+        switch (choice) {
+            case "N":
+            case "S":
+            case "E":
+            case "W":
+                pc.movePlayer(choice, p.getPlayerPosX(), p.getPlayerPosY());
+                break;
+            case "Q":
+                return true;  
+            default:
+                System.out.println("\n*** Invalid Selection *** Try Again");
+                break;
+        }
         return false;
     }
     

@@ -16,7 +16,9 @@ public class SeeInventoryView {
     private String menu;
     
     public SeeInventoryView() {
-        this.menu = "";
+        this.menu = "\n Displays inventory..."
+                  + "\n"
+                  + "\n Q - Return to Game Menu";
     }
     
     public void display() {
@@ -58,7 +60,18 @@ public class SeeInventoryView {
     }
     
     private boolean doAction(String choice) {
+        
+        choice = choice.toUpperCase(); //Convert choice to upper case
+        
+        switch (choice) {
+            case "Q":
+                return true;  
+            default:
+                System.out.println("\n*** Invalid Selection *** Try Again");
+                break;
+        }
         return false;
+        
     }
     
 }

@@ -16,6 +16,8 @@ public class Player implements Serializable {
     private int healthPoints;
     private int keyAmt;
     private int skipAmt;
+    private int playerPosX;
+    private int playerPosY;
 
     //Getters & Setters
 
@@ -50,5 +52,23 @@ public class Player implements Serializable {
     public void setSkipAmt(int skipAmt) {
         this.skipAmt = skipAmt;
     }
+
+    public int getPlayerPosX() {
+        return playerPosX;
+    }
+
+    public void setPlayerPosX(int playerPosX) {
+        this.playerPosX = playerPosX;
+    }
+
+    public int getPlayerPosY() {
+        return playerPosY;
+    }
+
+    public void setPlayerPosY(int playerPosY) {
+        this.playerPosY = playerPosY;
+    }
+
+    
     
 }
