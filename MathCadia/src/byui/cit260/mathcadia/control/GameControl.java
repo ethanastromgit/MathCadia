@@ -33,14 +33,18 @@ public class GameControl {
     
     public static void createNewGame(Player player) {
         
-        System.out.println("\n***  ***");
+        Game currentGame = new Game();
         
-        //Game game = new Game();
-        //game.setPlayer(player);
-        //game.setMap(buildMap());
+        currentGame.setPlayer(player);
         
-       // MathCadia.getCurrentGame().getMap().getPlaces().get(5);
+        Map map = new Map();
         
+        //currentGame.setGameMap(map);
+        
+        //createAndAssignItems(map);
+        
+        Location startLocation = new Location();
+        //startLocation.setLocationColumn(0);
         
     }
     

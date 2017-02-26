@@ -11,25 +11,45 @@ public class Map implements Serializable{
     }
     
     //Attributes
-    private int rowCount;
-    private int columnCount;
-    
+    public static final int ROWCOUNT = 9;
+    public static final int COLUMNCOUNT = 3;
+    private Location[][] matrix = new Location[ROWCOUNT][COLUMNCOUNT];
+    private Location mapEntrance;
+    private Location mapExit;
+
+    public static int getROWCOUNT() {
+        return ROWCOUNT;
+    }
+
     //Getters and Setters
-
-    public int getRowCount() {
-        return rowCount;
+    public static int getCOLUMNCOUNT() {
+        return COLUMNCOUNT;
     }
 
-    public void setRowCount(int rowCount) {
-        this.rowCount = rowCount;
+    public Location[][] getMatrix() {
+        return matrix;
     }
 
-    public int getColumnCount() {
-        return columnCount;
+    public void setMatrix(Location[][] matrix) {
+        this.matrix = matrix;
     }
 
-    public void setColumnCount(int columnCount) {
-        this.columnCount = columnCount;
+    public Location getMapEntrance() {
+        return mapEntrance;
     }
+
+    public void setMapEntrance(Location mapEntrance) {
+        this.mapEntrance = mapEntrance;
+    }
+
+    public Location getMapExit() {
+        return mapExit;
+    }
+
+    public void setMapExit(Location mapExit) {
+        this.mapExit = mapExit;
+    }
+
+    
     
 }

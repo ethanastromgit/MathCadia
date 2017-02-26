@@ -23,9 +23,9 @@ public class Inventory implements Serializable {
     private int potionAmt;
     private int volume;
     private int maxPotionAmt;
-    private int length;
-    private int width;
-    private int height;
+    private static int length;
+    private static int width;
+    private static int height;
     
    //Getter & Setter
 

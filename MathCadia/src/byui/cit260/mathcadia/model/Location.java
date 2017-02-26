@@ -16,19 +16,28 @@ public class Location implements Serializable {
     }
     
     //Attributes
-    private boolean isEnemyHere;
+    private boolean locationType;
+    private boolean locationVisited;
     private boolean hasPotion;
     private int posX;
     private int posY;
 
     //Getters and Setters
 
-    public boolean isIsEnemyHere() {
-        return isEnemyHere;
+    public boolean isLocationType() {
+        return locationType;
     }
 
-    public void setIsEnemyHere(boolean isEnemyHere) {
-        this.isEnemyHere = isEnemyHere;
+    public void setLocationType(boolean locationType) {
+        this.locationType = locationType;
+    }
+
+    public boolean isLocationVisited() {
+        return locationVisited;
+    }
+
+    public void setLocationVisited(boolean locationVisited) {
+        this.locationVisited = locationVisited;
     }
 
     public boolean isHasPotion() {

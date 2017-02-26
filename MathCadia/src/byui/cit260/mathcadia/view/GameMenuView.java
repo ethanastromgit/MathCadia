@@ -30,6 +30,9 @@ public class GameMenuView {
     
     public void display() {
         
+        //menu = "5";
+        //value = "4";
+        
         boolean done = false; //Set flag to not done
         do {
             //Prompt for and get players name
