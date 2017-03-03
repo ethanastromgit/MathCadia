@@ -16,12 +16,10 @@ import java.util.Scanner;
  *
  * @author ethan
  */
-public class HelpMenuView {
-    
-    private String helpMenu;
+public class HelpMenuView extends View {
     
     public HelpMenuView() {
-        this.helpMenu = "\n-------------------------------------"
+        super("\n-------------------------------------"
                       + "\n Help Menu                           "
                       + "\n-------------------------------------"
                       + "\n P - What is the purpose of the game "
@@ -29,48 +27,10 @@ public class HelpMenuView {
                       + "\n R - Rules of the game               "
                       + "\n                                     "
                       + "\n Q - Return                          "
-                      + "\n-------------------------------------";
+                      + "\n-------------------------------------");
     }
     
-    public void displayHelpMenuView() {
-        
-        boolean done = false; //Set flag to not done
-        do {
-            
-            String helpMenuOption = this.getHelpMenuOption();
-            if (helpMenuOption.toUpperCase().equals("Q")) { //User wants to back out
-                return; //Go back to Main Menu
-            }
-            
-            //Do the requested action and display the next view
-            done = this.doActionHelpMenu(helpMenuOption);
-            
-        } while (!done);
-    }
-    
-    private String getHelpMenuOption() {
-        
-        Scanner keyboard = new Scanner(System.in); //Get infile for keyboard
-        String value = ""; //Value to be returned
-        boolean valid = false; //Initialize to not valid
-        
-        while (!valid) {
-            System.out.println("\n" + this.helpMenu);
-            
-            value = keyboard.nextLine(); //Get next line typed on keyboard
-            value = value.trim(); //Trim off leading and trailing blanks
-            
-            if (value.length() < 1) { //Value is blank
-                System.out.println("\nInvalid: entry required.");
-                continue;
-            }
-            break; //End the loop
-        }
-        
-        return value; //Return entered value
-    }
-    
-    private boolean doActionHelpMenu(String choice) {
+    public boolean doAction(String choice) {
         
         choice = choice.toUpperCase(); //Convert choice to upper case
         

@@ -48,7 +48,7 @@ public class MainMenuView extends View {
                 break;
             case "H": //Display Help Menu
                 HelpMenuView helpMenuView = new HelpMenuView();
-                helpMenuView.displayHelpMenuView();
+                helpMenuView.display();
                 break;
             case "R": //Return to Player Location
                 this.returnToGame();

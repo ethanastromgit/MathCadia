@@ -53,7 +53,7 @@ public class GameMenuView extends View {
                 return true;
             case "H": 
                 HelpMenuView helpMenuView = new HelpMenuView();
-                helpMenuView.displayHelpMenuView();
+                helpMenuView.display();
                 break;
             default:
                 System.out.println("\n*** Invalid Selection *** Try Again");
