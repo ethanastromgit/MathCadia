@@ -16,12 +16,10 @@ import java.util.Scanner;
  *
  * @author ethan
  */
-public class MainMenuView {
-
-    private String menu;
+public class MainMenuView extends View {
     
     public MainMenuView() {
-        this.menu = "\n--------------------------------"
+              super("\n--------------------------------"
                   + "\n Main Menu                      "
                   + "\n--------------------------------"
                   + "\n N - Start New Game             "
@@ -30,52 +28,15 @@ public class MainMenuView {
                   + "\n R - Return to Current Game     "
                   + "\n H - Help Menu                  "
                   + "\n X - Exit Game                  "
-                  + "\n--------------------------------";
+                  + "\n--------------------------------");
     }
     
-    public void displayMainMenuView() {
+    @Override
+    public boolean doAction(String value) {
         
-        boolean done = false; //Set flag to not done
-        do {
-            //Prompt for and get players name
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("X")) { //User wants to quit
-                return; //Exit game
-            }
-            
-            //Do the requested action and display the next view
-            done = this.doActionMainMenu(menuOption);
-            
-        } while (!done);
-    }
-    
-    private String getMenuOption() {
+        value = value.toUpperCase(); //Convert choice to upper case
         
-        Scanner keyboard = new Scanner(System.in); //Get infile for keyboard
-        String value = ""; //Value to be returned
-        boolean valid = false; //Initialize to not valid
-        
-        while (!valid) {
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine(); //Get next line typed on keyboard
-            value = value.trim(); //Trim off leading and trailing blanks
-            
-            if (value.length() < 1) { //Value is blank
-                System.out.println("\nInvalid: entry required.");
-                continue;
-            }
-            break; //End the loop
-        }
-        
-        return value; //Return entered value
-    }
-
-    private boolean doActionMainMenu(String choice) {
-        
-        choice = choice.toUpperCase(); //Convert choice to upper case
-        
-        switch (choice) {
+        switch (value) {
             case "N": //Start New Game
                 this.startNewGame();
                 break;
@@ -103,6 +64,21 @@ public class MainMenuView {
     }
     
     private void startNewGame() {
+        
+        /*
+        GameControl gc = new GameControl();
+        Player player = MathCadia.getPlayer();
+        gc.createNewGame(player);
+        player.setPlayerPosition(MathCadia.getCurrentGame().getGameMap().getMapEntrance();
+        
+        GameMenuView gameMenu = new GameMenuView;
+        try {
+            gameMenu.display();
+        } catch (GameControlException ex) {
+            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
+        
         //Create new game
         GameControl.createNewGame(MathCadia.getPlayer());
         

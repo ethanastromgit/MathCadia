@@ -39,16 +39,12 @@ public class GameControl {
         
         Map map = new Map();
         
+        //map.setMapEntrance(map.getLocationAt(3, 0));
+        //map.setMapExit(map.getLocationAt(3, 4));
+        
         //currentGame.setGameMap(map);
         
-        //createAndAssignItems(map);
-        
-        Location startLocation = new Location();
-        //startLocation.setLocationColumn(0);
-        
-    }
-    
-    public void initializeMap() {
+        MathCadia.setCurrentGame(currentGame);
         
     }
     
