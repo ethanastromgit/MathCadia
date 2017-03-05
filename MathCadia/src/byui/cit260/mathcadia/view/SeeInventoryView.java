@@ -19,6 +19,7 @@ public class SeeInventoryView extends View {
                   + "\n Q - Return to Game Menu");
     }
     
+    @Override
     public boolean doAction(String choice) {
         
         choice = choice.toUpperCase(); //Convert choice to upper case

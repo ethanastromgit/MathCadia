@@ -30,6 +30,7 @@ public class HelpMenuView extends View {
                       + "\n-------------------------------------");
     }
     
+    @Override
     public boolean doAction(String choice) {
         
         choice = choice.toUpperCase(); //Convert choice to upper case
