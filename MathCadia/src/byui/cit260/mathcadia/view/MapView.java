@@ -14,7 +14,7 @@ import java.util.Scanner;
 class MapView extends View {
     
     public MapView() {
-        super("\n___________"
+              super("\n___________"
                   + "\n|    B    |"
                   + "\n|    E    |"
                   + "\n|         |"
@@ -31,6 +31,7 @@ class MapView extends View {
                   + "\n Q - Return to Game Menu");
     }    
     
+    @Override
     public boolean doAction(String choice) {
         
         choice = choice.toUpperCase(); //Convert choice to upper case

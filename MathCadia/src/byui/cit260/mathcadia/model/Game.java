@@ -22,8 +22,5 @@ public class Game implements Serializable {
     public void setPlayer(Player player) {
         this.player = player;
     }
-
-    
-    
     
 }

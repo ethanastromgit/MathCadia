@@ -34,17 +34,24 @@ public class TravelView extends View {
                   + "\n"
                   + "\n Q - Return to Game Menu");
     }
-    
+   
+    @Override
     public boolean doAction(String choice) {
         
         choice = choice.toUpperCase(); //Convert choice to upper case
         
         switch (choice) {
             case "N":
+                System.out.println("You moved North.");
+                break;
             case "S":
+                System.out.println("You moved South.");
+                break;
             case "E":
+                System.out.println("You moved East.");
+                break;
             case "W":
-                pc.movePlayer(choice, p.getPlayerPosX(), p.getPlayerPosY());
+                System.out.println("You moved West.");
                 break;
             case "Q":
                 return true;  

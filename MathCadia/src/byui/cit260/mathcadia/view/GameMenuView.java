@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class GameMenuView extends View {
     
     public GameMenuView() {
-        super("\n--------------------------------"
+              super("\n--------------------------------"
                   + "\n Game Menu                      "
                   + "\n--------------------------------"
                   + "\n T - Move Player                "
