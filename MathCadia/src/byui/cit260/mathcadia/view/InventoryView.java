@@ -181,6 +181,8 @@ public class InventoryView {
         boolean valid = false; //Initialize to not valid
         
         while (!valid) {
+            this.volume = "The volume of your bag is " + i.getVolume() + "."
+                    + "\nPress Q to go back to Game Menu.";
             System.out.println("\n" + this.volume);
             
             value = keyboard.nextLine(); //Get next line typed on keyboard
@@ -232,6 +234,7 @@ public class InventoryView {
     private boolean doActionHeight(String choice) {
         
         int input = Integer.parseInt(choice);
+        i.setHeight(input);
         boolean valid = false;
         int length = i.getLength();
         int width = i.getWidth();
@@ -243,6 +246,7 @@ public class InventoryView {
             i.setHeight(input);
             int volume = ic.calcInventoryVol(length, width, height);
             i.setVolume(volume);
+            this.volume = this.volume.toString();
             return true;
         }
         else {
