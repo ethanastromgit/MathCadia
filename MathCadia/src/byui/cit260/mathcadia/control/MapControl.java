@@ -13,6 +13,15 @@ import byui.cit260.mathcadia.model.Map;
  */
 public class MapControl {
 
+    public static Map createMap() {
+        //Create the map
+        Map map = new Map(3, 9);
+        
+        System.out.println("\n*** createMap() called ***");
+        
+        return map;
+    }
+    
     static void movePlayerToStartingLocation(Map map) {
         
     }

@@ -55,17 +55,8 @@ public class GameControl {
         int healthPoints = 10;
         Player.setHealthPoints(healthPoints);
         
-        
-        /*Enemies enemies = new Enemies();
-        game.setEnemies(enemies);*/
-        
         Map map = new Map();
         game.setMap(map);
-        
-        //map.setMapEntrance(map.getLocationAt(3, 0));
-        //map.setMapExit(map.getLocationAt(3, 4));
-        
-        //currentGame.setGameMap(map);
         
         MapControl.movePlayerToStartingLocation(map);
         

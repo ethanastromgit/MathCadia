@@ -13,18 +13,43 @@ public class Map implements Serializable{
         
     }
     
-    
+    public Map(int COLUMNCOUNT, int ROWCOUNT) {
+        
+        if (COLUMNCOUNT < 1 || ROWCOUNT < 1) {
+            System.out.println("The number of rows and columns must be > zero");
+            return;
+        }
+        
+        this.COLUMNCOUNT = COLUMNCOUNT;
+        this.ROWCOUNT = ROWCOUNT;
+        
+        //Create 2D array for Location objects
+        this.locations = new Location[COLUMNCOUNT][ROWCOUNT];
+        
+        for (int col = 0; col < COLUMNCOUNT; col++) {
+            for (int row = 0; row < ROWCOUNT; row++) {
+                //Create and initialize new Loaction object instance
+                Location location = new Location();
+                location.setPosX(col);
+                location.setPosY(row);
+                location.setLocationVisited(false);
+                
+                //Assign the Lcoation object to the current position in array
+                locations[col][row] = location;
+            }
+        }
+    }
     
     //Attributes
-    private static final int ROWCOUNT = 9;
-    private static final int COLUMNCOUNT = 3;
-    private Location[][] locations = new Location[COLUMNCOUNT][ROWCOUNT];
+    private int ROWCOUNT;
+    private int COLUMNCOUNT;
+    private Location[][] locations;
 
-    public static int getROWCOUNT() {
+    public int getROWCOUNT() {
         return ROWCOUNT;
     }
 
-    public static int getCOLUMNCOUNT() {
+    public int getCOLUMNCOUNT() {
         return COLUMNCOUNT;
     }
 

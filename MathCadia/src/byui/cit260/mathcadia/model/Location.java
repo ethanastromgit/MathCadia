@@ -6,6 +6,7 @@
 package byui.cit260.mathcadia.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Location implements Serializable {
@@ -21,6 +22,7 @@ public class Location implements Serializable {
     private boolean hasPotion;
     private int posX;
     private int posY;
+    private ArrayList<Enemies> enemies;
 
     //Getters and Setters
 
