@@ -198,6 +198,51 @@ public class InventoryControlTest {
         
         assertEquals(expResult, result);
     }
+    
+    @Test
+    public void testCalcMaxPotionAmt1() {
+        System.out.println("CalcMaxPotionAmt");
+        System.out.println("\tTest Case #1");
+        
+        int volume = 150;
+        
+        int expResult = 3;
+        
+        
+        int result = InventoryControl.calcMaxPotionAmt(volume);
+        
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testCalcMaxPotionAmt2() {
+        System.out.println("CalcMaxPotionAmt");
+        System.out.println("\tTest Case #2");
+        
+        int volume = 0;
+        
+        int expResult = 0;
+        
+        
+        int result = InventoryControl.calcMaxPotionAmt(volume);
+        
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testCalcMaxPotionAmt3() {
+        System.out.println("CalcMaxPotionAmt");
+        System.out.println("\tTest Case #3");
+        
+        int volume = 2000;
+        
+        int expResult = 40;
+        
+        
+        int result = InventoryControl.calcMaxPotionAmt(volume);
+        
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of addPotion method, of class InventoryControl.
