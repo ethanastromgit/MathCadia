@@ -26,19 +26,8 @@ public enum Enemies implements Serializable {
     private final int ATTACK_DAMAGE;
     private boolean enemyIsBoss;
     
-    private final String[] equations = new String[4];
-    private final String[] answers = new String[4];
-    
-    /*
-    private final String EQUATION_ONE;
-    private final double ANSWER_ONE;
-    private final String EQUATION_TWO;
-    private final double ANSWER_TWO;
-    private final String EQUATION_THREE;
-    private final double ANSWER_THREE;
-    private final String BOSS_EQUATION;
-    private final double BOSS_ANSWER;
-    */
+    String[] equations = new String[4];
+    String[] answers = new String[4];
     
     Enemies(String DESCRIPTION) {
         this.DESCRIPTION = DESCRIPTION;
@@ -46,6 +35,16 @@ public enum Enemies implements Serializable {
         
         this.ATTACK_DAMAGE = 2;
         
+        String[] equations = {"What is 5 + 3?",
+                              "What is 7 * 5?",
+                              "What is 54 / 9?",
+                              "What is 6 + 8 * 3 - 9 / 3?"};
+        
+        String[] answers = {"8",
+                            "35",
+                            "6",
+                            "27"};
+
     }
 
     public String getDESCRIPTION() {
