@@ -14,7 +14,7 @@ public class Game implements Serializable {
     private Player player;
     private Inventory inventory;
     private Map map;
-    private Enemies enemies;
+    private Enemies[] enemies;
     
     //Getters and Setters
 
@@ -42,12 +42,14 @@ public class Game implements Serializable {
         this.map = map;
     }
 
-    public Enemies getEnemies() {
+    public Enemies[] getEnemies() {
         return enemies;
     }
 
-    public void setEnemies(Enemies enemies) {
+    public void setEnemies(Enemies[] enemies) {
         this.enemies = enemies;
     }
+
+    
     
 }

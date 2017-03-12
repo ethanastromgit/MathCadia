@@ -39,21 +39,21 @@ public class GameControl {
         game.setPlayer(player); //Save player in game
         
         //Reset the inventory and save in the game
-        Inventory inventory = new Inventory();
         int potionAmt = 0;
-        int volume = 0;
+        int volume = 50;
+        int maxPotionAmt = 1;
         int length = 0;
         int width = 0;
         int height = 0;
-        inventory.setPotionAmt(potionAmt);
-        inventory.setVolume(volume);
-        inventory.setLength(length);
-        inventory.setWidth(width);
-        inventory.setHeight(height);
+        Inventory.setPotionAmt(potionAmt);
+        Inventory.setVolume(volume);
+        Inventory.setLength(length);
+        Inventory.setWidth(width);
+        Inventory.setHeight(height);
+        Inventory.setMaxPotionAmt(maxPotionAmt);
         
-        Player p = new Player();
         int healthPoints = 10;
-        p.setHealthPoints(healthPoints);
+        Player.setHealthPoints(healthPoints);
         
         
         /*Enemies enemies = new Enemies();

@@ -5,6 +5,8 @@ import java.util.Objects;
 
 public class Map implements Serializable{
 
+    private Game[] game;
+    
     //Constructor
     public Map() {
         

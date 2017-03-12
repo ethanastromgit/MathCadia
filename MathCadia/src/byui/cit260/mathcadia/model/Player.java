@@ -6,6 +6,8 @@ import java.util.Objects;
 
 public class Player implements Serializable {
     
+    private Game[] game;
+    
     //Constructor
     public Player() {
         this.name = null;
@@ -18,13 +20,21 @@ public class Player implements Serializable {
     
     //Attributes
     private String name;
-    private int healthPoints;
-    private int keyAmt;
-    private int skipAmt;
-    private int playerPosX;
-    private int playerPosY;
+    private static int healthPoints;
+    private static int keyAmt;
+    private static int skipAmt;
+    private static int playerPosX;
+    private static int playerPosY;
 
     //Getters & Setters
+
+    public Game[] getGame() {
+        return game;
+    }
+
+    public void setGame(Game[] game) {
+        this.game = game;
+    }
 
     public String getName() {
         return name;
@@ -34,46 +44,47 @@ public class Player implements Serializable {
         this.name = name;
     }
 
-    public int getHealthPoints() {
+    public static int getHealthPoints() {
         return healthPoints;
     }
 
-    public void setHealthPoints(int healthPoints) {
-        this.healthPoints = healthPoints;
+    public static void setHealthPoints(int healthPoints) {
+        Player.healthPoints = healthPoints;
     }
 
-    public int getKeyAmt() {
+    public static int getKeyAmt() {
         return keyAmt;
     }
 
-    public void setKeyAmt(int keyAmt) {
-        this.keyAmt = keyAmt;
+    public static void setKeyAmt(int keyAmt) {
+        Player.keyAmt = keyAmt;
     }
 
-    public int getSkipAmt() {
+    public static int getSkipAmt() {
         return skipAmt;
     }
 
-    public void setSkipAmt(int skipAmt) {
-        this.skipAmt = skipAmt;
+    public static void setSkipAmt(int skipAmt) {
+        Player.skipAmt = skipAmt;
     }
 
-    public int getPlayerPosX() {
+    public static int getPlayerPosX() {
         return playerPosX;
     }
 
-    public void setPlayerPosX(int playerPosX) {
-        this.playerPosX = playerPosX;
+    public static void setPlayerPosX(int playerPosX) {
+        Player.playerPosX = playerPosX;
     }
 
-    public int getPlayerPosY() {
+    public static int getPlayerPosY() {
         return playerPosY;
     }
 
-    public void setPlayerPosY(int playerPosY) {
-        this.playerPosY = playerPosY;
+    public static void setPlayerPosY(int playerPosY) {
+        Player.playerPosY = playerPosY;
     }
 
+    
     
     
 }

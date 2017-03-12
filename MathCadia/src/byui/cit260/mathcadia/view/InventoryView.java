@@ -20,9 +20,11 @@ import java.util.Scanner;
  * @author ethan
  */
 public class InventoryView {
-
+    
+    /*
     Inventory i = new Inventory();
     InventoryControl ic = new InventoryControl();
+    */
     
     private String menu;
     private String length;
@@ -30,7 +32,7 @@ public class InventoryView {
     private String height;
     private String volume;
     
-    int volumeDisplay = i.getVolume();
+    int volumeDisplay = Inventory.getVolume();
     
     public InventoryView() {
         
@@ -181,7 +183,7 @@ public class InventoryView {
         boolean valid = false; //Initialize to not valid
         
         while (!valid) {
-            this.volume = "The volume of your bag is " + i.getVolume() + "."
+            this.volume = "The volume of your bag is " + Inventory.getVolume() + "."
                     + "\nPress Q to go back to Game Menu.";
             System.out.println("\n" + this.volume);
             
@@ -203,10 +205,10 @@ public class InventoryView {
         int input = Integer.parseInt(choice);
         boolean valid = false;
         
-        valid = ic.validateLength(input);
+        valid = InventoryControl.validateLength(input);
         
         if (valid = true) {
-            i.setLength(input);
+            Inventory.setLength(input);
             return true;
         }
         else {
@@ -219,10 +221,10 @@ public class InventoryView {
         int input = Integer.parseInt(choice);
         boolean valid = false;
         
-        valid = ic.validateWidth(input);
+        valid = InventoryControl.validateWidth(input);
         
         if (valid = true) {
-            i.setWidth(input);
+            Inventory.setWidth(input);
             return true;
         }
         else {
@@ -234,19 +236,21 @@ public class InventoryView {
     private boolean doActionHeight(String choice) {
         
         int input = Integer.parseInt(choice);
-        i.setHeight(input);
+        Inventory.setHeight(input);
         boolean valid = false;
-        int length = i.getLength();
-        int width = i.getWidth();
-        int height = i.getHeight();
+        int length = Inventory.getLength();
+        int width = Inventory.getWidth();
+        int height = Inventory.getHeight();
         
-        valid = ic.validateHeight(input);
+        valid = InventoryControl.validateHeight(input);
         
         if (valid = true) {
-            i.setHeight(input);
-            int volume = ic.calcInventoryVol(length, width, height);
-            i.setVolume(volume);
-            this.volume = this.volume.toString();
+            Inventory.setHeight(input);
+            int volume = InventoryControl.calcInventoryVol(length, width, height);
+            Inventory.setVolume(volume);
+            
+            int maxPotionAmt = InventoryControl.calcMaxPotionAmt(volume);
+            Inventory.setMaxPotionAmt(maxPotionAmt);
             
             return true;
         }

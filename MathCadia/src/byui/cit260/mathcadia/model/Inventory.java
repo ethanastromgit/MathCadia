@@ -25,61 +25,63 @@ public class Inventory implements Serializable {
     }
     
     //Atributes
-    private int potionAmt;
-    private int volume = 50;
-    private int maxPotionAmt = 1;
+    private static int potionAmt;
+    private static int volume;
+    private static int maxPotionAmt;
     private static int length;
     private static int width;
     private static int height;
     
    //Getter & Setter
 
-    public int getPotionAmt() {
+    public static int getPotionAmt() {
         return potionAmt;
     }
 
-    public void setPotionAmt(int potionAmt) {
-        this.potionAmt = potionAmt;
+    public static void setPotionAmt(int potionAmt) {
+        Inventory.potionAmt = potionAmt;
     }
 
-    public int getVolume() {
+    public static int getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
-        this.volume = volume;
+    public static void setVolume(int volume) {
+        Inventory.volume = volume;
     }
 
-    public int getMaxPotionAmt() {
+    public static int getMaxPotionAmt() {
         return maxPotionAmt;
     }
 
-    public void setMaxPotionAmt(int maxPotionAmt) {
-        this.maxPotionAmt = maxPotionAmt;
+    public static void setMaxPotionAmt(int maxPotionAmt) {
+        Inventory.maxPotionAmt = maxPotionAmt;
     }
 
-    public int getLength() {
+    public static int getLength() {
         return length;
     }
 
-    public void setLength(int length) {
-        this.length = length;
+    public static void setLength(int length) {
+        Inventory.length = length;
     }
 
-    public int getWidth() {
+    public static int getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
+    public static void setWidth(int width) {
+        Inventory.width = width;
     }
 
-    public int getHeight() {
+    public static int getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
+    public static void setHeight(int height) {
+        Inventory.height = height;
     }
+
+    
     
 }

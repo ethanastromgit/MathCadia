@@ -16,23 +16,12 @@ import java.util.Scanner;
  */
 public class SeeInventoryView extends View {
     
-    Inventory i = new Inventory();
-    Player p = new Player();
-    InventoryControl ic = new InventoryControl();
-    
-    
-    int currentPotionDisplay = i.getPotionAmt();
-    int playerCurrentHealthPoints = p.getHealthPoints();
-    int volume = i.getVolume();
-    int maxPotionDisplay = i.getMaxPotionAmt();
-    
-    int maxPotionAmt = ic.calcMaxPotionAmt(volume);
-    
     public SeeInventoryView() {
         
         super("\n M - See how many potions you can hold."
             + "\n P - See how many potions you currently have."
             + "\n H - See how many health points your player currently has."
+            + "\n K - See how many keys you currently have."
             + "\n Q - Return to Game Menu");
     }
     
@@ -43,20 +32,24 @@ public class SeeInventoryView extends View {
         
         switch (choice) {
             case "M":
-                i.setMaxPotionAmt(maxPotionAmt);
                 System.out.println("\n You can hold a maximum of " 
-                                 + maxPotionDisplay
+                                 + Inventory.getMaxPotionAmt()
                                  + " potions.");
                 break;
             case "P":
                 System.out.println("\n You currently have "
-                                 + currentPotionDisplay
+                                 + Inventory.getPotionAmt()
                                  + " potions.");
                 break;
             case "H":
                 System.out.println("\n Your player currently has "
-                                 + playerCurrentHealthPoints
+                                 + Player.getHealthPoints()
                                  + " health points.");
+                break;
+            case "K":
+                System.out.println("\n Your player currently has "
+                                 + Player.getKeyAmt()
+                                 + " keys.");
                 break;
             case "Q":
                 return true;  

@@ -22,7 +22,7 @@ public class InventoryControl {
         
     }
 
-    public boolean validateLength(int input) {
+    public static boolean validateLength(int input) {
         
         if (input <= 0) {
             return false;
@@ -34,7 +34,7 @@ public class InventoryControl {
         
     }
     
-    public boolean validateWidth(int input) {
+    public static boolean validateWidth(int input) {
         
         if (input <= 0) {
             return false;
@@ -46,7 +46,7 @@ public class InventoryControl {
         
     }
     
-    public boolean validateHeight(int input) {
+    public static boolean validateHeight(int input) {
         
         if (input <= 0) {
             return false;
@@ -58,14 +58,14 @@ public class InventoryControl {
         
     }
     
-    public int calcInventoryVol(int length, int width, int height) {
+    public static int calcInventoryVol(int length, int width, int height) {
     
         int volume = length * width * height;
       
         return volume;
     }
 
-    public int addPotion(int potionAmt, int maxPotionAmt, boolean hasPotion) {
+    public static int addPotion(int potionAmt, int maxPotionAmt, boolean hasPotion) {
 
         if (hasPotion == true && potionAmt != maxPotionAmt) {
             potionAmt++;
@@ -77,7 +77,7 @@ public class InventoryControl {
         return potionAmt;
     }
 
-    public int calcMaxPotionAmt(int volume) {
+    public static int calcMaxPotionAmt(int volume) {
         int maxPotionAmt = Math.round(volume / 50);
         return maxPotionAmt;
     }
