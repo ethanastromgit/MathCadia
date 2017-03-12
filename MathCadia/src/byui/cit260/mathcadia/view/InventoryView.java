@@ -247,6 +247,7 @@ public class InventoryView {
             int volume = ic.calcInventoryVol(length, width, height);
             i.setVolume(volume);
             this.volume = this.volume.toString();
+            
             return true;
         }
         else {

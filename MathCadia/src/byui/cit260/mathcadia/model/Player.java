@@ -8,7 +8,12 @@ public class Player implements Serializable {
     
     //Constructor
     public Player() {
-        
+        this.name = null;
+        this.healthPoints = 10;
+        this.keyAmt = 0;
+        this.skipAmt = 2;
+        this.playerPosX = 1;
+        this.playerPosY = 0;
     }
     
     //Attributes

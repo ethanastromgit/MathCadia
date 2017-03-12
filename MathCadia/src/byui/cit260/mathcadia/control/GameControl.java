@@ -33,18 +33,41 @@ public class GameControl {
     
     public static void createNewGame(Player player) {
         
-        Game currentGame = new Game();
+        Game game = new Game(); //Create new game
+        MathCadia.setCurrentGame(game); //Save in MathCadia
         
-        currentGame.setPlayer(player);
+        game.setPlayer(player); //Save player in game
+        
+        //Reset the inventory and save in the game
+        Inventory inventory = new Inventory();
+        int potionAmt = 0;
+        int volume = 0;
+        int length = 0;
+        int width = 0;
+        int height = 0;
+        inventory.setPotionAmt(potionAmt);
+        inventory.setVolume(volume);
+        inventory.setLength(length);
+        inventory.setWidth(width);
+        inventory.setHeight(height);
+        
+        Player p = new Player();
+        int healthPoints = 10;
+        p.setHealthPoints(healthPoints);
+        
+        
+        /*Enemies enemies = new Enemies();
+        game.setEnemies(enemies);*/
         
         Map map = new Map();
+        game.setMap(map);
         
         //map.setMapEntrance(map.getLocationAt(3, 0));
         //map.setMapExit(map.getLocationAt(3, 4));
         
         //currentGame.setGameMap(map);
         
-        MathCadia.setCurrentGame(currentGame);
+        MapControl.movePlayerToStartingLocation(map);
         
     }
     

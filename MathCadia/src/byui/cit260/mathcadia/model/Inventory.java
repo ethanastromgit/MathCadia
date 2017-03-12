@@ -16,13 +16,18 @@ public class Inventory implements Serializable {
     
     //Constructor
     public Inventory() {
-        
+        this.length = 0;
+        this.width = 0;
+        this.height = 0;
+        this.maxPotionAmt = 1;
+        this.volume = 50;
+        this.potionAmt = 0;
     }
     
     //Atributes
     private int potionAmt;
-    private int volume;
-    private int maxPotionAmt;
+    private int volume = 50;
+    private int maxPotionAmt = 1;
     private static int length;
     private static int width;
     private static int height;

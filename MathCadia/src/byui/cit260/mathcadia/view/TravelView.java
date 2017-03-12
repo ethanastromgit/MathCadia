@@ -32,6 +32,8 @@ public class TravelView extends View {
                   + "\n E - East"
                   + "\n W - West"
                   + "\n"
+                  + "\n P - Use Potion"
+                  + "\n"
                   + "\n Q - Return to Game Menu");
     }
    
@@ -52,6 +54,9 @@ public class TravelView extends View {
                 break;
             case "W":
                 System.out.println("You moved West.");
+                break;
+            case "P":
+                System.out.println("You have used one of your potions.");
                 break;
             case "Q":
                 return true;  

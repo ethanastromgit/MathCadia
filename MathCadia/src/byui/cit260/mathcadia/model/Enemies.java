@@ -12,27 +12,43 @@ import java.util.Objects;
  *
  * @author danielhernandez
  */
-public class Enemies implements Serializable {
+public enum Enemies implements Serializable {
     
-    //Constructor
-    public Enemies() {
-        
-    }
+    /*EnemyOne("First enemy with key.")
+    EnemyTwo("Second enemy with key.")
+    EnemyThree("Third enemy with key.")
+    Boss("Final enemy. Game is over after defeated.");
     
     //Attributes
-    private String enemyName;
-    private int attackDamage;
-    private boolean isBoss;
-    private String enemyCoordinate;
-    private boolean hasKey;
-    private String equationOne;
-    private double equationOneAnswer;
-    private String equationTwo;
-    private double equationTwoAnswer;
-    private String equationThree;
-    private double equationThreeAnswer;
-    private String bossEquation;
-    private double bossEquationAnswer;
+    private final String DESCRIPTION;
+    private Point ENEMY_COORDINATES;
+    private final int ATTACK_DAMAGE;
+    private boolean Boss;
+    private final String EQUATION_ONE;
+    private final double ANSWER_ONE;
+    private final String EQUATION_TWO;
+    private final double ANSWER_TWO;
+    private final String EQUATION_THREE;
+    private final double ANSWER_THREE;
+    private final String BOSS_EQUATION;
+    private final double BOSS_ANSWER;
+
+    public Actor() {
+
+    }
+
+    Actor(String DESCRIPTION) {
+        this.DESCRIPTION = DESCRIPTION;
+        COORDINATES = new Point(1,3);
+    }
+    
+    public String getDESCRIPTION() {
+        return DESCRIPTION;
+    }
+
+    public Point getENEMY_COORDINATES() {
+        return ENEMY_COORDINATES;
+    }
     
     //Getter & Setters
 
@@ -40,104 +56,49 @@ public class Enemies implements Serializable {
         return enemyName;
     }
 
-    public void setEnemyName(String enemyName) {
-        this.enemyName = enemyName;
-    }
-
     public int getAttackDamage() {
         return attackDamage;
     }
 
-    public void setAttackDamage(int attackDamage) {
-        this.attackDamage = attackDamage;
-    }
-
-    public boolean isIsBoss() {
+    public boolean isBoss() {
         return isBoss;
     }
 
-    public void setIsBoss(boolean isBoss) {
-        this.isBoss = isBoss;
+    public void setBoss(boolean Boss) {
+        this.Boss = Boss;
+    }
     }
 
-    public String getEnemyCoordinate() {
-        return enemyCoordinate;
+    public String getEQUATION_ONE() {
+        return EQUATION_ONE;
     }
 
-    public void setEnemyCoordinate(String enemyCoordinate) {
-        this.enemyCoordinate = enemyCoordinate;
+    public double getANSWER_ONE() {
+        return ANSWER_ONE;
     }
 
-    public boolean isHasKey() {
-        return hasKey;
+    public String getEQUATION_TWO() {
+        return EQUATION_TWO;
     }
 
-    public void setHasKey(boolean hasKey) {
-        this.hasKey = hasKey;
+    public double getANSWER_TWO() {
+        return ANSWER_TWO;
     }
 
-    public String getEquationOne() {
-        return equationOne;
+    public String getEQUATION_THREE() {
+        return EQUATION_THREE;
     }
 
-    public void setEquationOne(String equationOne) {
-        this.equationOne = equationOne;
+    public double getANSWER_THREE() {
+        return ANSWER_THREE;
     }
 
-    public double getEquationOneAnswer() {
-        return equationOneAnswer;
+    public String getBOSS_EQUATION() {
+        return BOSS_EQUATION;
     }
 
-    public void setEquationOneAnswer(double equationOneAnswer) {
-        this.equationOneAnswer = equationOneAnswer;
+    public double getBOSS_ANSWER() {
+        return BOSS_ANSWER;
     }
-
-    public String getEquationTwo() {
-        return equationTwo;
-    }
-
-    public void setEquationTwo(String equationTwo) {
-        this.equationTwo = equationTwo;
-    }
-
-    public double getEquationTwoAnswer() {
-        return equationTwoAnswer;
-    }
-
-    public void setEquationTwoAnswer(double equationTwoAnswer) {
-        this.equationTwoAnswer = equationTwoAnswer;
-    }
-
-    public String getEquationThree() {
-        return equationThree;
-    }
-
-    public void setEquationThree(String equationThree) {
-        this.equationThree = equationThree;
-    }
-
-    public double getEquationThreeAnswer() {
-        return equationThreeAnswer;
-    }
-
-    public void setEquationThreeAnswer(double equationThreeAnswer) {
-        this.equationThreeAnswer = equationThreeAnswer;
-    }
-
-    public String getBossEquation() {
-        return bossEquation;
-    }
-
-    public void setBossEquation(String bossEquation) {
-        this.bossEquation = bossEquation;
-    }
-
-    public double getBossEquationAnswer() {
-        return bossEquationAnswer;
-    }
-
-    public void setBossEquationAnswer(double bossEquationAnswer) {
-        this.bossEquationAnswer = bossEquationAnswer;
-    }
-    
+    */
 }

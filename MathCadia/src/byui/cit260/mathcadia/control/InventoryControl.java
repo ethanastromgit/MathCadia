@@ -77,8 +77,9 @@ public class InventoryControl {
         return potionAmt;
     }
 
-    public void calcMaxPotionAmt(int volume, int maxPotionAmt) {
-        maxPotionAmt = volume / 50;
+    public int calcMaxPotionAmt(int volume) {
+        int maxPotionAmt = Math.round(volume / 50);
+        return maxPotionAmt;
     }
 
 }
