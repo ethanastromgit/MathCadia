@@ -5,7 +5,12 @@
  */
 package byui.cit260.mathcadia.control;
 
+import MathCadia.MathCadia;
+import byui.cit260.mathcadia.model.Enemies;
 import byui.cit260.mathcadia.model.Map;
+import byui.cit260.mathcadia.model.Player;
+import citbyui.cit260.mathcadia.exceptions.MapControlException;
+import java.awt.Point;
 
 /**
  *
@@ -17,13 +22,34 @@ public class MapControl {
         //Create the map
         Map map = new Map(3, 9);
         
-        System.out.println("\n*** createMap() called ***");
-        
         return map;
     }
     
-    static void movePlayerToStartingLocation(Map map) {
+    public static void movePlayerToStartingLocation(Map map) 
+        throws MapControlException {
+        Player player = new Player();
+        
+        Point coordinates = player.getCoordinates();
+        MapControl.movePlayerToLocation(player, coordinates);
+    }
+    
+    public static void movePlayerToLocation(Player player, Point coordinates)
+        throws MapControlException {
+        
+        Map map = MathCadia.getCurrentGame().getMap();
+        int newColumn = coordinates.x-1;
+        int newRow = coordinates.y-1;
+        
+        if (newColumn < 0 || newColumn >= map.getCOLUMNCOUNT() ||
+            newRow < 0 || newRow >= map.getROWCOUNT()) {
+            throw new MapControlException("Can not move player to location "
+                                        + coordinates.x + ", " + coordinates.y
+                                        + " because that location is outisde "
+                                        + " the bounds of the map.");
+        }
+        
         
     }
+    
     
 }

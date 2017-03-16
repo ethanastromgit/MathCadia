@@ -5,6 +5,9 @@
  */
 package byui.cit260.mathcadia.view;
 
+import MathCadia.MathCadia;
+import byui.cit260.mathcadia.model.Game;
+import byui.cit260.mathcadia.model.Location;
 import java.util.Scanner;
 
 /**
@@ -63,4 +66,10 @@ public class GameMenuView extends View {
         return false;
     }
     
+    private void displayMap() {
+        StringBuilder line;
+        
+        Game game = MathCadia.getCurrentGame();
+       // Location[][] location = game.getMap().getLocation[][];
+    }
 }

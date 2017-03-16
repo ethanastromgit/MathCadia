@@ -202,7 +202,15 @@ public class InventoryView {
     
     private boolean doActionLength(String choice) {
         
-        int input = Integer.parseInt(choice);
+        int input = 0;
+        
+        try {
+            input = Integer.parseInt(choice);
+        } catch (NumberFormatException nf) {
+            System.out.println("\nYou must enter a valid number."
+                             + " Try again or enter Q to quit.");
+        }
+        
         boolean valid = false;
         
         valid = InventoryControl.validateLength(input);

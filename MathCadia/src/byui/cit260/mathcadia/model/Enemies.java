@@ -46,7 +46,7 @@ public enum Enemies implements Serializable {
                             "27"};
 
     }
-
+    
     public String getDESCRIPTION() {
         return DESCRIPTION;
     }

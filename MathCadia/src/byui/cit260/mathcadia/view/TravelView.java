@@ -11,8 +11,11 @@ import byui.cit260.mathcadia.view.GameMenuView;
 import byui.cit260.mathcadia.control.GameControl;
 import byui.cit260.mathcadia.control.PlayerControl;
 import byui.cit260.mathcadia.control.InventoryControl;
+import byui.cit260.mathcadia.control.MapControl;
 import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Player;
+import citbyui.cit260.mathcadia.exceptions.MapControlException;
+import java.awt.Point;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -21,9 +24,6 @@ import java.util.Scanner;
  * @author ethan
  */
 public class TravelView extends View {
-    
-    PlayerControl pc = new PlayerControl();
-    Player p = new Player();
     
     public TravelView() {
         super("\n Choose which direction you would like to travel:"
@@ -42,18 +42,20 @@ public class TravelView extends View {
         
         choice = choice.toUpperCase(); //Convert choice to upper case
         
+        Player player = null;
+        
+        Point coordinates = null;
+        
         switch (choice) {
             case "N":
-                System.out.println("You moved North.");
-                break;
             case "S":
-                System.out.println("You moved South.");
-                break;
             case "E":
-                System.out.println("You moved East.");
-                break;
             case "W":
-                System.out.println("You moved West.");
+                try {
+                    MapControl.movePlayerToLocation(player, coordinates);
+                } catch (MapControlException me) {
+                    System.out.println(me.getMessage());
+                }
                 break;
             case "P":
                 System.out.println("You have used one of your potions.");

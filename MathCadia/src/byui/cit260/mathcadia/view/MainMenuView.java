@@ -10,7 +10,11 @@ import byui.cit260.mathcadia.view.HelpMenuView;
 import byui.cit260.mathcadia.view.GameMenuView;
 import byui.cit260.mathcadia.control.GameControl;
 import byui.cit260.mathcadia.model.Player;
+import citbyui.cit260.mathcadia.exceptions.GameControlException;
+import citbyui.cit260.mathcadia.exceptions.MapControlException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -38,7 +42,13 @@ public class MainMenuView extends View {
         
         switch (value) {
             case "N": //Start New Game
-                this.startNewGame();
+                try {
+                    this.startNewGame();
+                } catch (GameControlException ge) {
+                    System.out.println(ge.getMessage());
+                } catch (MapControlException ex) {
+                    System.out.println(ex.getMessage());
+                }
                 break;
             case "L": //Load Saved Game
                 this.startExistingGame();
@@ -63,7 +73,7 @@ public class MainMenuView extends View {
         return false;
     }
     
-    private void startNewGame() {
+    private void startNewGame() throws GameControlException, MapControlException {
         
         /*
         GameControl gc = new GameControl();

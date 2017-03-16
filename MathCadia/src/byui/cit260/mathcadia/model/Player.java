@@ -1,5 +1,6 @@
 package byui.cit260.mathcadia.model;
 
+import java.awt.Point;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -14,8 +15,6 @@ public class Player implements Serializable {
         this.healthPoints = 10;
         this.keyAmt = 0;
         this.skipAmt = 2;
-        this.playerPosX = 1;
-        this.playerPosY = 0;
     }
     
     //Attributes
@@ -23,8 +22,7 @@ public class Player implements Serializable {
     private static int healthPoints;
     private static int keyAmt;
     private static int skipAmt;
-    private static int playerPosX;
-    private static int playerPosY;
+    private static Point coordinates;
 
     //Getters & Setters
 
@@ -68,23 +66,14 @@ public class Player implements Serializable {
         Player.skipAmt = skipAmt;
     }
 
-    public static int getPlayerPosX() {
-        return playerPosX;
+    public static Point getCoordinates() {
+        return coordinates;
     }
 
-    public static void setPlayerPosX(int playerPosX) {
-        Player.playerPosX = playerPosX;
+    public static void setCoordinates(Point coordinates) {
+        Player.coordinates = coordinates;
     }
 
-    public static int getPlayerPosY() {
-        return playerPosY;
-    }
-
-    public static void setPlayerPosY(int playerPosY) {
-        Player.playerPosY = playerPosY;
-    }
-
-    
     
     
 }

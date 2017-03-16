@@ -34,7 +34,7 @@ public class Map implements Serializable{
                 location.setPosY(row);
                 location.setLocationVisited(false);
                 
-                //Assign the Lcoation object to the current position in array
+                //Assign the Location object to the current position in array
                 locations[col][row] = location;
             }
         }
