@@ -38,7 +38,7 @@ public class GameControl {
         game.setPlayer(player); //Save player in game
         
         //Reset the inventory and save in the game
-        int potionAmt = 0;
+        int potionAmt = 1;
         int volume = 50;
         int maxPotionAmt = 1;
         int length = 0;
@@ -57,7 +57,7 @@ public class GameControl {
         Map map = MapControl.createMap();
         game.setMap(map);
         
-        MapControl.movePlayerToStartingLocation(map);
+        //MapControl.movePlayerToStartingLocation(map);
         
     }
     

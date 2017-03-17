@@ -10,6 +10,7 @@ import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Location;
 import byui.cit260.mathcadia.model.Map;
 import byui.cit260.mathcadia.model.Player;
+import citbyui.cit260.mathcadia.exceptions.PlayerControlException;
 /**
  *
  * @author ethan
@@ -54,13 +55,15 @@ public class PlayerControl {
         }
     }
     
-    public void recoverHealth(int potionAmt, int healthPoints) {
-        if(potionAmt == 0) {
-            System.out.println("You do not have any potions left!");
-        }
-        else if(potionAmt >= 1) {
+    public static void recoverHealth(int potionAmt, int healthPoints) 
+    throws PlayerControlException {
+        if(potionAmt >= 1) {
             healthPoints += 2;
             potionAmt--;
+            System.out.println("You used a potion.");
+        }
+        else if(potionAmt == 0) {
+            throw new PlayerControlException("You do not have any potions left!");
         }
     }
     

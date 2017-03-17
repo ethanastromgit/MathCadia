@@ -27,9 +27,9 @@ public class MapControl {
     
     public static void movePlayerToStartingLocation(Map map) 
         throws MapControlException {
-        Player player = new Player();
+        Player player = null;
         
-        Point coordinates = player.getCoordinates();
+        Point coordinates = Player.getCoordinates();
         MapControl.movePlayerToLocation(player, coordinates);
     }
     

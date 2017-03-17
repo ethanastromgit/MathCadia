@@ -15,9 +15,12 @@ import byui.cit260.mathcadia.control.MapControl;
 import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Player;
 import citbyui.cit260.mathcadia.exceptions.MapControlException;
+import citbyui.cit260.mathcadia.exceptions.PlayerControlException;
 import java.awt.Point;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -58,7 +61,14 @@ public class TravelView extends View {
                 }
                 break;
             case "P":
-                System.out.println("You have used one of your potions.");
+                int potionAmt = Inventory.getPotionAmt();
+                int healthPoints = Player.getHealthPoints();
+        
+                try {
+                    PlayerControl.recoverHealth(potionAmt, healthPoints);
+                } catch (PlayerControlException ex) {
+                    System.out.println(ex.getMessage());
+                }
                 break;
             case "Q":
                 return true;  

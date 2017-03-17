@@ -44,10 +44,8 @@ public class MainMenuView extends View {
             case "N": //Start New Game
                 try {
                     this.startNewGame();
-                } catch (GameControlException ge) {
+                } catch (GameControlException | MapControlException ge) {
                     System.out.println(ge.getMessage());
-                } catch (MapControlException ex) {
-                    System.out.println(ex.getMessage());
                 }
                 break;
             case "L": //Load Saved Game
