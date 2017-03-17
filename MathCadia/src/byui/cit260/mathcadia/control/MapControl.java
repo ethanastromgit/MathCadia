@@ -25,13 +25,13 @@ public class MapControl {
         return map;
     }
     
-    public static void movePlayerToStartingLocation(Map map) 
+    /*public static void movePlayerToStartingLocation(Map map) 
         throws MapControlException {
         Player player = null;
         
         Point coordinates = Player.getCoordinates();
         MapControl.movePlayerToLocation(player, coordinates);
-    }
+    }*/
     
     public static void movePlayerToLocation(Player player, Point coordinates)
         throws MapControlException {

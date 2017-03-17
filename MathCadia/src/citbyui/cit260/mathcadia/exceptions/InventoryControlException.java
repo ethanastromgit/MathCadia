@@ -9,25 +9,25 @@ package citbyui.cit260.mathcadia.exceptions;
  *
  * @author ethan
  */
-public class PlayerControlException extends Exception {
+public class InventoryControlException extends Exception {
 
-    public PlayerControlException() {
+    public InventoryControlException() {
     }
 
-    public PlayerControlException(String message) {
+    public InventoryControlException(String message) {
         super(message);
     }
 
-    public PlayerControlException(String message, Throwable cause) {
+    public InventoryControlException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public PlayerControlException(Throwable cause) {
+    public InventoryControlException(Throwable cause) {
         super(cause);
     }
 
-    public PlayerControlException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public InventoryControlException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
-
+    
 }

@@ -11,6 +11,7 @@ import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Location;
 import byui.cit260.mathcadia.model.Map;
 import byui.cit260.mathcadia.model.Player;
+import citbyui.cit260.mathcadia.exceptions.InventoryControlException;
 
 /**
  *
@@ -22,10 +23,18 @@ public class InventoryControl {
         
     }
 
-    public static boolean validateLength(int input) {
+    public static boolean validateLength(int input) throws InventoryControlException {
+        
+        /*if (input <= 0) {
+            return false;
+        }
+        else if (input > 10) {
+            return false;
+        }
+        return true;*/
         
         if (input <= 0) {
-            return false;
+            throw new InventoryControlException("Length cannot be less than 0.");
         }
         else if (input > 10) {
             return false;
@@ -65,12 +74,12 @@ public class InventoryControl {
         return volume;
     }
 
-    public static int addPotion(int potionAmt, int maxPotionAmt, boolean hasPotion) {
+    public static int addPotion(int potionAmt, int maxPotionAmt, boolean hasPotion) throws InventoryControlException {
 
         if (hasPotion == true && potionAmt != maxPotionAmt) {
             potionAmt++;
         } else if (potionAmt >= maxPotionAmt) {
-            System.out.println("You cannot exceed the maximum carrying capacity of your inventory.");
+            throw new InventoryControlException("You cannot exceed the maximum carrying capacity of your inventory.");
         } else if (hasPotion == false) {
             System.out.println("You did not find a potion!");
         }

@@ -15,6 +15,7 @@ public class Player implements Serializable {
         this.healthPoints = 10;
         this.keyAmt = 0;
         this.skipAmt = 2;
+        this.coordinates = new Point(1, 0);
     }
     
     //Attributes

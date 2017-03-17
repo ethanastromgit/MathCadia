@@ -6,40 +6,34 @@
 package byui.cit260.mathcadia.view;
 
 import MathCadia.MathCadia;
-import byui.cit260.mathcadia.view.HelpMenuView;
-import byui.cit260.mathcadia.view.GameMenuView;
 import byui.cit260.mathcadia.control.GameControl;
-import byui.cit260.mathcadia.model.Player;
 import citbyui.cit260.mathcadia.exceptions.GameControlException;
 import citbyui.cit260.mathcadia.exceptions.MapControlException;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author ethan
  */
 public class MainMenuView extends View {
-    
+
     public MainMenuView() {
-              super("\n--------------------------------"
-                  + "\n Main Menu                      "
-                  + "\n--------------------------------"
-                  + "\n N - Start New Game             "
-                  + "\n L - Load Game                  "
-                  + "\n S - Save Game                  "
-                  + "\n R - Return to Current Game     "
-                  + "\n H - Help Menu                  "
-                  + "\n X - Exit Game                  "
-                  + "\n--------------------------------");
+        super("\n--------------------------------"
+                + "\n Main Menu                      "
+                + "\n--------------------------------"
+                + "\n N - Start New Game             "
+                + "\n L - Load Game                  "
+                + "\n S - Save Game                  "
+                + "\n R - Return to Current Game     "
+                + "\n H - Help Menu                  "
+                + "\n X - Exit Game                  "
+                + "\n--------------------------------");
     }
-    
+
     @Override
     public boolean doAction(String value) {
-        
+
         value = value.toUpperCase(); //Convert choice to upper case
-        
+
         switch (value) {
             case "N": //Start New Game
                 try {
@@ -70,9 +64,9 @@ public class MainMenuView extends View {
         }
         return false;
     }
-    
+
     private void startNewGame() throws GameControlException, MapControlException {
-        
+
         /*
         GameControl gc = new GameControl();
         Player player = MathCadia.getPlayer();
@@ -85,31 +79,30 @@ public class MainMenuView extends View {
         } catch (GameControlException ex) {
             Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
-        
+         */
         //Create new game
         GameControl.createNewGame(MathCadia.getPlayer());
-        
+
         //Display the game menu view
         GameMenuView gameMenu = new GameMenuView();
         //Display the game menu
         gameMenu.display();
     }
-    
+
     private void startExistingGame() {
         System.out.println("\n*** startSavedGame() function called ***");
     }
-    
+
     private void saveGame() {
         System.out.println("\n*** saveGame() function called ***");
     }
-    
+
     private void returnToGame() {
         System.out.println("\n*** displayMap() fucntion called ***");
     }
-    
+
     private void exitGame() {
-        
+
     }
-    
+
 }
