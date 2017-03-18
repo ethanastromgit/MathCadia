@@ -6,7 +6,6 @@
 package byui.cit260.mathcadia.control;
 
 import MathCadia.MathCadia;
-import byui.cit260.mathcadia.model.Enemies;
 import byui.cit260.mathcadia.model.Map;
 import byui.cit260.mathcadia.model.Player;
 import citbyui.cit260.mathcadia.exceptions.MapControlException;
@@ -24,14 +23,6 @@ public class MapControl {
         
         return map;
     }
-    
-    /*public static void movePlayerToStartingLocation(Map map) 
-        throws MapControlException {
-        Player player = null;
-        
-        Point coordinates = Player.getCoordinates();
-        MapControl.movePlayerToLocation(player, coordinates);
-    }*/
     
     public static void movePlayerToLocation(Player player, Point coordinates)
         throws MapControlException {

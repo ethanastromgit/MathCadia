@@ -5,13 +5,10 @@
  */
 package byui.cit260.mathcadia.view;
 
-import byui.cit260.mathcadia.control.InventoryControl;
 import byui.cit260.mathcadia.control.PlayerControl;
-import byui.cit260.mathcadia.control.MapControl;
 import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Player;
-import citbyui.cit260.mathcadia.exceptions.InventoryControlException;
-import citbyui.cit260.mathcadia.exceptions.MapControlException;
+import static byui.cit260.mathcadia.model.Player.getCoordinates;
 import citbyui.cit260.mathcadia.exceptions.PlayerControlException;
 import java.awt.Point;
 
@@ -26,7 +23,8 @@ public class TravelView extends View {
     boolean hasPotion = false;
     
     public TravelView() {
-        super("\n Choose which direction you would like to travel:"
+        super("\n Choose which direction you would like to travel"
+                + " or use a potion:"
                 + "\n N - North"
                 + "\n S - South"
                 + "\n E - East"
@@ -42,25 +40,26 @@ public class TravelView extends View {
 
         choice = choice.toUpperCase(); //Convert choice to upper case
 
-        Player player = null;
-
-        Point coordinates = null;
+        Point coordinates = getCoordinates();
 
         switch (choice) {
             case "N":
             case "S":
             case "E":
             case "W":
+                boolean moveValidity = false;
+                
                 try {
-                    MapControl.movePlayerToLocation(player, coordinates);
-                } catch (MapControlException me) {
-                    System.out.println(me.getMessage());
+                    moveValidity = PlayerControl.isMoveValid(choice, coordinates);
+                } catch (PlayerControlException pce) {
+                    System.out.println(pce.getMessage());
                 }
-                try {
-                    InventoryControl.addPotion(potionAmt, maxPotionAmt, hasPotion);
-                } catch (InventoryControlException ice) {
-                    System.out.println(ice.getMessage());
+                    
+                if (moveValidity = true) {
+                    PlayerControl.movePlayer(choice, coordinates);
+                    System.out.println("Your player has moved " + choice + ".");
                 }
+                else
                 break;
             case "P":
                 int potionAmt = Inventory.getPotionAmt();

@@ -11,6 +11,9 @@ import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Location;
 import byui.cit260.mathcadia.model.Map;
 import byui.cit260.mathcadia.model.Player;
+import citbyui.cit260.mathcadia.exceptions.EnemiesControlException;
+import citbyui.cit260.mathcadia.exceptions.LoseGameException;
+import citbyui.cit260.mathcadia.exceptions.WinGameException;
 
 /**
  *
@@ -37,7 +40,7 @@ public class EnemiesControl {
         } else if (playerInput != equationTwoAnswer) {
             healthPoints -= attackDamage;
         } else if (healthPoints == 0) {
-            System.out.println("You have died! Game over!");
+            playerDies();
         }
     }
 
@@ -47,28 +50,32 @@ public class EnemiesControl {
         } else if (playerInput != equationThreeAnswer) {
             healthPoints -= attackDamage;
         } else if (healthPoints == 0) {
-            System.out.println("You have died! Game over!");
+            playerDies();
         }
     }
 
     public void isBossAnswerCorrect(int bossEquationAnswer, int healthPoints, int attackDamage) {
         if (playerInput == bossEquationAnswer) {
-            System.out.println("You have successfully defeated the boss! You win!");
+            playerWins();
         } else if (playerInput != bossEquationAnswer) {
             healthPoints -= attackDamage;
         } else if (healthPoints == 0) {
-            System.out.println("You have died! Game over!");
+            playerDies();
         }
     }
 
-    public int cannotSkip(boolean isBoss, int skipAmt) {
+    public int cannotSkip(boolean isBoss, int skipAmt) throws EnemiesControlException {
         if (isBoss == true) {
-            System.out.println("You cannot skip the boss question!");
+            throw new EnemiesControlException("You cannot skip the boss question!");
         }
         return skipAmt;
     }
 
     private void playerDies() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new LoseGameException("Your player has died. Returning to Main Menu.");
+    }
+    
+    private void playerWins() {
+        throw new WinGameException("Your player has won. Returning to Main Menu.");
     }
 }

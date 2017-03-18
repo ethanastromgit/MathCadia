@@ -11,6 +11,7 @@ import byui.cit260.mathcadia.model.Location;
 import byui.cit260.mathcadia.model.Map;
 import byui.cit260.mathcadia.model.Player;
 import citbyui.cit260.mathcadia.exceptions.PlayerControlException;
+import java.awt.Point;
 /**
  *
  * @author ethan
@@ -21,37 +22,37 @@ public class PlayerControl {
         
     }
     
-    public boolean isMoveValid(String input, int playerPosX, int playerPosY) {
+    public static boolean isMoveValid(String input, Point coordinates) throws PlayerControlException {
         
-        if(playerPosX == 0 && input == "W") {
-            return false;
+        if(coordinates.x == 0 && input == "W") {
+            throw new PlayerControlException("You cannot move out of bounds.");
         }
-        else if(playerPosX == 2 && input == "E") {
-            return false;
+        else if(coordinates.x == 2 && input == "E") {
+            throw new PlayerControlException("You cannot move out of bounds.");
         }
-        else if(playerPosY == 0 && input == "S") {
-            return false;
+        else if(coordinates.y == 0 && input == "S") {
+            throw new PlayerControlException("You cannot move out of bounds.");
         }
-        else if(playerPosY == 8 && input == "N") {
-            return false;
+        else if(coordinates.y == 8 && input == "N") {
+            throw new PlayerControlException("You cannot move out of bounds.");
         }
         return true;
                 
     }
     
-    public void movePlayer(String input, int playerPosX, int playerPosY) {
+    public static void movePlayer(String input, Point coordinates) {
 	
 	if(input == "N") {
-		playerPosY++;
+		int newRow = coordinates.y+1;
         }
         else if(input == "S") {
-		playerPosY--;
+		int newRow = coordinates.y-1;
         }
         else if(input == "W") {
-		playerPosX--;
+		int newRow = coordinates.x-1;
         }
         else if(input == "E") {
-		playerPosX++;
+		int newRow = coordinates.x+1;
         }
     }
     
@@ -59,16 +60,18 @@ public class PlayerControl {
         if(potionAmt >= 1) {
             healthPoints += 2;
             potionAmt--;
-            System.out.println("You used a potion.");
+            Player.setHealthPoints(healthPoints);
+            Inventory.setPotionAmt(potionAmt);
+            throw new PlayerControlException("You used a potion.");
         }
         else if(potionAmt == 0) {
             throw new PlayerControlException("You do not have any potions left!");
         }
     }
     
-    public void skipMathChallenge(int skipAmt, double equationOneAnswer, double equationTwoAnswer, double equationThreeAnswer) {
+    public void skipMathChallenge(int skipAmt, double equationOneAnswer, double equationTwoAnswer, double equationThreeAnswer) throws PlayerControlException {
         if(skipAmt == 0) {
-            System.out.println("You do not have any skips left!");
+            throw new PlayerControlException("You do not have any skips left!");
         }
         
     }
