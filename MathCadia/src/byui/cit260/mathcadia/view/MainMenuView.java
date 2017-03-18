@@ -8,6 +8,7 @@ package byui.cit260.mathcadia.view;
 import MathCadia.MathCadia;
 import byui.cit260.mathcadia.control.GameControl;
 import citbyui.cit260.mathcadia.exceptions.GameControlException;
+import citbyui.cit260.mathcadia.exceptions.LoseGameException;
 import citbyui.cit260.mathcadia.exceptions.MapControlException;
 
 /**
@@ -23,7 +24,6 @@ public class MainMenuView extends View {
                 + "\n N - Start New Game             "
                 + "\n L - Load Game                  "
                 + "\n S - Save Game                  "
-                + "\n R - Return to Current Game     "
                 + "\n H - Help Menu                  "
                 + "\n X - Exit Game                  "
                 + "\n--------------------------------");
@@ -52,9 +52,6 @@ public class MainMenuView extends View {
                 HelpMenuView helpMenuView = new HelpMenuView();
                 helpMenuView.display();
                 break;
-            case "R": //Return to Player Location
-                this.returnToGame();
-                break;
             case "X": //Exit Game
                 this.exitGame();
                 break;
@@ -67,42 +64,30 @@ public class MainMenuView extends View {
 
     private void startNewGame() throws GameControlException, MapControlException {
 
-        /*
-        GameControl gc = new GameControl();
-        Player player = MathCadia.getPlayer();
-        gc.createNewGame(player);
-        player.setPlayerPosition(MathCadia.getCurrentGame().getGameMap().getMapEntrance();
-        
-        GameMenuView gameMenu = new GameMenuView;
-        try {
-            gameMenu.display();
-        } catch (GameControlException ex) {
-            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         */
         //Create new game
         GameControl.createNewGame(MathCadia.getPlayer());
 
-        //Display the game menu view
-        GameMenuView gameMenu = new GameMenuView();
-        //Display the game menu
-        gameMenu.display();
+        try {
+            //Display the game menu view
+            GameMenuView gameMenu = new GameMenuView();
+            //Display the game menu
+            gameMenu.display();
+        } catch (LoseGameException lge) {
+            System.out.println(lge.getMessage());
+        }
     }
 
     private void startExistingGame() {
-        System.out.println("\n*** startSavedGame() function called ***");
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
     }
 
     private void saveGame() {
-        System.out.println("\n*** saveGame() function called ***");
-    }
-
-    private void returnToGame() {
-        System.out.println("\n*** displayMap() fucntion called ***");
+        GameControl.saveCurrentGame(MathCadia.getCurrentGame());
     }
 
     private void exitGame() {
-
+        
     }
 
 }

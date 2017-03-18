@@ -7,6 +7,7 @@ package byui.cit260.mathcadia.view;
 
 import byui.cit260.mathcadia.control.InventoryControl;
 import byui.cit260.mathcadia.model.Inventory;
+import citbyui.cit260.mathcadia.exceptions.InventoryControlException;
 import java.util.Scanner;
 
 /**
@@ -26,8 +27,8 @@ public class InventoryView {
     public InventoryView() {
 
         this.menu = "\nNow you will set up your inventory volume. "
-                + "\nThe volume cannot be over 1000 and neither of the "
-                + "\ndimensions can be 0. The amount of potions you "
+                + "\nThe dimensions must be greater than 0 and less than or equal to 10."
+                + "\nThe amount of potions you "
                 + "\nwill be able to carry will be equal to the volume divided by 50.";
         this.lengthView = "Please enter the desired length:";
         this.widthView = "Please enter the desired width:";
@@ -42,9 +43,11 @@ public class InventoryView {
         boolean done = false; //Set flag to not done
         while (!done) {
             String input = this.getInputLength();
-
-            done = this.doActionLength(input);
-
+            try {
+                done = this.doActionLength(input);
+            } catch (InventoryControlException ice) {
+                System.out.println(ice.getMessage());
+            }
         }
 
         this.displayWidth();
@@ -56,9 +59,11 @@ public class InventoryView {
         boolean done = false; //Set flag to not done
         do {
             String input = this.getInputWidth();
-
-            done = this.doActionWidth(input);
-
+            try {
+                done = this.doActionWidth(input);
+            } catch (InventoryControlException ice) {
+                System.out.println(ice.getMessage());
+            }
         } while (!done);
 
         this.displayHeight();
@@ -70,9 +75,11 @@ public class InventoryView {
         boolean done = false; //Set flag to not done
         while (!done) {
             String input = this.getInputHeight();
-
-            done = this.doActionHeight(input);
-
+            try {
+                done = this.doActionHeight(input);
+            } catch (InventoryControlException ice) {
+                System.out.println(ice.getMessage());
+            }
             //if (done = false) {
             //System.out.println("None of the dimensions can be zero and the volume cannot be greater than 1000!");
             //}
@@ -188,7 +195,7 @@ public class InventoryView {
         return value; //Return entered value
     }
 
-    private boolean doActionLength(String choice) {
+    private boolean doActionLength(String choice) throws InventoryControlException {
 
         int input = 0;
 
@@ -212,7 +219,7 @@ public class InventoryView {
 
     }
 
-    private boolean doActionWidth(String choice) {
+    private boolean doActionWidth(String choice) throws InventoryControlException {
         int input = 0;
         try {
             input = Integer.parseInt(choice);
@@ -233,7 +240,7 @@ public class InventoryView {
 
     }
 
-    private boolean doActionHeight(String choice) {
+    private boolean doActionHeight(String choice) throws InventoryControlException {
 
         int input = 0;
         try {

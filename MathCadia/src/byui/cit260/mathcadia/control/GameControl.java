@@ -66,12 +66,8 @@ public class GameControl {
         
     }
 
-    public void saveGame() {
-
-    }
-
-    public void returnToGame() {
-
+    public static void saveCurrentGame(Game currentGame) {
+        
     }
 
     public void startSavedGame() {

@@ -25,43 +25,35 @@ public class InventoryControl {
 
     public static boolean validateLength(int input) throws InventoryControlException {
         
-        /*if (input <= 0) {
-            return false;
-        }
-        else if (input > 10) {
-            return false;
-        }
-        return true;*/
-        
         if (input <= 0) {
-            throw new InventoryControlException("Length cannot be less than 0.");
+            throw new InventoryControlException("Length cannot be equal to or less than 0.");
         }
         else if (input > 10) {
-            return false;
+            throw new InventoryControlException("Length cannot be greater than 10.");
         }
         return true;
         
     }
     
-    public static boolean validateWidth(int input) {
+    public static boolean validateWidth(int input) throws InventoryControlException {
         
         if (input <= 0) {
-            return false;
+            throw new InventoryControlException("Width cannot be equal to or less than 0.");
         }
         else if (input > 10) {
-            return false;
+            throw new InventoryControlException("Width cannot be greater than 10.");
         }
         return true;
         
     }
     
-    public static boolean validateHeight(int input) {
+    public static boolean validateHeight(int input) throws InventoryControlException {
         
         if (input <= 0) {
-            return false;
+            throw new InventoryControlException("Height cannot be equal to or less than 0.");
         }
         else if (input > 10) {
-            return false;
+            throw new InventoryControlException("Height cannot be greater than 10.");
         }
         return true;
         
@@ -78,10 +70,8 @@ public class InventoryControl {
 
         if (hasPotion == true && potionAmt != maxPotionAmt) {
             potionAmt++;
-        } else if (potionAmt >= maxPotionAmt) {
-            throw new InventoryControlException("You cannot exceed the maximum carrying capacity of your inventory.");
-        } else if (hasPotion == false) {
-            System.out.println("You did not find a potion!");
+        } else {
+            throw new InventoryControlException("You did not get a potion. Either the location did not have a potion or you are carrying too many potions.");
         }
         return potionAmt;
     }

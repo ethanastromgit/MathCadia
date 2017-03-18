@@ -55,8 +55,7 @@ public class PlayerControl {
         }
     }
     
-    public static void recoverHealth(int potionAmt, int healthPoints) 
-    throws PlayerControlException {
+    public static void recoverHealth(int potionAmt, int healthPoints) throws PlayerControlException {
         if(potionAmt >= 1) {
             healthPoints += 2;
             potionAmt--;
