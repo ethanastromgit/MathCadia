@@ -7,9 +7,9 @@ package byui.cit260.mathcadia.view;
 
 import MathCadia.MathCadia;
 import byui.cit260.mathcadia.control.GameControl;
-import citbyui.cit260.mathcadia.exceptions.GameControlException;
-import citbyui.cit260.mathcadia.exceptions.LoseGameException;
-import citbyui.cit260.mathcadia.exceptions.MapControlException;
+import byui.cit260.mathcadia.exceptions.GameControlException;
+import byui.cit260.mathcadia.exceptions.LoseGameException;
+import byui.cit260.mathcadia.exceptions.MapControlException;
 
 /**
  *

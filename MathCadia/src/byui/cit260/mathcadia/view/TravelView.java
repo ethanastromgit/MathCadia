@@ -9,7 +9,7 @@ import byui.cit260.mathcadia.control.PlayerControl;
 import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Player;
 import static byui.cit260.mathcadia.model.Player.getCoordinates;
-import citbyui.cit260.mathcadia.exceptions.PlayerControlException;
+import byui.cit260.mathcadia.exceptions.PlayerControlException;
 import java.awt.Point;
 
 /**

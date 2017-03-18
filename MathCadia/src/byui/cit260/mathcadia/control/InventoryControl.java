@@ -11,7 +11,7 @@ import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Location;
 import byui.cit260.mathcadia.model.Map;
 import byui.cit260.mathcadia.model.Player;
-import citbyui.cit260.mathcadia.exceptions.InventoryControlException;
+import byui.cit260.mathcadia.exceptions.InventoryControlException;
 
 /**
  *

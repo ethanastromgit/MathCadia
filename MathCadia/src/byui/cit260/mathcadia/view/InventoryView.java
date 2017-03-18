@@ -7,7 +7,7 @@ package byui.cit260.mathcadia.view;
 
 import byui.cit260.mathcadia.control.InventoryControl;
 import byui.cit260.mathcadia.model.Inventory;
-import citbyui.cit260.mathcadia.exceptions.InventoryControlException;
+import byui.cit260.mathcadia.exceptions.InventoryControlException;
 import java.util.Scanner;
 
 /**

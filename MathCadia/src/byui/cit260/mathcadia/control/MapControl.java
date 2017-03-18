@@ -8,7 +8,7 @@ package byui.cit260.mathcadia.control;
 import MathCadia.MathCadia;
 import byui.cit260.mathcadia.model.Map;
 import byui.cit260.mathcadia.model.Player;
-import citbyui.cit260.mathcadia.exceptions.MapControlException;
+import byui.cit260.mathcadia.exceptions.MapControlException;
 import java.awt.Point;
 
 /**

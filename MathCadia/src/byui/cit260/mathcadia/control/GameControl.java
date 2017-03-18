@@ -10,7 +10,7 @@ import byui.cit260.mathcadia.model.Game;
 import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Map;
 import byui.cit260.mathcadia.model.Player;
-import citbyui.cit260.mathcadia.exceptions.MapControlException;
+import byui.cit260.mathcadia.exceptions.MapControlException;
 import java.awt.Point;
 
 /**

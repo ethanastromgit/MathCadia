@@ -6,6 +6,7 @@
 package byui.cit260.mathcadia.view;
 
 import MathCadia.MathCadia;
+import byui.cit260.mathcadia.control.EnemiesControl;
 import byui.cit260.mathcadia.model.Game;
 import byui.cit260.mathcadia.model.Location;
 import java.util.Scanner;
@@ -25,7 +26,10 @@ public class GameMenuView extends View {
                   + "\n I - View Inventory             "
                   + "\n M - View Map                   "
                   + "\n Q - Main Menu                  "
-                  + "\n H - Help Menu                  "
+                  + "\n H - Help Menu                 "
+                      + ""
+                      + "\n L - call the playerDies() function"
+                      + " for RuntimeException purposes "
                   + "\n--------------------------------");
     }
     
@@ -58,6 +62,9 @@ public class GameMenuView extends View {
             case "H": 
                 HelpMenuView helpMenuView = new HelpMenuView();
                 helpMenuView.display();
+                break;
+            case "L": 
+                EnemiesControl.playerDies();
                 break;
             default:
                 System.out.println("\n*** Invalid Selection *** Try Again");

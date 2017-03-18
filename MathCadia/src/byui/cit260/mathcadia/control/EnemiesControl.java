@@ -11,9 +11,9 @@ import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Location;
 import byui.cit260.mathcadia.model.Map;
 import byui.cit260.mathcadia.model.Player;
-import citbyui.cit260.mathcadia.exceptions.EnemiesControlException;
-import citbyui.cit260.mathcadia.exceptions.LoseGameException;
-import citbyui.cit260.mathcadia.exceptions.WinGameException;
+import byui.cit260.mathcadia.exceptions.EnemiesControlException;
+import byui.cit260.mathcadia.exceptions.LoseGameException;
+import byui.cit260.mathcadia.exceptions.WinGameException;
 
 /**
  *
@@ -71,11 +71,11 @@ public class EnemiesControl {
         return skipAmt;
     }
 
-    private void playerDies() {
+    public static void playerDies() {
         throw new LoseGameException("Your player has died. Returning to Main Menu.");
     }
     
-    private void playerWins() {
+    public static void playerWins() {
         throw new WinGameException("Your player has won. Returning to Main Menu.");
     }
 }
