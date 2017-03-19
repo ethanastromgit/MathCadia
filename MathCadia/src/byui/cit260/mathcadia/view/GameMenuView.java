@@ -30,6 +30,8 @@ public class GameMenuView extends View {
                       + ""
                       + "\n L - call the playerDies() function"
                       + " for RuntimeException purposes "
+                      + "\n K - call the playerWins() function"
+                      + " for RuntimeException purposes "
                   + "\n--------------------------------");
     }
     
@@ -65,6 +67,9 @@ public class GameMenuView extends View {
                 break;
             case "L": 
                 EnemiesControl.playerDies();
+                break;
+            case "K": 
+                EnemiesControl.playerWins();
                 break;
             default:
                 System.out.println("\n*** Invalid Selection *** Try Again");

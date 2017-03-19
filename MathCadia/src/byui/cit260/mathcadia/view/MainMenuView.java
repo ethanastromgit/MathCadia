@@ -10,6 +10,7 @@ import byui.cit260.mathcadia.control.GameControl;
 import byui.cit260.mathcadia.exceptions.GameControlException;
 import byui.cit260.mathcadia.exceptions.LoseGameException;
 import byui.cit260.mathcadia.exceptions.MapControlException;
+import byui.cit260.mathcadia.exceptions.WinGameException;
 
 /**
  *
@@ -74,7 +75,10 @@ public class MainMenuView extends View {
             gameMenu.display();
         } catch (LoseGameException lge) {
             System.out.println(lge.getMessage());
+        } catch (WinGameException wge) {
+            System.out.println(wge.getMessage());
         }
+          
     }
 
     private void startExistingGame() {

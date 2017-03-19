@@ -67,6 +67,7 @@ public class TravelView extends View {
 
                 try {
                     PlayerControl.recoverHealth(potionAmt, healthPoints);
+                    System.out.println("You used a potion.");
                 } catch (PlayerControlException ex) {
                     System.out.println(ex.getMessage());
                 }
