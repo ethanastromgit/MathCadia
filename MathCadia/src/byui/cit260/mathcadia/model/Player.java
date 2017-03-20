@@ -10,13 +10,16 @@ public class Player implements Serializable {
     private Game[] game;
     
     //Constructor
+
     public Player() {
-        this.name = null;
-        this.healthPoints = 10;
-        this.keyAmt = 0;
-        this.skipAmt = 2;
-        this.coordinates = new Point(1, 0);
+        
     }
+    
+    public Player(Game[] game, String name) {
+        this.game = game;
+        this.name = name;
+    }
+    
     
     //Attributes
     private String name;

@@ -6,8 +6,6 @@
 package byui.cit260.mathcadia.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Objects;
 
 public class Location implements Serializable {
     
@@ -20,9 +18,9 @@ public class Location implements Serializable {
     private boolean locationType;
     private boolean locationVisited;
     private boolean hasPotion;
-    private int posX;
-    private int posY;
-    private ArrayList<Enemies> enemies;
+    private int col;
+    private int row;
+    private Enemies enemies;
 
     //Getters and Setters
 
@@ -50,20 +48,28 @@ public class Location implements Serializable {
         this.hasPotion = hasPotion;
     }
 
-    public int getPosX() {
-        return posX;
+    public int getCol() {
+        return col;
     }
 
-    public void setPosX(int posX) {
-        this.posX = posX;
+    public void setCol(int col) {
+        this.col = col;
     }
 
-    public int getPosY() {
-        return posY;
+    public int getRow() {
+        return row;
     }
 
-    public void setPosY(int posY) {
-        this.posY = posY;
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public Enemies getEnemies() {
+        return enemies;
+    }
+
+    public void setEnemies(Enemies enemies) {
+        this.enemies = enemies;
     }
     
 }

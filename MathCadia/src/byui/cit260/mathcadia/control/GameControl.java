@@ -40,13 +40,13 @@ public class GameControl {
 
         game.setPlayer(player); //Save player in game
 
-        //Reset the inventory and save in the game
+        //Reset the inventory
         int potionAmt = 1;
         int volume = 50;
         int maxPotionAmt = 1;
-        int length = 0;
-        int width = 0;
-        int height = 0;
+        int length = 2;
+        int width = 5;
+        int height = 5;
         Inventory.setPotionAmt(potionAmt);
         Inventory.setVolume(volume);
         Inventory.setLength(length);
@@ -54,8 +54,13 @@ public class GameControl {
         Inventory.setHeight(height);
         Inventory.setMaxPotionAmt(maxPotionAmt);
 
+        //Reset Player
         int healthPoints = 10;
+        int keyAmt = 0;
+        int skipAmt = 1;
         Player.setHealthPoints(healthPoints);
+        Player.setKeyAmt(keyAmt);
+        Player.setSkipAmt(skipAmt);
 
         Map map = MapControl.createMap();
         game.setMap(map);
@@ -70,11 +75,11 @@ public class GameControl {
         
     }
 
-    public void startSavedGame() {
+    public static void loadExistingGame() {
 
     }
 
-    public void exitGame() {
+    public static void exitGame() {
 
     }
 

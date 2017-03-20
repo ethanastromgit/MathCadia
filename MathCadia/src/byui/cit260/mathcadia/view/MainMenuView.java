@@ -23,8 +23,9 @@ public class MainMenuView extends View {
                 + "\n Main Menu                      "
                 + "\n--------------------------------"
                 + "\n N - Start New Game             "
-                + "\n L - Load Game                  "
+                + "\n R - Return to Current Game     "
                 + "\n S - Save Game                  "
+                + "\n L - Load Game                  "
                 + "\n H - Help Menu                  "
                 + "\n X - Exit Game                  "
                 + "\n--------------------------------");
@@ -43,11 +44,14 @@ public class MainMenuView extends View {
                     System.out.println(ge.getMessage());
                 }
                 break;
-            case "L": //Load Saved Game
-                this.startExistingGame();
+            case "R": //Return to Current Game
+                this.returnToCurrentGame();
                 break;
             case "S": //Save Current Game
                 this.saveGame();
+                break;
+            case "L": //Load Saved Game
+                this.loadGame();
                 break;
             case "H": //Display Help Menu
                 HelpMenuView helpMenuView = new HelpMenuView();
@@ -81,13 +85,16 @@ public class MainMenuView extends View {
           
     }
 
-    private void startExistingGame() {
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
+    private void returnToCurrentGame() {
+        
     }
-
+    
     private void saveGame() {
         GameControl.saveCurrentGame(MathCadia.getCurrentGame());
+    }
+    
+    private void loadGame() {
+        GameControl.loadExistingGame();
     }
 
     private void exitGame() {

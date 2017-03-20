@@ -7,7 +7,6 @@ package byui.cit260.mathcadia.model;
 
 import java.awt.Point;
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *

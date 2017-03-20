@@ -1,8 +1,6 @@
 package byui.cit260.mathcadia.model;
 
 import java.io.Serializable;
-import java.util.Objects;
-import byui.cit260.mathcadia.model.Location;
 
 public class Map implements Serializable{
 
@@ -30,8 +28,8 @@ public class Map implements Serializable{
             for (int row = 0; row < ROWCOUNT; row++) {
                 //Create and initialize new Loaction object instance
                 Location location = new Location();
-                location.setPosX(col);
-                location.setPosY(row);
+                location.setCol(col);
+                location.setRow(row);
                 location.setLocationVisited(false);
                 
                 //Assign the Location object to the current position in array
