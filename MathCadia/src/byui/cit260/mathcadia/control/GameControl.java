@@ -99,6 +99,8 @@ public class GameControl {
         } catch (Exception e) {
             throw new GameControlException(e.getMessage());
         }
+        
+        MathCadia.setCurrentGame(game);
             
     }
     
