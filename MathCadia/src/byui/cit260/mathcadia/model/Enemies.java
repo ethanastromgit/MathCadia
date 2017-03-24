@@ -21,7 +21,7 @@ public enum Enemies implements Serializable {
 
     //Attributes
     private final String DESCRIPTION;
-    private final Point ENEMY_COORDINATES;
+    private Point enemyCoordinates;
     private final int ATTACK_DAMAGE;
     private boolean enemyIsBoss;
 
@@ -30,8 +30,8 @@ public enum Enemies implements Serializable {
 
     Enemies(String DESCRIPTION) {
         this.DESCRIPTION = DESCRIPTION;
-        this.ENEMY_COORDINATES = new Point(1, 3);
-
+        
+        
         this.ATTACK_DAMAGE = 2;
 
         String[] equations = {"What is 5 + 3?",
@@ -51,7 +51,7 @@ public enum Enemies implements Serializable {
     }
 
     public Point getENEMY_COORDINATES() {
-        return ENEMY_COORDINATES;
+        return enemyCoordinates;
     }
 
     public boolean isEnemyIsBoss() {

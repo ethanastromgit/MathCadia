@@ -51,22 +51,23 @@ public class HelpMenuView extends View {
                 mainMenuView.displayMainMenuView();
                 break;*/
             default:
-                System.out.println("\n*** Invalid Selection *** Try Again");
+                ErrorView.display(this.getClass().getName(),
+                        "\n*** Invalid Selection *** Try Again");
                 break;
         }
         return false;
     }
     
     private void displayGamePurpose() {
-        System.out.println("Defeat all enemies to obtain three keys to open the boss room. Finally, defeat the boss and gradute from MathCadia.");
+        this.console.println("Defeat all enemies to obtain three keys to open the boss room. Finally, defeat the boss and gradute from MathCadia.");
     }
             
     private void displayHowToMove() {
-        System.out.println("You move in any of the four directions - North, South, East, and West - by typing the first character of the corresponding direction.");
+        this.console.println("You move in any of the four directions - North, South, East, and West - by typing the first character of the corresponding direction.");
     }  
     
     private void displayRules() {
-        System.out.println("If you run of out health points, you lose. You may not move in a direction that would take you off the map. Having all three keys is a must to gain access to the boss room. Defeating the boss allows you to win.");
+        this.console.println("If you run of out health points, you lose. You may not move in a direction that would take you off the map. Having all three keys is a must to gain access to the boss room. Defeating the boss allows you to win.");
     }
     
 }

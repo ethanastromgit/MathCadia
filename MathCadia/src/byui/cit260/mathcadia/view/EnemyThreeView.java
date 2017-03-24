@@ -5,7 +5,13 @@
  */
 package byui.cit260.mathcadia.view;
 
+import MathCadia.MathCadia;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,6 +20,9 @@ import java.util.Scanner;
 public class EnemyThreeView {
     
     private String menu;
+    
+    protected final BufferedReader keyboard = MathCadia.getInFile();
+    protected final PrintWriter console = MathCadia.getOutFile();
     
     public EnemyThreeView() {
         this.menu = "";
@@ -37,18 +46,22 @@ public class EnemyThreeView {
     
     private String getInput() {
         
-        Scanner keyboard = new Scanner(System.in); //Get infile for keyboard
         String value = ""; //Value to be returned
         boolean valid = false; //Initialize to not valid
         
         while (!valid) {
-            System.out.println("\n" + this.menu);
+            this.console.println("\n" + this.menu);
             
-            value = keyboard.nextLine(); //Get next line typed on keyboard
+            try {
+                value = keyboard.readLine(); //Get next line typed on keyboard
+            } catch (IOException ex) {
+                Logger.getLogger(EnemyThreeView.class.getName()).log(Level.SEVERE, null, ex);
+            }
             value = value.trim(); //Trim off leading and trailing blanks
             
             if (value.length() < 1) { //Value is blank
-                System.out.println("\nInvalid: entry required.");
+                ErrorView.display(this.getClass().getName(),
+                        "\nInvalid: entry required.");
                 continue;
             }
             break; //End the loop

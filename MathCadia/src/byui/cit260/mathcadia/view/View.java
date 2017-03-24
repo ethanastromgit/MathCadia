@@ -5,7 +5,12 @@
  */
 package byui.cit260.mathcadia.view;
 
-import java.util.Scanner;
+import MathCadia.MathCadia;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,6 +19,9 @@ import java.util.Scanner;
 public abstract class View implements ViewInterface {
     
     protected String displayMessage;
+    
+    protected final BufferedReader keyboard = MathCadia.getInFile();
+    protected final PrintWriter console = MathCadia.getOutFile();
     
     public View() {
         
@@ -43,18 +51,22 @@ public abstract class View implements ViewInterface {
     @Override
     public String getInput() {
         
-        Scanner keyboard = new Scanner(System.in);
         String value = null;
         boolean valid = false;
         
         while (!valid) {
-            System.out.println("\n" + this.displayMessage);
+            this.console.println("\n" + this.displayMessage);
             
-            value = keyboard.nextLine(); //Get next line typed on keyboard
+            try {
+                value = this.keyboard.readLine(); //Get next line typed on keyboard
+            } catch (IOException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            }
             value = value.trim(); //Trim off leading and trailing blanks
             
             if (value.length() < 1) { //Value is blank
-                System.out.println("\nInvalid: entry required.");
+                ErrorView.display(this.getClass().getName(),
+                        "\nInvalid: entry required.");
                 continue;
             }
             break; //End the loop

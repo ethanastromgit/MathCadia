@@ -30,29 +30,30 @@ public class SeeInventoryView extends View {
 
         switch (choice) {
             case "M":
-                System.out.println("\n You can hold a maximum of "
+                this.console.println("\n You can hold a maximum of "
                         + Inventory.getMaxPotionAmt()
                         + " potions.");
                 break;
             case "P":
-                System.out.println("\n You currently have "
+                this.console.println("\n You currently have "
                         + Inventory.getPotionAmt()
                         + " potions.");
                 break;
             case "H":
-                System.out.println("\n Your player currently has "
+                this.console.println("\n Your player currently has "
                         + Player.getHealthPoints()
                         + " health points.");
                 break;
             case "K":
-                System.out.println("\n Your player currently has "
+                this.console.println("\n Your player currently has "
                         + Player.getKeyAmt()
                         + " keys.");
                 break;
             case "Q":
                 return true;
             default:
-                System.out.println("\n*** Invalid Selection *** Try Again");
+                ErrorView.display(this.getClass().getName(),
+                        "\n*** Invalid Selection *** Try Again");
                 break;
         }
         return false;

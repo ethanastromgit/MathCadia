@@ -5,9 +5,15 @@
  */
 package byui.cit260.mathcadia.view;
 
+import MathCadia.MathCadia;
 import byui.cit260.mathcadia.control.GameControl;
 import byui.cit260.mathcadia.model.Player;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,6 +22,9 @@ import java.util.Scanner;
 public class StartProgramView {
 
     private String promptMessage;
+    
+    protected final BufferedReader keyboard = MathCadia.getInFile();
+    protected final PrintWriter console = MathCadia.getOutFile();
 
     public StartProgramView() {
         //promptMessage = "Please enter your name"
@@ -27,7 +36,7 @@ public class StartProgramView {
     }
 
     private void displayBanner() {
-        System.out.println(
+        this.console.println(
                 "\n****************************************************************"
                 + "\n*                                                              *"
                 + "\n*            |*   *|     *     *******  |     |                *"
@@ -62,29 +71,11 @@ public class StartProgramView {
         );
     }
 
-    /*private String getPlayerName() {
-        Scanner keyboard = new Scanner(System.in); //Get infile for keyboard
-        String value = ""; //Value to be returned
-        boolean valid = false; //Initialize to not valid
-
-        while (!valid) {
-            System.out.println("\n" + this.promptMessage);
-
-            value = keyboard.nextLine(); //Get next line typed on keyboard
-            value = value.trim(); //Trim off leading and traling blanks
-            
-            if (value.length() < 1) { //Value is blank
-                System.out.println("\nInvalid: name cannot be blank");
-                continue;
-            }
-            break; //End the loop
-        }
-        return value; //Return entered value
-    }*/
     private boolean doAction(String playersName) {
 
         if (playersName.length() < 2) {
-            System.out.println("\nInvalid players name: Your name must be mor ethan one character in length.");
+            ErrorView.display(this.getClass().getName(),
+                    "\nInvalid players name: Your name must be mor ethan one character in length.");
             return false;
         }
 
@@ -92,7 +83,8 @@ public class StartProgramView {
         Player player = GameControl.createPlayer(playersName);
 
         if (player == null) {
-            System.out.println("\nError creating the player.");
+            ErrorView.display(this.getClass().getName(),
+                    "\nError creating the player.");
             return false;
         }
 
@@ -105,7 +97,7 @@ public class StartProgramView {
     private void displayNextView(Player player) {
 
         //Display a custom welcom message
-        System.out.println("\n=================================="
+        this.console.println("\n=================================="
                 + "\n Welcome to the game " + player.getName()
                 + "\n We hope you have a lot of fun!"
                 + "\n=================================="
@@ -119,7 +111,6 @@ public class StartProgramView {
     }
 
     public void displayStartProgramView() {
-        //System.out.println("\n*** displayStartProgram() function called ***");
 
         boolean done = false; //Set flag to not done
         do {
@@ -137,18 +128,22 @@ public class StartProgramView {
 
     private String getPlayersName() {
 
-        Scanner keyboard = new Scanner(System.in); //Get infile for keyboard
         String value = ""; //Value to be returned
         boolean valid = false; //Initialize to not valid
 
         while (!valid) { //Loop while an invalid value is entered
-            System.out.println("\n" + this.promptMessage);
+            this.console.println("\n" + this.promptMessage);
 
-            value = keyboard.nextLine(); //Get next line typed on keyboard
+            try {
+                value = keyboard.readLine(); //Get next line typed on keyboard
+            } catch (IOException ex) {
+                Logger.getLogger(StartProgramView.class.getName()).log(Level.SEVERE, null, ex);
+            }
             value = value.trim(); //Trim off leading and trailing blanks
 
             if (value.length() < 1) { //Value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
+                ErrorView.display(this.getClass().getName(),
+                        "\nInvalid value: value cannot be blank");
                 continue;
             }
 

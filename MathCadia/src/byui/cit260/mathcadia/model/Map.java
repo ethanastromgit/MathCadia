@@ -1,10 +1,17 @@
 package byui.cit260.mathcadia.model;
 
+import MathCadia.MathCadia;
+import byui.cit260.mathcadia.view.ErrorView;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.io.Serializable;
 
 public class Map implements Serializable{
 
     private Game[] game;
+    
+    protected final BufferedReader keyboard = MathCadia.getInFile();
+    protected final PrintWriter console = MathCadia.getOutFile();
     
     //Constructor
     public Map() {
@@ -14,7 +21,8 @@ public class Map implements Serializable{
     public Map(int COLUMNCOUNT, int ROWCOUNT) {
         
         if (COLUMNCOUNT < 1 || ROWCOUNT < 1) {
-            System.out.println("The number of rows and columns must be > zero");
+            ErrorView.display(this.getClass().getName(),
+                    "The number of rows and columns must be > zero");
             return;
         }
         

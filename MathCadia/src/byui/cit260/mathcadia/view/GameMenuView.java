@@ -72,7 +72,8 @@ public class GameMenuView extends View {
                 EnemiesControl.playerWins();
                 break;
             default:
-                System.out.println("\n*** Invalid Selection *** Try Again");
+                ErrorView.display(this.getClass().getName(),
+                        "\n*** Invalid Selection *** Try Again");
                 break;
         }
         return false;

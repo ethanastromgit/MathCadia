@@ -9,6 +9,8 @@ import byui.cit260.mathcadia.model.Game;
 import byui.cit260.mathcadia.model.Player;
 import byui.cit260.mathcadia.view.StartProgramView;
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 /**
@@ -66,14 +68,37 @@ public class MathCadia {
     }
     
     public static void main(String args[]) {
-        StartProgramView startProgramView = new StartProgramView();
         
         try {
+            MathCadia.inFile = new BufferedReader(new InputStreamReader(System.in));
+            
+            MathCadia.outFile = new PrintWriter(System.out, true);
+            
+            String filePath = "log.txt";
+            MathCadia.logFile = new PrintWriter(filePath);
+            
+            StartProgramView startProgramView = new StartProgramView();
             startProgramView.displayStartProgramView();
-        } catch (Throwable te) {
-            System.out.println(te.getMessage());
-            te.printStackTrace();
-            startProgramView.displayStartProgramView();
+            return;
+        } catch (Throwable e) {
+            System.out.println("Exceptions: " + e.toString() +
+                    "\nCause: " + e.getCause() +
+                    "\nMessage: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (MathCadia.inFile != null)
+                    MathCadia.inFile.close();
+                
+                if (MathCadia.outFile != null)
+                    MathCadia.outFile.close();
+                
+                if (MathCadia.logFile != null)
+                    MathCadia.logFile.close();
+            } catch (IOException ex) {
+                System.out.println("Error closing files");
+                return;
+            }
         }
     }
 

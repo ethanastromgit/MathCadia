@@ -6,12 +6,17 @@
 package byui.cit260.mathcadia.control;
 
 import MathCadia.MathCadia;
+import byui.cit260.mathcadia.exceptions.GameControlException;
 import byui.cit260.mathcadia.model.Game;
 import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Map;
 import byui.cit260.mathcadia.model.Player;
 import byui.cit260.mathcadia.exceptions.MapControlException;
 import java.awt.Point;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -71,14 +76,32 @@ public class GameControl {
         
     }
 
-    public static void saveCurrentGame(Game currentGame) {
+    public static void saveGame(Game currentGame, String filePath) 
+            throws GameControlException {
+        try( FileOutputStream fops = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(currentGame);
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
+
+    public static void loadGame(String filePath) 
+            throws GameControlException {
         
+        Game game = null;
+        
+        try( FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream input = new ObjectInputStream(fips);
+            
+            game = (Game) input.readObject();
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+            
     }
-
-    public static void loadExistingGame() {
-
-    }
-
+    
     public static void exitGame() {
 
     }

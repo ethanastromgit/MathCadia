@@ -52,12 +52,13 @@ public class TravelView extends View {
                 try {
                     moveValidity = PlayerControl.isMoveValid(choice, coordinates);
                 } catch (PlayerControlException pce) {
-                    System.out.println(pce.getMessage());
+                    ErrorView.display(this.getClass().getName(),
+                            pce.getMessage());
                 }
                     
                 if (moveValidity = true) {
                     PlayerControl.movePlayer(choice, coordinates);
-                    System.out.println("Your player has moved " + choice + ".");
+                    this.console.println("Your player has moved " + choice + ".");
                 }
                 else
                 break;
@@ -67,15 +68,17 @@ public class TravelView extends View {
 
                 try {
                     PlayerControl.recoverHealth(potionAmt, healthPoints);
-                    System.out.println("You used a potion.");
+                    this.console.println("You used a potion.");
                 } catch (PlayerControlException ex) {
-                    System.out.println(ex.getMessage());
+                    ErrorView.display(this.getClass().getName(),
+                            ex.getMessage());
                 }
                 break;
             case "Q":
                 return true;
             default:
-                System.out.println("\n*** Invalid Selection *** Try Again");
+                ErrorView.display(this.getClass().getName(),
+                        "\n*** Invalid Selection *** Try Again");
                 break;
         }
         return false;

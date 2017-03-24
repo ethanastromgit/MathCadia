@@ -5,10 +5,16 @@
  */
 package byui.cit260.mathcadia.view;
 
+import MathCadia.MathCadia;
 import byui.cit260.mathcadia.control.InventoryControl;
 import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.exceptions.InventoryControlException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,6 +30,9 @@ public class InventoryView {
 
     int volumeDisplay = Inventory.getVolume();
 
+    protected final BufferedReader keyboard = MathCadia.getInFile();
+    protected final PrintWriter console = MathCadia.getOutFile();
+    
     public InventoryView() {
 
         this.menu = "\nNow you will set up your inventory volume. "
@@ -46,7 +55,8 @@ public class InventoryView {
             try {
                 done = this.doActionLength(input);
             } catch (InventoryControlException ice) {
-                System.out.println(ice.getMessage());
+                ErrorView.display(this.getClass().getName(),
+                        ice.getMessage());
             }
         }
 
@@ -62,7 +72,8 @@ public class InventoryView {
             try {
                 done = this.doActionWidth(input);
             } catch (InventoryControlException ice) {
-                System.out.println(ice.getMessage());
+                ErrorView.display(this.getClass().getName(),
+                        ice.getMessage());
             }
         } while (!done);
 
@@ -78,11 +89,10 @@ public class InventoryView {
             try {
                 done = this.doActionHeight(input);
             } catch (InventoryControlException ice) {
-                System.out.println(ice.getMessage());
+                ErrorView.display(this.getClass().getName(),
+                        ice.getMessage());
             }
-            //if (done = false) {
-            //System.out.println("None of the dimensions can be zero and the volume cannot be greater than 1000!");
-            //}
+            
         }
 
         this.displayVolume();
@@ -105,19 +115,23 @@ public class InventoryView {
 
     private String getInputLength() {
 
-        Scanner keyboard = new Scanner(System.in); //Get infile for keyboard
         String value = ""; //Value to be returned
         boolean valid = false; //Initialize to not valid
 
         while (!valid) {
-            System.out.println("\n" + this.menu);
-            System.out.println("\n" + this.lengthView);
+            this.console.println("\n" + this.menu);
+            this.console.println("\n" + this.lengthView);
 
-            value = keyboard.nextLine(); //Get next line typed on keyboard
+            try {
+                value = keyboard.readLine(); //Get next line typed on keyboard
+            } catch (IOException ex) {
+                Logger.getLogger(InventoryView.class.getName()).log(Level.SEVERE, null, ex);
+            }
             value = value.trim(); //Trim off leading and trailing blanks
 
             if (value.length() < 1) { //Value is blank
-                System.out.println("\nInvalid: entry required.");
+                ErrorView.display(this.getClass().getName(),
+                        "\nInvalid: entry required.");
                 continue;
             } else {
                 break;
@@ -129,18 +143,22 @@ public class InventoryView {
 
     private String getInputWidth() {
 
-        Scanner keyboard = new Scanner(System.in); //Get infile for keyboard
         String value = ""; //Value to be returned
         boolean valid = false; //Initialize to not valid
 
         while (!valid) {
-            System.out.println("\n" + this.widthView);
+            this.console.println("\n" + this.widthView);
 
-            value = keyboard.nextLine(); //Get next line typed on keyboard
+            try {
+                value = keyboard.readLine(); //Get next line typed on keyboard
+            } catch (IOException ex) {
+                Logger.getLogger(InventoryView.class.getName()).log(Level.SEVERE, null, ex);
+            }
             value = value.trim(); //Trim off leading and trailing blanks
 
             if (value.length() < 1) { //Value is blank
-                System.out.println("\nInvalid: entry required.");
+                ErrorView.display(this.getClass().getName(),
+                        "\nInvalid: entry required.");
                 continue;
             }
             break; //End the loop
@@ -151,18 +169,22 @@ public class InventoryView {
 
     private String getInputHeight() {
 
-        Scanner keyboard = new Scanner(System.in); //Get infile for keyboard
         String value = ""; //Value to be returned
         boolean valid = false; //Initialize to not valid
 
         while (!valid) {
-            System.out.println("\n" + this.heightView);
+            this.console.println("\n" + this.heightView);
 
-            value = keyboard.nextLine(); //Get next line typed on keyboard
+            try {
+                value = keyboard.readLine(); //Get next line typed on keyboard
+            } catch (IOException ex) {
+                Logger.getLogger(InventoryView.class.getName()).log(Level.SEVERE, null, ex);
+            }
             value = value.trim(); //Trim off leading and trailing blanks
 
             if (value.length() < 1) { //Value is blank
-                System.out.println("\nInvalid: entry required.");
+                ErrorView.display(this.getClass().getName(),
+                        "\nInvalid: entry required.");
                 continue;
             }
             break; //End the loop
@@ -173,20 +195,24 @@ public class InventoryView {
 
     private String getInputVolume() {
 
-        Scanner keyboard = new Scanner(System.in); //Get infile for keyboard
         String value = ""; //Value to be returned
         boolean valid = false; //Initialize to not valid
 
         while (!valid) {
             this.volume = "The volume of your bag is " + Inventory.getVolume() + "."
                     + "\nPress Q to go back to Game Menu.";
-            System.out.println("\n" + this.volume);
+            this.console.println("\n" + this.volume);
 
-            value = keyboard.nextLine(); //Get next line typed on keyboard
+            try {
+                value = keyboard.readLine(); //Get next line typed on keyboard
+            } catch (IOException ex) {
+                Logger.getLogger(InventoryView.class.getName()).log(Level.SEVERE, null, ex);
+            }
             value = value.trim(); //Trim off leading and trailing blanks
 
             if (value.length() < 1) { //Value is blank
-                System.out.println("\nInvalid: entry required.");
+                ErrorView.display(this.getClass().getName(),
+                        "\nInvalid: entry required.");
                 continue;
             }
             break; //End the loop
@@ -202,7 +228,8 @@ public class InventoryView {
         try {
             input = Integer.parseInt(choice);
         } catch (NumberFormatException nf) {
-            System.out.println("\nYou must enter a valid number."
+            ErrorView.display(this.getClass().getName(),
+                    "\nYou must enter a valid number."
                     + " Try again or enter Q to quit.");
         }
 
@@ -224,7 +251,8 @@ public class InventoryView {
         try {
             input = Integer.parseInt(choice);
         } catch (NumberFormatException nf) {
-            System.out.println("\nYou must enter a valid number."
+            ErrorView.display(this.getClass().getName(),
+                    "\nYou must enter a valid number."
                     + " Try again or enter Q to quit.");
         }
         boolean valid = false;
@@ -246,7 +274,8 @@ public class InventoryView {
         try {
             input = Integer.parseInt(choice);
         } catch (NumberFormatException nf) {
-            System.out.println("\nYou must enter a valid number."
+            ErrorView.display(this.getClass().getName(),
+                    "\nYou must enter a valid number."
                     + " Try again or enter Q to quit.");
         }
         Inventory.setHeight(input);
@@ -280,7 +309,8 @@ public class InventoryView {
             case "Q": //Return to Game Menu
                 return true;
             default:
-                System.out.println("\n*** Invalid Selection *** Try Again");
+                ErrorView.display(this.getClass().getName(),
+                        "\n*** Invalid Selection *** Try Again");
                 break;
         }
         return false;

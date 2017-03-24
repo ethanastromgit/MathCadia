@@ -5,6 +5,9 @@
  */
 package byui.cit260.mathcadia.control;
 
+import MathCadia.MathCadia;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,6 +20,9 @@ import static org.junit.Assert.*;
  * @author ethan
  */
 public class InventoryControlTest {
+    
+    protected final BufferedReader keyboard = MathCadia.getInFile();
+    protected final PrintWriter console = MathCadia.getOutFile();
     
     public InventoryControlTest() {
     }
@@ -42,8 +48,8 @@ public class InventoryControlTest {
      */
     @Test
     public void testValidateLength1() {
-        System.out.println("validateLength");
-        System.out.println("\tTest Case #1");
+        this.console.println("validateLength");
+        this.console.println("\tTest Case #1");
         
         int input = 5;
         
