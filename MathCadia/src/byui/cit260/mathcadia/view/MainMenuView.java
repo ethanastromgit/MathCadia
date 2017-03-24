@@ -90,7 +90,10 @@ public class MainMenuView extends View {
     }
 
     private void returnToCurrentGame() {
+        MathCadia.getCurrentGame().getPlayer();
+        GameMenuView gameMenu = new GameMenuView();
         
+        gameMenu.display();
     }
     
     private void saveGame() {
@@ -109,7 +112,7 @@ public class MainMenuView extends View {
     private void loadGame() {
         
         this.console.print("\n\nEnter the file path for the file "
-                + "where the game is to be saved.");
+                + "where the game is saved.");
         
         String filePath = this.getInput();
         
