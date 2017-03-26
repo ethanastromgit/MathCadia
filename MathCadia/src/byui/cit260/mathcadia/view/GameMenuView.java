@@ -6,10 +6,10 @@
 package byui.cit260.mathcadia.view;
 
 import MathCadia.MathCadia;
-import byui.cit260.mathcadia.control.EnemiesControl;
 import byui.cit260.mathcadia.model.Game;
-import byui.cit260.mathcadia.model.Location;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,11 +27,9 @@ public class GameMenuView extends View {
                   + "\n M - View Map                   "
                   + "\n Q - Main Menu                  "
                   + "\n H - Help Menu                 "
-                      + ""
-                      + "\n L - call the playerDies() function"
-                      + " for RuntimeException purposes "
-                      + "\n K - call the playerWins() function"
-                      + " for RuntimeException purposes "
+                      + "\n"
+                      + "\n L - call the printInventory() function "
+                      + "\n K - call the printPlayer() function"
                   + "\n--------------------------------");
     }
     
@@ -66,10 +64,18 @@ public class GameMenuView extends View {
                 helpMenuView.display();
                 break;
             case "L": 
-                EnemiesControl.playerDies();
+                try {
+                    PrintInventoryStats.printInventory(0, 0, choice);
+                } catch (IOException ex) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             case "K": 
-                EnemiesControl.playerWins();
+                try {
+                    PrintPlayerStats.printPlayer(0, 0, choice);
+                } catch (IOException ex) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             default:
                 ErrorView.display(this.getClass().getName(),

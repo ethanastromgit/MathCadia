@@ -5,12 +5,6 @@
  */
 package byui.cit260.mathcadia.control;
 
-import byui.cit260.mathcadia.model.Enemies;
-import byui.cit260.mathcadia.model.Game;
-import byui.cit260.mathcadia.model.Inventory;
-import byui.cit260.mathcadia.model.Location;
-import byui.cit260.mathcadia.model.Map;
-import byui.cit260.mathcadia.model.Player;
 import byui.cit260.mathcadia.exceptions.EnemiesControlException;
 import byui.cit260.mathcadia.exceptions.LoseGameException;
 import byui.cit260.mathcadia.exceptions.WinGameException;

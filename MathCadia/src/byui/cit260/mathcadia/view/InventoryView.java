@@ -12,7 +12,6 @@ import byui.cit260.mathcadia.exceptions.InventoryControlException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,13 +21,13 @@ import java.util.logging.Logger;
  */
 public class InventoryView {
 
+    Inventory inv = new Inventory();
+    
     private final String menu;
     private final String lengthView;
     private final String widthView;
     private final String heightView;
-    private String volume;
-
-    int volumeDisplay = Inventory.getVolume();
+    private String volumeView;
 
     protected final BufferedReader keyboard = MathCadia.getInFile();
     protected final PrintWriter console = MathCadia.getOutFile();
@@ -39,10 +38,16 @@ public class InventoryView {
                 + "\nThe dimensions must be greater than 0 and less than or equal to 10."
                 + "\nThe amount of potions you "
                 + "\nwill be able to carry will be equal to the volume divided by 50.";
+        
         this.lengthView = "Please enter the desired length:";
+       
         this.widthView = "Please enter the desired width:";
+        
         this.heightView = "Please enter the desired height:";
-        this.volume = "The volume of your bag is " + volumeDisplay + "."
+        
+        this.volumeView = "The volume of your bag is " 
+                + inv.getVolume()
+                + "."
                 + "\nPress Q to go back to Game Menu.";
 
     }
@@ -199,9 +204,9 @@ public class InventoryView {
         boolean valid = false; //Initialize to not valid
 
         while (!valid) {
-            this.volume = "The volume of your bag is " + Inventory.getVolume() + "."
+            this.volumeView = "The volume of your bag is " + inv.getVolume() + "."
                     + "\nPress Q to go back to Game Menu.";
-            this.console.println("\n" + this.volume);
+            //this.console.println("\n" + this.volume);
 
             try {
                 value = keyboard.readLine(); //Get next line typed on keyboard
@@ -238,7 +243,7 @@ public class InventoryView {
         valid = InventoryControl.validateLength(input);
 
         if (valid = true) {
-            Inventory.setLength(input);
+            inv.setLength(input);
             return true;
         } else {
             return false;
@@ -260,7 +265,7 @@ public class InventoryView {
         valid = InventoryControl.validateWidth(input);
 
         if (valid = true) {
-            Inventory.setWidth(input);
+            inv.setWidth(input);
             return true;
         } else {
             return false;
@@ -278,21 +283,21 @@ public class InventoryView {
                     "\nYou must enter a valid number."
                     + " Try again or enter Q to quit.");
         }
-        Inventory.setHeight(input);
+        inv.setHeight(input);
         boolean valid = false;
-        int length = Inventory.getLength();
-        int width = Inventory.getWidth();
-        int height = Inventory.getHeight();
+        int length = inv.getLength();
+        int width = inv.getWidth();
+        int height = inv.getHeight();
 
         valid = InventoryControl.validateHeight(input);
 
         if (valid = true) {
-            Inventory.setHeight(input);
+            inv.setHeight(input);
             int volume = InventoryControl.calcInventoryVol(length, width, height);
-            Inventory.setVolume(volume);
+            inv.setVolume(volume);
 
             int maxPotionAmt = InventoryControl.calcMaxPotionAmt(volume);
-            Inventory.setMaxPotionAmt(maxPotionAmt);
+            inv.setMaxPotionAmt(maxPotionAmt);
 
             return true;
         } else {

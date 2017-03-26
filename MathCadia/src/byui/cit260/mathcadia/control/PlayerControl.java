@@ -5,14 +5,9 @@
  */
 package byui.cit260.mathcadia.control;
 
-import byui.cit260.mathcadia.model.Enemies;
-import byui.cit260.mathcadia.model.Game;
 import byui.cit260.mathcadia.model.Inventory;
-import byui.cit260.mathcadia.model.Location;
-import byui.cit260.mathcadia.model.Map;
 import byui.cit260.mathcadia.model.Player;
 import byui.cit260.mathcadia.exceptions.PlayerControlException;
-import java.awt.Point;
 
 /**
  *
@@ -20,39 +15,36 @@ import java.awt.Point;
  */
 public class PlayerControl {
     
+    
     public PlayerControl() {
 
     }
 
-    public static boolean isMoveValid(String input, Point coordinates) throws PlayerControlException {
+    public static boolean isMoveValid(String input, int column, int row) throws PlayerControlException {
 
-        if (coordinates.x == 0 && input == "W") {
+        if (column == 0 && input.equals("W")) {
             throw new PlayerControlException("You cannot move out of bounds.");
-        } else if (coordinates.x == 2 && input == "E") {
+        } else if (column == 2 && input.equals("E")) {
             throw new PlayerControlException("You cannot move out of bounds.");
-        } else if (coordinates.y == 0 && input == "S") {
+        } else if (row == 0 && input.equals("S")) {
             throw new PlayerControlException("You cannot move out of bounds.");
-        } else if (coordinates.y == 8 && input == "N") {
+        } else if (row == 8 && input.equals("N")) {
             throw new PlayerControlException("You cannot move out of bounds.");
-        }
+        } else
         return true;
 
     }
 
-    public static void movePlayer(String input, Point coordinates) {
+    public static void movePlayer(String input, int column, int row) {
 
-        if (input == "N") {
-            int newRow = coordinates.y + 1;
-            Player.setCoordinates(coordinates);
-        } else if (input == "S") {
-            int newRow = coordinates.y - 1;
-            Player.setCoordinates(coordinates);
-        } else if (input == "W") {
-            int newRow = coordinates.x - 1;
-            Player.setCoordinates(coordinates);
-        } else if (input == "E") {
-            int newRow = coordinates.x + 1;
-            Player.setCoordinates(coordinates);
+        if (input.equals("N")) {
+            int newRow = row + 1;
+        } else if (input.equals("S")) {
+            int newRow = row - 1;
+        } else if (input.equals("W")) {
+            int newRow = column - 1;
+        } else if (input.equals("E")) {
+            int newRow = column + 1;
         }
     }
 
@@ -60,8 +52,6 @@ public class PlayerControl {
         if (potionAmt >= 1) {
             healthPoints += 2;
             potionAmt--;
-            Player.setHealthPoints(healthPoints);
-            Inventory.setPotionAmt(potionAmt);
         } else if (potionAmt == 0) {
             throw new PlayerControlException("You do not have any potions left!");
         }

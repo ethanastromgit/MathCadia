@@ -1,13 +1,11 @@
 package byui.cit260.mathcadia.model;
 
-import java.awt.Point;
 import java.io.Serializable;
-import java.util.Objects;
 
 
 public class Player implements Serializable {
     
-    private Game[] game;
+    private Inventory inventory;
     
     //Constructor
 
@@ -15,27 +13,36 @@ public class Player implements Serializable {
         
     }
     
-    public Player(Game[] game, String name) {
-        this.game = game;
-        this.name = name;
-    }
-    
-    
     //Attributes
     private String name;
-    private static int healthPoints;
-    private static int keyAmt;
-    private static int skipAmt;
-    private static Point coordinates;
+    private int healthPoints;
+    private int keyAmt;
+    private int skipAmt;
+    private int column;
+    private int row;
 
-    //Getters & Setters
-
-    public Game[] getGame() {
-        return game;
+    public Inventory getInventory() {
+        return inventory;
     }
 
-    public void setGame(Game[] game) {
-        this.game = game;
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
     }
 
     public String getName() {
@@ -46,36 +53,28 @@ public class Player implements Serializable {
         this.name = name;
     }
 
-    public static int getHealthPoints() {
+    public int getHealthPoints() {
         return healthPoints;
     }
 
-    public static void setHealthPoints(int healthPoints) {
-        Player.healthPoints = healthPoints;
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
     }
 
-    public static int getKeyAmt() {
+    public int getKeyAmt() {
         return keyAmt;
     }
 
-    public static void setKeyAmt(int keyAmt) {
-        Player.keyAmt = keyAmt;
+    public void setKeyAmt(int keyAmt) {
+        this.keyAmt = keyAmt;
     }
 
-    public static int getSkipAmt() {
+    public int getSkipAmt() {
         return skipAmt;
     }
 
-    public static void setSkipAmt(int skipAmt) {
-        Player.skipAmt = skipAmt;
-    }
-
-    public static Point getCoordinates() {
-        return coordinates;
-    }
-
-    public static void setCoordinates(Point coordinates) {
-        Player.coordinates = coordinates;
+    public void setSkipAmt(int skipAmt) {
+        this.skipAmt = skipAmt;
     }
 
     

@@ -14,6 +14,9 @@ import byui.cit260.mathcadia.model.Player;
  */
 public class SeeInventoryView extends View {
 
+    Inventory inv = new Inventory();
+    Player player = new Player();
+    
     public SeeInventoryView() {
 
         super("\n M - See how many potions you can hold."
@@ -31,22 +34,22 @@ public class SeeInventoryView extends View {
         switch (choice) {
             case "M":
                 this.console.println("\n You can hold a maximum of "
-                        + Inventory.getMaxPotionAmt()
+                        + inv.getMaxPotionAmt()
                         + " potions.");
                 break;
             case "P":
                 this.console.println("\n You currently have "
-                        + Inventory.getPotionAmt()
+                        + inv.getPotionAmt()
                         + " potions.");
                 break;
             case "H":
                 this.console.println("\n Your player currently has "
-                        + Player.getHealthPoints()
+                        + player.getHealthPoints()
                         + " health points.");
                 break;
             case "K":
                 this.console.println("\n Your player currently has "
-                        + Player.getKeyAmt()
+                        + player.getKeyAmt()
                         + " keys.");
                 break;
             case "Q":

@@ -1,55 +1,46 @@
 package byui.cit260.mathcadia.model;
 
 import MathCadia.MathCadia;
-import byui.cit260.mathcadia.view.ErrorView;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.util.Random;
 
 public class Map implements Serializable{
-
-    private Game[] game;
     
     protected final BufferedReader keyboard = MathCadia.getInFile();
     protected final PrintWriter console = MathCadia.getOutFile();
     
-    //Constructor
+    public static final int COLUMNCOUNT = 3;
+    public static final int ROWCOUNT = 9;
+    
+    private Location[][] matrix = new Location [COLUMNCOUNT][ROWCOUNT];
+    
     public Map() {
         
     }
     
-    public Map(int COLUMNCOUNT, int ROWCOUNT) {
+    public void initializeMap()  {
         
-        if (COLUMNCOUNT < 1 || ROWCOUNT < 1) {
-            ErrorView.display(this.getClass().getName(),
-                    "The number of rows and columns must be > zero");
-            return;
-        }
+        Random rand = new Random();
         
-        this.COLUMNCOUNT = COLUMNCOUNT;
-        this.ROWCOUNT = ROWCOUNT;
-        
-        //Create 2D array for Location objects
-        this.locations = new Location[COLUMNCOUNT][ROWCOUNT];
-        
-        for (int col = 0; col < COLUMNCOUNT; col++) {
-            for (int row = 0; row < ROWCOUNT; row++) {
+        for (int locColumn = 0; locColumn < COLUMNCOUNT; locColumn++) {
+            for (int locRow = 0; locRow < ROWCOUNT; locRow++) {
+
                 //Create and initialize new Loaction object instance
                 Location location = new Location();
-                location.setCol(col);
-                location.setRow(row);
+                location.setLocColumn(locColumn);
+                location.setLocRow(locRow);
                 location.setLocationVisited(false);
                 
+                boolean randomLocHasPotion = rand.nextBoolean();
+                location.setHasPotion(randomLocHasPotion);
+                
                 //Assign the Location object to the current position in array
-                locations[col][row] = location;
+                matrix[locColumn][locRow] = location;
             }
         }
     }
-    
-    //Attributes
-    private int ROWCOUNT;
-    private int COLUMNCOUNT;
-    private Location[][] locations;
 
     public int getROWCOUNT() {
         return ROWCOUNT;
@@ -60,13 +51,11 @@ public class Map implements Serializable{
     }
 
     public Location[][] getLocations() {
-        return locations;
+        return matrix;
     }
 
     public void setLocations(Location[][] locations) {
-        this.locations = locations;
+        this.matrix = locations;
     }
-
-    
     
 }

@@ -5,12 +5,11 @@
  */
 package byui.cit260.mathcadia.view;
 
+import MathCadia.MathCadia;
 import byui.cit260.mathcadia.control.PlayerControl;
 import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Player;
-import static byui.cit260.mathcadia.model.Player.getCoordinates;
 import byui.cit260.mathcadia.exceptions.PlayerControlException;
-import java.awt.Point;
 
 /**
  *
@@ -18,6 +17,9 @@ import java.awt.Point;
  */
 public class TravelView extends View {
 
+    Player player = MathCadia.getCurrentGame().getPlayer();
+    Inventory inv = MathCadia.getCurrentGame().getPlayer().getInventory();
+    
     int potionAmt = 1;
     int maxPotionAmt = 3;
     boolean hasPotion = false;
@@ -38,9 +40,11 @@ public class TravelView extends View {
     @Override
     public boolean doAction(String choice) {
 
+         
+         int column = player.getColumn();
+         int row = player.getRow();
+        
         choice = choice.toUpperCase(); //Convert choice to upper case
-
-        Point coordinates = getCoordinates();
 
         switch (choice) {
             case "N":
@@ -50,21 +54,23 @@ public class TravelView extends View {
                 boolean moveValidity = false;
                 
                 try {
-                    moveValidity = PlayerControl.isMoveValid(choice, coordinates);
+                    moveValidity = PlayerControl.isMoveValid(choice, column, row);
                 } catch (PlayerControlException pce) {
                     ErrorView.display(this.getClass().getName(),
                             pce.getMessage());
                 }
                     
                 if (moveValidity = true) {
-                    PlayerControl.movePlayer(choice, coordinates);
+                    PlayerControl.movePlayer(choice, column, row);
+                    player.setRow(row);
+                    player.setColumn(column);
                     this.console.println("Your player has moved " + choice + ".");
                 }
                 else
                 break;
             case "P":
-                int potionAmt = Inventory.getPotionAmt();
-                int healthPoints = Player.getHealthPoints();
+                int potionAmt = inv.getPotionAmt();
+                int healthPoints = player.getHealthPoints();
 
                 try {
                     PlayerControl.recoverHealth(potionAmt, healthPoints);

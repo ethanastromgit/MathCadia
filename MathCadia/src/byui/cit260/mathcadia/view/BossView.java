@@ -19,19 +19,24 @@ import java.util.logging.Logger;
  */
 public class BossView {
     
+    Enemies enemies = new Enemies();
+    String bossDescription = enemies.getBossDescription();
+    String bossEquation = enemies.getBossEquation();
+    
     private String menu;
     
     protected final BufferedReader keyboard = MathCadia.getInFile();
     protected final PrintWriter console = MathCadia.getOutFile();
     
     public BossView() {
-        String[] equations = Enemies.Boss.getEquations();
         
-        this.menu = "\nYou have run into the boss! "
-                + "Do defeat the boss and win the game, "
+        this.menu = "Description: " 
+                + bossDescription
+                + "\nYou have run into the boss! "
+                + "To defeat the boss and win the game, "
                 + "you must answer the following question."
                 + "\n"
-                + equations[3];
+                + bossEquation;
     }
     
     public void display() {
