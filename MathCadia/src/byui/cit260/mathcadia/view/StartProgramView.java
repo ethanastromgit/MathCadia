@@ -11,7 +11,6 @@ import byui.cit260.mathcadia.model.Player;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -75,7 +74,7 @@ public class StartProgramView {
 
         if (playersName.length() < 2) {
             ErrorView.display(this.getClass().getName(),
-                    "\nInvalid players name: Your name must be mor ethan one character in length.");
+                    "\nInvalid players name: Your name must be more than one character in length.");
             return false;
         }
 

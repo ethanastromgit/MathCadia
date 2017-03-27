@@ -10,6 +10,8 @@ import byui.cit260.mathcadia.exceptions.GameControlException;
 import byui.cit260.mathcadia.model.Game;
 import byui.cit260.mathcadia.model.Player;
 import byui.cit260.mathcadia.exceptions.MapControlException;
+import byui.cit260.mathcadia.model.Inventory;
+import byui.cit260.mathcadia.model.Map;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -37,13 +39,54 @@ public class GameControl {
 
     public static void createNewGame(Player player) throws MapControlException {
 
-        Game game = new Game(); //Create new game
+        Game currentGame = new Game(); //Create new game
+
         
 
-        game.setPlayer(player); //Save player in game
-
-
-        MathCadia.setCurrentGame(game); //Save in MathCadia
+        Map map = new Map();
+        
+        map.initializeMap();
+        
+        int startingColumn = 1;
+        int startingRow = 0;
+        
+        map.setMapEntranceColumn(startingColumn);
+        map.setMapEntranceRow(startingRow);
+        map.getLocationAt(startingColumn, startingRow).setLocationVisited(true);
+        
+        int exitColumn = 2;
+        int exitRow = 8;
+        map.setMapExitColumn(exitColumn);
+        map.setMapExitRow(exitRow);
+        
+        currentGame.setGameMap(map);
+        
+        
+        
+        player.setColumn(1);
+        player.setRow(0);
+        player.setHealthPoints(10);
+        player.setSkipAmt(2);
+        player.setKeyAmt(0);
+        
+        currentGame.setGamePlayer(player); //Save player in game
+        
+        
+        
+        Inventory inv = new Inventory();
+        
+        inv.setHeight(0);
+        inv.setLength(0);
+        inv.setWidth(0);
+        inv.setMaxPotionAmt(0);
+        inv.setPotionAmt(0);
+        inv.setVolume(0);
+        
+        player.setInventory(inv);
+        
+        
+        
+        MathCadia.setCurrentGame(currentGame); //Save in MathCadia
     }
 
     public static void saveGame(Game currentGame, String filePath) 

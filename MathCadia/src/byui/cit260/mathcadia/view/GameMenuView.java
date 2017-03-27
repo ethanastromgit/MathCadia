@@ -29,8 +29,8 @@ public class GameMenuView extends View {
                   + "\n Q - Main Menu                  "
                   + "\n H - Help Menu                 "
                       + "\n"
-                      + "\n L - call the printInventory() function "
-                      + "\n K - call the printPlayer() function"
+                      + "\n L - call the printPlayer() function "
+                      + "\n K - call the printInventory() function"
                   + "\n--------------------------------");
     }
     

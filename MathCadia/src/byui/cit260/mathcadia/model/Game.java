@@ -1,16 +1,12 @@
 package byui.cit260.mathcadia.model;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Objects;
 
 public class Game implements Serializable {
 
     //Attributes
-    private Player player;
-    private Inventory inventory;
-    private Map map;
-    private Enemies[] enemies;
+    private Player gamePlayer;
+    private Map gameMap;
     
     //Constructor
     public Game() {
@@ -19,79 +15,35 @@ public class Game implements Serializable {
     
     //Getters and Setters
     public Player getPlayer() {
-        return player;
+        return gamePlayer;
     }
 
     public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public Inventory getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
+        this.gamePlayer = player;
     }
 
     public Map getMap() {
-        return map;
+        return gameMap;
     }
 
     public void setMap(Map map) {
-        this.map = map;
+        this.gameMap = map;
     }
 
-    public Enemies[] getEnemies() {
-        return enemies;
+    public Player getGamePlayer() {
+        return gamePlayer;
     }
 
-    public void setEnemies(Enemies[] enemies) {
-        this.enemies = enemies;
+    public void setGamePlayer(Player gamePlayer) {
+        this.gamePlayer = gamePlayer;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.player);
-        hash = 97 * hash + Objects.hashCode(this.inventory);
-        hash = 97 * hash + Objects.hashCode(this.map);
-        hash = 97 * hash + Arrays.deepHashCode(this.enemies);
-        return hash;
+    public Map getGameMap() {
+        return gameMap;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Game other = (Game) obj;
-        if (!Objects.equals(this.player, other.player)) {
-            return false;
-        }
-        if (!Objects.equals(this.inventory, other.inventory)) {
-            return false;
-        }
-        if (!Objects.equals(this.map, other.map)) {
-            return false;
-        }
-        if (!Arrays.deepEquals(this.enemies, other.enemies)) {
-            return false;
-        }
-        return true;
+    public void setGameMap(Map gameMap) {
+        this.gameMap = gameMap;
     }
-
-    @Override
-    public String toString() {
-        return "Game{" + "player=" + player + ", inventory=" + inventory + ", map=" + map + ", enemies=" + enemies + '}';
-    }
-
-    
     
 }

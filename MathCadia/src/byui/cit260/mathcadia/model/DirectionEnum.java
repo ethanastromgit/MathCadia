@@ -9,6 +9,6 @@ package byui.cit260.mathcadia.model;
  *
  * @author ethan
  */
-public enum EnemyTypeEnum {
-    
+public enum DirectionEnum {
+    NONE, NORTH, SOUTH, EAST, WEST
 }

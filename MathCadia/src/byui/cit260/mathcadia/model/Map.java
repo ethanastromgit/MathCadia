@@ -11,10 +11,14 @@ public class Map implements Serializable{
     protected final BufferedReader keyboard = MathCadia.getInFile();
     protected final PrintWriter console = MathCadia.getOutFile();
     
-    public static final int COLUMNCOUNT = 3;
-    public static final int ROWCOUNT = 9;
+    public static final int COLUMNS = 3;
+    public static final int ROWS = 9;
+    private Location[][] matrix = new Location [COLUMNS][ROWS];
+    private int mapEntranceColumn;
+    private int mapEntranceRow;
+    private int mapExitColumn;
+    private int mapExitRow;
     
-    private Location[][] matrix = new Location [COLUMNCOUNT][ROWCOUNT];
     
     public Map() {
         
@@ -24,8 +28,8 @@ public class Map implements Serializable{
         
         Random rand = new Random();
         
-        for (int locColumn = 0; locColumn < COLUMNCOUNT; locColumn++) {
-            for (int locRow = 0; locRow < ROWCOUNT; locRow++) {
+        for (int locColumn = 0; locColumn < COLUMNS; locColumn++) {
+            for (int locRow = 0; locRow < ROWS; locRow++) {
 
                 //Create and initialize new Loaction object instance
                 Location location = new Location();
@@ -42,20 +46,54 @@ public class Map implements Serializable{
         }
     }
 
+    
+    
     public int getROWCOUNT() {
-        return ROWCOUNT;
+        return ROWS;
     }
 
     public int getCOLUMNCOUNT() {
-        return COLUMNCOUNT;
+        return COLUMNS;
     }
 
-    public Location[][] getLocations() {
-        return matrix;
+    public Location getLocationAt(int col, int row) {
+        return matrix[col][row];
     }
 
     public void setLocations(Location[][] locations) {
         this.matrix = locations;
+    }
+
+    public int getMapEntranceColumn() {
+        return mapEntranceColumn;
+    }
+
+    public void setMapEntranceColumn(int mapEntranceColumn) {
+        this.mapEntranceColumn = mapEntranceColumn;
+    }
+
+    public int getMapEntranceRow() {
+        return mapEntranceRow;
+    }
+
+    public void setMapEntranceRow(int mapEntranceRow) {
+        this.mapEntranceRow = mapEntranceRow;
+    }
+
+    public int getMapExitColumn() {
+        return mapExitColumn;
+    }
+
+    public void setMapExitColumn(int mapExitColumn) {
+        this.mapExitColumn = mapExitColumn;
+    }
+
+    public int getMapExitRow() {
+        return mapExitRow;
+    }
+
+    public void setMapExitRow(int mapExitRow) {
+        this.mapExitRow = mapExitRow;
     }
     
 }

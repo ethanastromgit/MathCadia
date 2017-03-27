@@ -7,27 +7,29 @@ package byui.cit260.mathcadia.model;
 
 import java.io.Serializable;
 
-public class Location extends Map implements Serializable {
+public class Location implements Serializable {
     
     //Constructor
-    public Location() {
-        
-    }
+    
     
     private Enemies enemies;
 
-    private boolean isLocationSafe;
+    private boolean locationSafe;
     private boolean locationVisited;
     private boolean hasPotion;
     private int locColumn;
     private int locRow;
 
-    public boolean isIsLocationSafe() {
-        return isLocationSafe;
+    public Location() {
+        
+    }
+    
+    public boolean isLocationSafe() {
+        return locationSafe;
     }
 
-    public void setIsLocationSafe(boolean isLocationSafe) {
-        this.isLocationSafe = isLocationSafe;
+    public void setLocationSafe(boolean isLocationSafe) {
+        this.locationSafe = isLocationSafe;
     }
 
     public boolean isLocationVisited() {

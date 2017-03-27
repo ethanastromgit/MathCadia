@@ -40,11 +40,6 @@ public class InventoryView {
                 + "\nwill be able to carry will be equal to the volume divided by 50.";
 
         this.lengthView = "Please enter the desired length:";
-
-        this.widthView = "Please enter the desired width:";
-
-        this.heightView = "Please enter the desired height:";
-
     }
 
     public void displayLength() {
@@ -147,6 +142,7 @@ public class InventoryView {
         boolean valid = false; //Initialize to not valid
 
         while (!valid) {
+            this.widthView = "Please enter the desired width:";
             this.console.println("\n" + this.widthView);
 
             try {
@@ -173,6 +169,7 @@ public class InventoryView {
         boolean valid = false; //Initialize to not valid
 
         while (!valid) {
+             this.heightView = "Please enter the desired height:";
             this.console.println("\n" + this.heightView);
 
             try {
@@ -226,43 +223,37 @@ public class InventoryView {
     private boolean doActionLength(String choice) throws InventoryControlException {
 
          boolean valid = false;
-         boolean result = false;
-         int input = 0;
         
         try {
-            input = Integer.parseInt(choice);
-            valid = InventoryControl.validateLength(input);
-
-            if (valid = true) {
-                inv.setLength(input);
-                result = true;
-            } else {
-                result = false;
-            }
+           valid = InventoryControl.validateLength(Integer.parseInt(choice));
         } catch (NumberFormatException nf) {
             ErrorView.display(this.getClass().getName(),
                     "\nYou must enter a valid number."
                     + " Try again or enter Q to quit.");
         }
-
-       return result;
+        
+        if (valid = true) {
+            inv.setLength(Integer.parseInt(choice));
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private boolean doActionWidth(String choice) throws InventoryControlException {
-        int input = 0;
+        
+        boolean valid = false;
+        
         try {
-            input = Integer.parseInt(choice);
+            valid = InventoryControl.validateLength(Integer.parseInt(choice));
         } catch (NumberFormatException nf) {
             ErrorView.display(this.getClass().getName(),
                     "\nYou must enter a valid number."
                     + " Try again or enter Q to quit.");
         }
-        boolean valid = false;
-
-        valid = InventoryControl.validateWidth(input);
 
         if (valid = true) {
-            inv.setWidth(input);
+            inv.setWidth(Integer.parseInt(choice));
             return true;
         } else {
             return false;
@@ -272,24 +263,22 @@ public class InventoryView {
 
     private boolean doActionHeight(String choice) throws InventoryControlException {
 
-        int input = 0;
+        boolean valid = false;
+        
         try {
-            input = Integer.parseInt(choice);
+            valid = InventoryControl.validateLength(Integer.parseInt(choice));
         } catch (NumberFormatException nf) {
             ErrorView.display(this.getClass().getName(),
                     "\nYou must enter a valid number."
                     + " Try again or enter Q to quit.");
         }
-        inv.setHeight(input);
-        boolean valid = false;
+        inv.setHeight(Integer.parseInt(choice));
+        
         int length = inv.getLength();
         int width = inv.getWidth();
         int height = inv.getHeight();
 
-        valid = InventoryControl.validateHeight(input);
-
         if (valid = true) {
-            inv.setHeight(input);
             int volume = InventoryControl.calcInventoryVol(length, width, height);
             inv.setVolume(volume);
 
