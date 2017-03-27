@@ -21,34 +21,29 @@ import java.util.logging.Logger;
  */
 public class InventoryView {
 
-    Inventory inv = new Inventory();
-    
-    private final String menu;
-    private final String lengthView;
-    private final String widthView;
-    private final String heightView;
+    Inventory inv = MathCadia.getCurrentGame().getPlayer().getInventory();
+
+    private String menu;
+    private String lengthView;
+    private String widthView;
+    private String heightView;
     private String volumeView;
 
     protected final BufferedReader keyboard = MathCadia.getInFile();
     protected final PrintWriter console = MathCadia.getOutFile();
-    
+
     public InventoryView() {
 
         this.menu = "\nNow you will set up your inventory volume. "
                 + "\nThe dimensions must be greater than 0 and less than or equal to 10."
                 + "\nThe amount of potions you "
                 + "\nwill be able to carry will be equal to the volume divided by 50.";
-        
+
         this.lengthView = "Please enter the desired length:";
-       
+
         this.widthView = "Please enter the desired width:";
-        
+
         this.heightView = "Please enter the desired height:";
-        
-        this.volumeView = "The volume of your bag is " 
-                + inv.getVolume()
-                + "."
-                + "\nPress Q to go back to Game Menu.";
 
     }
 
@@ -97,7 +92,7 @@ public class InventoryView {
                 ErrorView.display(this.getClass().getName(),
                         ice.getMessage());
             }
-            
+
         }
 
         this.displayVolume();
@@ -204,9 +199,11 @@ public class InventoryView {
         boolean valid = false; //Initialize to not valid
 
         while (!valid) {
-            this.volumeView = "The volume of your bag is " + inv.getVolume() + "."
-                    + "\nPress Q to go back to Game Menu.";
-            //this.console.println("\n" + this.volume);
+             this.volumeView = "The volume of your bag is "
+                + inv.getVolume()
+                + "."
+                + "\nPress Q to go back to Game Menu.";
+            this.console.println("\n" + this.volumeView);
 
             try {
                 value = keyboard.readLine(); //Get next line typed on keyboard
@@ -228,27 +225,27 @@ public class InventoryView {
 
     private boolean doActionLength(String choice) throws InventoryControlException {
 
-        int input = 0;
-
+         boolean valid = false;
+         boolean result = false;
+         int input = 0;
+        
         try {
             input = Integer.parseInt(choice);
+            valid = InventoryControl.validateLength(input);
+
+            if (valid = true) {
+                inv.setLength(input);
+                result = true;
+            } else {
+                result = false;
+            }
         } catch (NumberFormatException nf) {
             ErrorView.display(this.getClass().getName(),
                     "\nYou must enter a valid number."
                     + " Try again or enter Q to quit.");
         }
 
-        boolean valid = false;
-
-        valid = InventoryControl.validateLength(input);
-
-        if (valid = true) {
-            inv.setLength(input);
-            return true;
-        } else {
-            return false;
-        }
-
+       return result;
     }
 
     private boolean doActionWidth(String choice) throws InventoryControlException {

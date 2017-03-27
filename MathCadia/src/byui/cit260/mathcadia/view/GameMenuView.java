@@ -5,8 +5,9 @@
  */
 package byui.cit260.mathcadia.view;
 
+import byui.cit260.mathcadia.control.PrintPlayerStats;
+import byui.cit260.mathcadia.control.PrintInventoryStats;
 import MathCadia.MathCadia;
-import byui.cit260.mathcadia.model.Game;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,18 +65,10 @@ public class GameMenuView extends View {
                 helpMenuView.display();
                 break;
             case "L": 
-                try {
-                    PrintInventoryStats.printInventory(0, 0, choice);
-                } catch (IOException ex) {
-                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                this.printPlayerStatsView();
                 break;
             case "K": 
-                try {
-                    PrintPlayerStats.printPlayer(0, 0, choice);
-                } catch (IOException ex) {
-                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                this.printInventoryStatsView();
                 break;
             default:
                 ErrorView.display(this.getClass().getName(),
@@ -85,10 +78,66 @@ public class GameMenuView extends View {
         return false;
     }
     
-    private void displayMap() {
-        StringBuilder line;
+    private void printPlayerStatsView() {
         
-        Game game = MathCadia.getCurrentGame();
-       // Location[][] location = game.getMap().getLocation[][];
+        String filePath = null;
+        boolean valid = false;
+        
+        this.console.println("\n\nEnter the file path for the file where the stats will be saved.");
+        
+        while (!valid) {
+            try {
+                
+                filePath = this.keyboard.readLine();
+                filePath = filePath.trim();
+                
+                if (filePath.length() < 1) {
+                    this.console.println("\nInvalid value: value cannot be blank.");
+                } else {
+                    valid = true;
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        try {
+            PrintPlayerStats.printPlayer(MathCadia.getCurrentGame().getPlayer().getHealthPoints(), MathCadia.getCurrentGame().getPlayer().getKeyAmt(), filePath);
+            this.console.println("\nPlayer stats successfully written to file" + filePath + ".");
+        } catch (Exception ex) {
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
     }
+    
+    private void printInventoryStatsView() {
+        
+        String filePath = null;
+        boolean valid = false;
+        
+        this.console.println("\n\nEnter the file path for the file where the stats will be saved.");
+        
+        while (!valid) {
+            try {
+                
+                filePath = this.keyboard.readLine();
+                filePath = filePath.trim();
+                
+                if (filePath.length() < 1) {
+                    this.console.println("\nInvalid value: value cannot be blank.");
+                } else {
+                    valid = true;
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        try {
+            PrintInventoryStats.printInventory(MathCadia.getCurrentGame().getPlayer().getInventory().getPotionAmt(), MathCadia.getCurrentGame().getPlayer().getInventory().getVolume(), filePath);
+            this.console.println("\nInventory stats successfully written to file" + filePath + ".");
+        } catch (Exception ex) {
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
+    }
+    
 }

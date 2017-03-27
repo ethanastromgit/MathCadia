@@ -8,7 +8,6 @@ package byui.cit260.mathcadia.control;
 import MathCadia.MathCadia;
 import byui.cit260.mathcadia.exceptions.GameControlException;
 import byui.cit260.mathcadia.model.Game;
-import byui.cit260.mathcadia.model.Map;
 import byui.cit260.mathcadia.model.Player;
 import byui.cit260.mathcadia.exceptions.MapControlException;
 import java.io.FileInputStream;
