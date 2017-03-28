@@ -14,7 +14,6 @@ public class Location implements Serializable {
     
     private Enemies enemies;
 
-    private boolean locationSafe;
     private boolean locationVisited;
     private boolean hasPotion;
     private int locColumn;
@@ -22,14 +21,6 @@ public class Location implements Serializable {
 
     public Location() {
         
-    }
-    
-    public boolean isLocationSafe() {
-        return locationSafe;
-    }
-
-    public void setLocationSafe(boolean isLocationSafe) {
-        this.locationSafe = isLocationSafe;
     }
 
     public boolean isLocationVisited() {

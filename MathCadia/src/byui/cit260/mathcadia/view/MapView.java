@@ -12,14 +12,15 @@ package byui.cit260.mathcadia.view;
 class MapView extends View {
 
     public MapView() {
-        super("\n___________"
-                + "\n|    B    |"
-                + "\n|    E    |"
-                + "\n|         |"
-                + "\n|    E    |"
-                + "\n|         |"
-                + "\n|    E    |"
-                + "\n|         |"
+        super("\n_________"
+                + "\n|      B       |"
+                + "\n|               |"
+                + "\n|      E       |"
+                + "\n|               |"
+                + "\n|      E       |"
+                + "\n|               |"
+                + "\n|      E       |"
+                + "\n|               |"
                 + "\n|___ X ___|"
                 + "\n           "
                 + "\n B is the boss room."

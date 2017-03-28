@@ -5,12 +5,6 @@
  */
 package byui.cit260.mathcadia.control;
 
-import byui.cit260.mathcadia.model.Enemies;
-import byui.cit260.mathcadia.model.Game;
-import byui.cit260.mathcadia.model.Inventory;
-import byui.cit260.mathcadia.model.Location;
-import byui.cit260.mathcadia.model.Map;
-import byui.cit260.mathcadia.model.Player;
 import byui.cit260.mathcadia.exceptions.InventoryControlException;
 
 /**
@@ -64,16 +58,6 @@ public class InventoryControl {
         int volume = length * width * height;
       
         return volume;
-    }
-
-    public static int addPotion(int potionAmt, int maxPotionAmt, boolean hasPotion) throws InventoryControlException {
-
-        if (hasPotion == true && potionAmt != maxPotionAmt) {
-            potionAmt++;
-        } else {
-            throw new InventoryControlException("You did not get a potion. Either the location did not have a potion or you are carrying too many potions.");
-        }
-        return potionAmt;
     }
 
     public static int calcMaxPotionAmt(int volume) {

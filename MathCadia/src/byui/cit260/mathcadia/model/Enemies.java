@@ -35,14 +35,9 @@ public class Enemies implements Serializable {
     private final String bossEquation = "What is 6 + 8 * 3 - 9 / 3?";
     private final String bossAnswer = "27";
     private Location bossLocation;
-    private final boolean isBoss = true;
 
     public Enemies() {
 
-    }
-
-    public boolean isIsBoss() {
-        return isBoss;
     }
 
     public int getAttackDamage() {

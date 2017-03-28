@@ -8,6 +8,7 @@ package byui.cit260.mathcadia.control;
 import MathCadia.MathCadia;
 import byui.cit260.mathcadia.exceptions.PlayerControlException;
 import byui.cit260.mathcadia.model.DirectionEnum;
+import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Location;
 import byui.cit260.mathcadia.model.Map;
 import byui.cit260.mathcadia.model.Player;
@@ -19,45 +20,45 @@ import byui.cit260.mathcadia.model.Player;
 public class PlayerControl {
     
     Map map = MathCadia.getCurrentGame().getGameMap();
+    Inventory inv = MathCadia.getCurrentGame().getGamePlayer().getPlayerInventory();
+    
     
     public PlayerControl() {
 
     }
 
-    public static boolean isMoveValid(Player player, DirectionEnum direction) throws PlayerControlException {
-
-        Location playerLocation = player.getPlayerPosition();
+    public static boolean isMoveValid(Location playerLocation, DirectionEnum direction) throws PlayerControlException {
         
         switch(direction) {
             case NORTH:
                 if (playerLocation.getLocRow() == 8) {
-                    throw new PlayerControlException("\n You cannot go"
+                    throw new PlayerControlException("\n You cannot go "
                             + direction.toString()
-                            + "because you will be out of bounds.");
+                            + " because you will be out of bounds.");
                 } else {
                    return true;
                 }
             case SOUTH:
                 if (playerLocation.getLocRow() == 0) {
-                    throw new PlayerControlException("\n You cannot go"
+                    throw new PlayerControlException("\n You cannot go "
                             + direction.toString()
-                            + "because you will be out of bounds.");
+                            + " because you will be out of bounds.");
                 } else {
                     return true;
                 }
             case EAST:
                 if (playerLocation.getLocColumn() == 2) {
-                    throw new PlayerControlException("\n You cannot go"
+                    throw new PlayerControlException("\n You cannot go "
                             + direction.toString()
-                            + "because you will be out of bounds.");
+                            + " because you will be out of bounds.");
                 } else {
                     return true;
                 }
             case WEST:
                 if (playerLocation.getLocColumn() == 0) {
-                    throw new PlayerControlException("\n You cannot go"
+                    throw new PlayerControlException("\n You cannot go "
                             + direction.toString()
-                            + "because you will be out of bounds.");
+                            + " because you will be out of bounds.");
                 } else {
                     return true;
                 }
@@ -67,9 +68,7 @@ public class PlayerControl {
 
     }
 
-    public static void movePlayer(Player player, DirectionEnum direction) {
-
-        Location playerLocation = player.getPlayerPosition();
+    public static void movePlayer(Location playerLocation, DirectionEnum direction) {
         
         switch (direction) {
             case NORTH:
@@ -96,6 +95,15 @@ public class PlayerControl {
         
     }
 
+    public static boolean isPotionHere(Location location, int potionAmt) {
+        if (location.isHasPotion() == true) {
+            return true;
+        } else {
+            return false;
+        }
+            
+    }
+    
     public static void recoverHealth(int potionAmt, int healthPoints) throws PlayerControlException {
         if (potionAmt >= 1) {
             healthPoints += 2;

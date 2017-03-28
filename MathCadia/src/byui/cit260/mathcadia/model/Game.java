@@ -7,6 +7,7 @@ public class Game implements Serializable {
     //Attributes
     private Player gamePlayer;
     private Map gameMap;
+    private Enemies enemies;
     
     //Constructor
     public Game() {
@@ -14,6 +15,14 @@ public class Game implements Serializable {
     }
     
     //Getters and Setters
+    public Enemies getEnemies() {
+        return enemies;
+    }
+
+    public void setEnemies(Enemies enemies) {    
+        this.enemies = enemies;
+    }
+
     public Player getPlayer() {
         return gamePlayer;
     }

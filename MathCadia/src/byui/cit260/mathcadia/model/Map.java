@@ -16,8 +16,6 @@ public class Map implements Serializable{
     private Location[][] matrix = new Location [COLUMNS][ROWS];
     private int mapEntranceColumn;
     private int mapEntranceRow;
-    private int mapExitColumn;
-    private int mapExitRow;
     
     
     public Map() {
@@ -27,12 +25,13 @@ public class Map implements Serializable{
     public void initializeMap()  {
         
         Random rand = new Random();
+        Location location = new Location();
         
         for (int locColumn = 0; locColumn < COLUMNS; locColumn++) {
             for (int locRow = 0; locRow < ROWS; locRow++) {
 
                 //Create and initialize new Loaction object instance
-                Location location = new Location();
+                
                 location.setLocColumn(locColumn);
                 location.setLocRow(locRow);
                 location.setLocationVisited(false);
@@ -40,10 +39,14 @@ public class Map implements Serializable{
                 boolean randomLocHasPotion = rand.nextBoolean();
                 location.setHasPotion(randomLocHasPotion);
                 
+                
+                
                 //Assign the Location object to the current position in array
                 matrix[locColumn][locRow] = location;
             }
         }
+        
+        
     }
 
     
@@ -78,22 +81,6 @@ public class Map implements Serializable{
 
     public void setMapEntranceRow(int mapEntranceRow) {
         this.mapEntranceRow = mapEntranceRow;
-    }
-
-    public int getMapExitColumn() {
-        return mapExitColumn;
-    }
-
-    public void setMapExitColumn(int mapExitColumn) {
-        this.mapExitColumn = mapExitColumn;
-    }
-
-    public int getMapExitRow() {
-        return mapExitRow;
-    }
-
-    public void setMapExitRow(int mapExitRow) {
-        this.mapExitRow = mapExitRow;
     }
     
 }

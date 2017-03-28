@@ -5,9 +5,9 @@
  */
 package byui.cit260.mathcadia.control;
 
-import byui.cit260.mathcadia.exceptions.EnemiesControlException;
 import byui.cit260.mathcadia.exceptions.LoseGameException;
 import byui.cit260.mathcadia.exceptions.WinGameException;
+import byui.cit260.mathcadia.model.Location;
 
 /**
  *
@@ -16,11 +16,25 @@ import byui.cit260.mathcadia.exceptions.WinGameException;
 public class EnemiesControl {
 
     public int playerInput;
-
-    public void isAnswerOneCorrect(int equationOneAnswer, int healthPoints, int attackDamage, int keyAmt) {
-        if (playerInput == equationOneAnswer) {
+    
+    public static boolean isEnemyHere(Location playerLocation, Location bossLocation, Location enemyOneLocation, Location enemyTwoLocation, Location enemyThreeLocation) {
+        if (playerLocation.getLocColumn() == bossLocation.getLocColumn() && playerLocation.getLocRow() == bossLocation.getLocRow()) {
+            return true;
+        } else if (playerLocation.getLocColumn() == enemyOneLocation.getLocColumn() && playerLocation.getLocRow() == enemyOneLocation.getLocRow()) {
+            return true;
+        } else if (playerLocation.getLocColumn() == enemyTwoLocation.getLocColumn() && playerLocation.getLocRow() == enemyTwoLocation.getLocRow()) {
+            return true;
+        } else if (playerLocation.getLocColumn() == enemyThreeLocation.getLocColumn() && playerLocation.getLocRow() == enemyThreeLocation.getLocRow()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public static void isAnswerOneCorrect(String playerInput, String enemyOneAnswer, int healthPoints, int attackDamage, int keyAmt) {
+        if (playerInput.equals(enemyOneAnswer)) {
             keyAmt++;
-        } else if (playerInput != equationOneAnswer) {
+        } else if (!playerInput.equals(enemyOneAnswer)) {
             healthPoints -= attackDamage;
         }
         if (healthPoints == 0) {
@@ -28,41 +42,34 @@ public class EnemiesControl {
         }
     }
 
-    public void isAnswerTwoCorrect(int equationTwoAnswer, int healthPoints, int attackDamage, int keyAmt) {
-        if (playerInput == equationTwoAnswer) {
+    public static void isAnswerTwoCorrect(String playerInput, String enemyTwoAnswer, int healthPoints, int attackDamage, int keyAmt) {
+        if (playerInput.equals(enemyTwoAnswer)) {
             keyAmt++;
-        } else if (playerInput != equationTwoAnswer) {
+        } else if (!playerInput.equals(enemyTwoAnswer)) {
             healthPoints -= attackDamage;
         } else if (healthPoints == 0) {
             playerDies();
         }
     }
 
-    public void isAnswerThreeCorrect(int equationThreeAnswer, int healthPoints, int attackDamage, int keyAmt) {
-        if (playerInput == equationThreeAnswer) {
+    public static void isAnswerThreeCorrect(String playerInput, String enemyThreeAnswer, int healthPoints, int attackDamage, int keyAmt) {
+        if (playerInput.equals(enemyThreeAnswer)) {
             keyAmt++;
-        } else if (playerInput != equationThreeAnswer) {
+        } else if (!playerInput.equals(enemyThreeAnswer)) {
             healthPoints -= attackDamage;
         } else if (healthPoints == 0) {
             playerDies();
         }
     }
 
-    public void isBossAnswerCorrect(int bossEquationAnswer, int healthPoints, int attackDamage) {
-        if (playerInput == bossEquationAnswer) {
+    public static void isBossAnswerCorrect(String playerInput, String bossAnswer, int healthPoints, int attackDamage, int keyAmt) {
+        if (playerInput.equals(bossAnswer)) {
             playerWins();
-        } else if (playerInput != bossEquationAnswer) {
+        } else if (!playerInput.equals(bossAnswer)) {
             healthPoints -= attackDamage;
         } else if (healthPoints == 0) {
             playerDies();
         }
-    }
-
-    public int cannotSkip(boolean isBoss, int skipAmt) throws EnemiesControlException {
-        if (isBoss == true) {
-            throw new EnemiesControlException("You cannot skip the boss question!");
-        }
-        return skipAmt;
     }
 
     public static void playerDies() {

@@ -6,6 +6,7 @@
 package byui.cit260.mathcadia.view;
 
 import MathCadia.MathCadia;
+import byui.cit260.mathcadia.model.Enemies;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,13 +19,17 @@ import java.util.logging.Logger;
  */
 public class EnemyOneView {
     
+    Enemies enemies = MathCadia.getCurrentGame().getEnemies();
+    
     private String menu;
     
     protected final BufferedReader keyboard = MathCadia.getInFile();
     protected final PrintWriter console = MathCadia.getOutFile();
     
     public EnemyOneView() {
-        this.menu = "";
+        this.menu = enemies.getEnemyOneDescription()
+                + "\n"
+                + enemies.getEnemyOneEquation();
     }
     
     public void display() {

@@ -10,7 +10,9 @@ import byui.cit260.mathcadia.exceptions.GameControlException;
 import byui.cit260.mathcadia.model.Game;
 import byui.cit260.mathcadia.model.Player;
 import byui.cit260.mathcadia.exceptions.MapControlException;
+import byui.cit260.mathcadia.model.Enemies;
 import byui.cit260.mathcadia.model.Inventory;
+import byui.cit260.mathcadia.model.Location;
 import byui.cit260.mathcadia.model.Map;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -42,31 +44,30 @@ public class GameControl {
         Game currentGame = new Game(); //Create new game
 
         
-
-        Map map = new Map();
+        //Set up map
+        Map gameMap = new Map();
         
-        map.initializeMap();
+        gameMap.initializeMap();
         
-        map.setMapEntranceColumn(1);
-        map.setMapEntranceRow(0);
-        map.getLocationAt(1, 0).setLocationVisited(true);
+        gameMap.setMapEntranceColumn(1);
+        gameMap.setMapEntranceRow(0);
+        gameMap.getLocationAt(1, 0).setLocationVisited(true);
         
-        map.setMapExitColumn(2);
-        map.setMapExitRow(8);
+        currentGame.setGameMap(gameMap);
         
-        currentGame.setGameMap(map);
         
+        //Set up player
         Player gamePlayer = new Player();
         
         gamePlayer.setHealthPoints(10);
         gamePlayer.setSkipAmt(2);
         gamePlayer.setKeyAmt(0);
-        gamePlayer.setPlayerPosition(map.getLocationAt(1, 0));
         
         currentGame.setGamePlayer(gamePlayer); //Save player in game
         
         
         
+        //Set up inventory
         Inventory inv = new Inventory();
         
         inv.setHeight(0);
@@ -78,6 +79,16 @@ public class GameControl {
         
         gamePlayer.setPlayerInventory(inv);
         
+        
+        //Set up enemy locations
+        Enemies enemies = new Enemies();
+        
+        enemies.setEnemyOneLocation(gameMap.getLocationAt(1, 2));
+        enemies.setEnemyTwoLocation(gameMap.getLocationAt(1, 4));
+        enemies.setEnemyThreeLocation(gameMap.getLocationAt(1, 6));
+        enemies.setBossLocation(gameMap.getLocationAt(1, 8));
+        
+        currentGame.setEnemies(enemies);
         
         
         MathCadia.setCurrentGame(currentGame); //Save in MathCadia
