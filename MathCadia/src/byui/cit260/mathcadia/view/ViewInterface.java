@@ -5,14 +5,16 @@
  */
 package byui.cit260.mathcadia.view;
 
+import byui.cit260.mathcadia.exceptions.GameControlException;
+
 /**
  *
  * @author ethan
  */
 public interface ViewInterface {
     
-    public void display();
+    public void display() throws GameControlException;
     public String getInput();
-    public boolean doAction(String value);
+    public boolean doAction(String value) throws GameControlException;
     
 }

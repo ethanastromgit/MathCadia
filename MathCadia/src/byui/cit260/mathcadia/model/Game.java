@@ -45,5 +45,10 @@ public class Game implements Serializable {
     public void setGameMap(Map gameMap) {
         this.gameMap = gameMap;
     }
+
+    @Override
+    public String toString() {
+        return "Game{" + "gamePlayer=" + gamePlayer + ", gameMap=" + gameMap + '}';
+    }
     
 }

@@ -8,6 +8,7 @@ package byui.cit260.mathcadia.view;
 import byui.cit260.mathcadia.control.PrintPlayerStats;
 import byui.cit260.mathcadia.control.PrintInventoryStats;
 import MathCadia.MathCadia;
+import byui.cit260.mathcadia.exceptions.GameControlException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +45,11 @@ public class GameMenuView extends View {
         switch (choice) {
             case "T": 
                 TravelView tv = new TravelView();
-                tv.display();
+                try {
+                    tv.display();
+                } catch (GameControlException ex) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             case "S": 
                 InventoryView iv = new InventoryView();
@@ -52,17 +57,29 @@ public class GameMenuView extends View {
                 break;
             case "I": 
                 SeeInventoryView siv = new SeeInventoryView();
-                siv.display();
+                try {
+                    siv.display();
+                } catch (GameControlException ex) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             case "M":
                 MapView mv = new MapView();
-                mv.display();
+                try {
+                    mv.display();
+                } catch (GameControlException ex) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             case "Q": 
                 return true;
             case "H": 
                 HelpMenuView helpMenuView = new HelpMenuView();
-                helpMenuView.display();
+                try {
+                    helpMenuView.display();
+                } catch (GameControlException ex) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             case "L": 
                 this.printPlayerStatsView();
@@ -83,7 +100,7 @@ public class GameMenuView extends View {
         String filePath = null;
         boolean valid = false;
         
-        this.console.println("\n\nEnter the file path for the file where the stats will be saved.");
+        this.console.println("\n\nEnter the file name for the file where the stats will be saved.");
         
         while (!valid) {
             try {
@@ -133,7 +150,7 @@ public class GameMenuView extends View {
         }
         
         try {
-            PrintInventoryStats.printInventory(MathCadia.getCurrentGame().getPlayer().getInventory().getPotionAmt(), MathCadia.getCurrentGame().getPlayer().getInventory().getVolume(), filePath);
+            PrintInventoryStats.printInventory(MathCadia.getCurrentGame().getGamePlayer().getPlayerInventory().getPotionAmt(), MathCadia.getCurrentGame().getGamePlayer().getPlayerInventory().getVolume(), filePath);
             this.console.println("\nInventory stats successfully written to file" + filePath + ".");
         } catch (Exception ex) {
             ErrorView.display("GameMenuView", ex.getMessage());

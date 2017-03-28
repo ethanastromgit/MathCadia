@@ -16,7 +16,7 @@ import byui.cit260.mathcadia.model.Player;
 public class SeeInventoryView extends View {
 
     Player player = MathCadia.getCurrentGame().getGamePlayer();
-    Inventory inv = MathCadia.getCurrentGame().getGamePlayer().getInventory();
+    Inventory inv = MathCadia.getCurrentGame().getGamePlayer().getPlayerInventory();
     
     public SeeInventoryView() {
 

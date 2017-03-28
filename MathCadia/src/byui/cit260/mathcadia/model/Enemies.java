@@ -13,35 +13,36 @@ import java.util.Objects;
  * @author danielhernandez
  */
 public class Enemies implements Serializable {
-    
+
     private final int attackDamage = 2;
-    
+
     private final String enemyOneDescription = "First enemy with key.";
     private final String enemyOneEquation = "What is 5 + 3?";
     private final String enemyOneAnswer = "8";
-    private int enemyOneColumn;
-    private int enemyOneRow;
-    
+    private Location enemyOneLocation;
+
     private final String enemyTwoDescription = "Second enemy with key.";
     private final String enemyTwoEquation = "What is 7 * 5?";
     private final String enemyTwoAnswer = "35";
-   private int enemyTwoColumn;
-    private int enemyTwoRow;
-    
+    private Location enemyTwoLocation;
+
     private final String enemyThreeDescription = "Third enemy with key.";
     private final String enemyThreeEquation = "What is 54 / 9?";
     private final String enemyThreeAnswer = "6";
-    private int enemyThreeColumn;
-    private int enemyThreeRow;
-    
+    private Location enemyThreeLocation;
+
     private final String bossDescription = "Final enemy. Game is over after defeated.";
     private final String bossEquation = "What is 6 + 8 * 3 - 9 / 3?";
     private final String bossAnswer = "27";
-    private int bossColumn;
-    private int bossRow;
+    private Location bossLocation;
+    private final boolean isBoss = true;
 
     public Enemies() {
 
+    }
+
+    public boolean isIsBoss() {
+        return isBoss;
     }
 
     public int getAttackDamage() {
@@ -95,95 +96,59 @@ public class Enemies implements Serializable {
     public String getBossAnswer() {
         return bossAnswer;
     }
-    
-    public int getEnemyOneColumn() {
-        return enemyOneColumn;
+
+    public Location getEnemyOneLocation() {
+        return enemyOneLocation;
     }
 
-    public void setEnemyOneColumn(int enemyOneColumn) {
-        this.enemyOneColumn = enemyOneColumn;
+    public void setEnemyOneLocation(Location enemyOneLocation) {
+        this.enemyOneLocation = enemyOneLocation;
     }
 
-    public int getEnemyOneRow() {
-        return enemyOneRow;
+    public Location getEnemyTwoLocation() {
+        return enemyTwoLocation;
     }
 
-    public void setEnemyOneRow(int enemyOneRow) {
-        this.enemyOneRow = enemyOneRow;
+    public void setEnemyTwoLocation(Location enemyTwoLocation) {
+        this.enemyTwoLocation = enemyTwoLocation;
     }
 
-    public int getEnemyTwoColumn() {
-        return enemyTwoColumn;
+    public Location getEnemyThreeLocation() {
+        return enemyThreeLocation;
     }
 
-    public void setEnemyTwoColumn(int enemyTwoColumn) {
-        this.enemyTwoColumn = enemyTwoColumn;
+    public void setEnemyThreeLocation(Location enemyThreeLocation) {
+        this.enemyThreeLocation = enemyThreeLocation;
     }
 
-    public int getEnemyTwoRow() {
-        return enemyTwoRow;
+    public Location getBossLocation() {
+        return bossLocation;
     }
 
-    public void setEnemyTwoRow(int enemyTwoRow) {
-        this.enemyTwoRow = enemyTwoRow;
-    }
-
-    public int getEnemyThreeColumn() {
-        return enemyThreeColumn;
-    }
-
-    public void setEnemyThreeColumn(int enemyThreeColumn) {
-        this.enemyThreeColumn = enemyThreeColumn;
-    }
-
-    public int getEnemyThreeRow() {
-        return enemyThreeRow;
-    }
-
-    public void setEnemyThreeRow(int enemyThreeRow) {
-        this.enemyThreeRow = enemyThreeRow;
-    }
-
-    public int getBossColumn() {
-        return bossColumn;
-    }
-
-    public void setBossColumn(int bossColumn) {
-        this.bossColumn = bossColumn;
-    }
-
-    public int getBossRow() {
-        return bossRow;
-    }
-
-    public void setBossRow(int bossRow) {
-        this.bossRow = bossRow;
+    public void setBossLocation(Location bossLocation) {
+        this.bossLocation = bossLocation;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + this.attackDamage;
-        hash = 67 * hash + Objects.hashCode(this.enemyOneDescription);
-        hash = 67 * hash + Objects.hashCode(this.enemyOneEquation);
-        hash = 67 * hash + Objects.hashCode(this.enemyOneAnswer);
-        hash = 67 * hash + this.enemyOneColumn;
-        hash = 67 * hash + this.enemyOneRow;
-        hash = 67 * hash + Objects.hashCode(this.enemyTwoDescription);
-        hash = 67 * hash + Objects.hashCode(this.enemyTwoEquation);
-        hash = 67 * hash + Objects.hashCode(this.enemyTwoAnswer);
-        hash = 67 * hash + this.enemyTwoColumn;
-        hash = 67 * hash + this.enemyTwoRow;
-        hash = 67 * hash + Objects.hashCode(this.enemyThreeDescription);
-        hash = 67 * hash + Objects.hashCode(this.enemyThreeEquation);
-        hash = 67 * hash + Objects.hashCode(this.enemyThreeAnswer);
-        hash = 67 * hash + this.enemyThreeColumn;
-        hash = 67 * hash + this.enemyThreeRow;
-        hash = 67 * hash + Objects.hashCode(this.bossDescription);
-        hash = 67 * hash + Objects.hashCode(this.bossEquation);
-        hash = 67 * hash + Objects.hashCode(this.bossAnswer);
-        hash = 67 * hash + this.bossColumn;
-        hash = 67 * hash + this.bossRow;
+        int hash = 3;
+        hash = 59 * hash + this.attackDamage;
+        hash = 59 * hash + Objects.hashCode(this.enemyOneDescription);
+        hash = 59 * hash + Objects.hashCode(this.enemyOneEquation);
+        hash = 59 * hash + Objects.hashCode(this.enemyOneAnswer);
+        hash = 59 * hash + Objects.hashCode(this.enemyOneLocation);
+        hash = 59 * hash + Objects.hashCode(this.enemyTwoDescription);
+        hash = 59 * hash + Objects.hashCode(this.enemyTwoEquation);
+        hash = 59 * hash + Objects.hashCode(this.enemyTwoAnswer);
+        hash = 59 * hash + Objects.hashCode(this.enemyTwoLocation);
+        hash = 59 * hash + Objects.hashCode(this.enemyThreeDescription);
+        hash = 59 * hash + Objects.hashCode(this.enemyThreeEquation);
+        hash = 59 * hash + Objects.hashCode(this.enemyThreeAnswer);
+        hash = 59 * hash + Objects.hashCode(this.enemyThreeLocation);
+        hash = 59 * hash + Objects.hashCode(this.bossDescription);
+        hash = 59 * hash + Objects.hashCode(this.bossEquation);
+        hash = 59 * hash + Objects.hashCode(this.bossAnswer);
+        hash = 59 * hash + Objects.hashCode(this.bossLocation);
         return hash;
     }
 
@@ -200,30 +165,6 @@ public class Enemies implements Serializable {
         }
         final Enemies other = (Enemies) obj;
         if (this.attackDamage != other.attackDamage) {
-            return false;
-        }
-        if (this.enemyOneColumn != other.enemyOneColumn) {
-            return false;
-        }
-        if (this.enemyOneRow != other.enemyOneRow) {
-            return false;
-        }
-        if (this.enemyTwoColumn != other.enemyTwoColumn) {
-            return false;
-        }
-        if (this.enemyTwoRow != other.enemyTwoRow) {
-            return false;
-        }
-        if (this.enemyThreeColumn != other.enemyThreeColumn) {
-            return false;
-        }
-        if (this.enemyThreeRow != other.enemyThreeRow) {
-            return false;
-        }
-        if (this.bossColumn != other.bossColumn) {
-            return false;
-        }
-        if (this.bossRow != other.bossRow) {
             return false;
         }
         if (!Objects.equals(this.enemyOneDescription, other.enemyOneDescription)) {
@@ -262,14 +203,24 @@ public class Enemies implements Serializable {
         if (!Objects.equals(this.bossAnswer, other.bossAnswer)) {
             return false;
         }
+        if (!Objects.equals(this.enemyOneLocation, other.enemyOneLocation)) {
+            return false;
+        }
+        if (!Objects.equals(this.enemyTwoLocation, other.enemyTwoLocation)) {
+            return false;
+        }
+        if (!Objects.equals(this.enemyThreeLocation, other.enemyThreeLocation)) {
+            return false;
+        }
+        if (!Objects.equals(this.bossLocation, other.bossLocation)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Enemies{" + "attackDamage=" + attackDamage + ", enemyOneDescription=" + enemyOneDescription + ", enemyOneEquation=" + enemyOneEquation + ", enemyOneAnswer=" + enemyOneAnswer + ", enemyOneColumn=" + enemyOneColumn + ", enemyOneRow=" + enemyOneRow + ", enemyTwoDescription=" + enemyTwoDescription + ", enemyTwoEquation=" + enemyTwoEquation + ", enemyTwoAnswer=" + enemyTwoAnswer + ", enemyTwoColumn=" + enemyTwoColumn + ", enemyTwoRow=" + enemyTwoRow + ", enemyThreeDescription=" + enemyThreeDescription + ", enemyThreeEquation=" + enemyThreeEquation + ", enemyThreeAnswer=" + enemyThreeAnswer + ", enemyThreeColumn=" + enemyThreeColumn + ", enemyThreeRow=" + enemyThreeRow + ", bossDescription=" + bossDescription + ", bossEquation=" + bossEquation + ", bossAnswer=" + bossAnswer + ", bossColumn=" + bossColumn + ", bossRow=" + bossRow + '}';
+        return "Enemies{" + "attackDamage=" + attackDamage + ", enemyOneDescription=" + enemyOneDescription + ", enemyOneEquation=" + enemyOneEquation + ", enemyOneAnswer=" + enemyOneAnswer + ", enemyOneLocation=" + enemyOneLocation + ", enemyTwoDescription=" + enemyTwoDescription + ", enemyTwoEquation=" + enemyTwoEquation + ", enemyTwoAnswer=" + enemyTwoAnswer + ", enemyTwoLocation=" + enemyTwoLocation + ", enemyThreeDescription=" + enemyThreeDescription + ", enemyThreeEquation=" + enemyThreeEquation + ", enemyThreeAnswer=" + enemyThreeAnswer + ", enemyThreeLocation=" + enemyThreeLocation + ", bossDescription=" + bossDescription + ", bossEquation=" + bossEquation + ", bossAnswer=" + bossAnswer + ", bossLocation=" + bossLocation + '}';
     }
 
-    
-    
 }

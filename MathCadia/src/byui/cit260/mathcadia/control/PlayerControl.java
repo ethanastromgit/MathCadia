@@ -5,9 +5,12 @@
  */
 package byui.cit260.mathcadia.control;
 
-import byui.cit260.mathcadia.model.Inventory;
-import byui.cit260.mathcadia.model.Player;
+import MathCadia.MathCadia;
 import byui.cit260.mathcadia.exceptions.PlayerControlException;
+import byui.cit260.mathcadia.model.DirectionEnum;
+import byui.cit260.mathcadia.model.Location;
+import byui.cit260.mathcadia.model.Map;
+import byui.cit260.mathcadia.model.Player;
 
 /**
  *
@@ -15,37 +18,82 @@ import byui.cit260.mathcadia.exceptions.PlayerControlException;
  */
 public class PlayerControl {
     
+    Map map = MathCadia.getCurrentGame().getGameMap();
     
     public PlayerControl() {
 
     }
 
-    public static boolean isMoveValid(String input, int column, int row) throws PlayerControlException {
+    public static boolean isMoveValid(Player player, DirectionEnum direction) throws PlayerControlException {
 
-        if (column == 0 && input.equals("W")) {
-            throw new PlayerControlException("You cannot move out of bounds.");
-        } else if (column == 2 && input.equals("E")) {
-            throw new PlayerControlException("You cannot move out of bounds.");
-        } else if (row == 0 && input.equals("S")) {
-            throw new PlayerControlException("You cannot move out of bounds.");
-        } else if (row == 8 && input.equals("N")) {
-            throw new PlayerControlException("You cannot move out of bounds.");
-        } else
-        return true;
+        Location playerLocation = player.getPlayerPosition();
+        
+        switch(direction) {
+            case NORTH:
+                if (playerLocation.getLocRow() == 8) {
+                    throw new PlayerControlException("\n You cannot go"
+                            + direction.toString()
+                            + "because you will be out of bounds.");
+                } else {
+                   return true;
+                }
+            case SOUTH:
+                if (playerLocation.getLocRow() == 0) {
+                    throw new PlayerControlException("\n You cannot go"
+                            + direction.toString()
+                            + "because you will be out of bounds.");
+                } else {
+                    return true;
+                }
+            case EAST:
+                if (playerLocation.getLocColumn() == 2) {
+                    throw new PlayerControlException("\n You cannot go"
+                            + direction.toString()
+                            + "because you will be out of bounds.");
+                } else {
+                    return true;
+                }
+            case WEST:
+                if (playerLocation.getLocColumn() == 0) {
+                    throw new PlayerControlException("\n You cannot go"
+                            + direction.toString()
+                            + "because you will be out of bounds.");
+                } else {
+                    return true;
+                }
+            default:
+                return false;
+        }
 
     }
 
-    public static void movePlayer(String input, int column, int row) {
+    public static void movePlayer(Player player, DirectionEnum direction) {
 
-        if (input.equals("N")) {
-            int newRow = row + 1;
-        } else if (input.equals("S")) {
-            int newRow = row - 1;
-        } else if (input.equals("W")) {
-            int newRow = column - 1;
-        } else if (input.equals("E")) {
-            int newRow = column + 1;
+        Location playerLocation = player.getPlayerPosition();
+        
+        switch (direction) {
+            case NORTH:
+                playerLocation.setLocRow(playerLocation.getLocRow() + 1);
+                MathCadia.getPlayer().setPlayerPosition(playerLocation);
+                
+                MathCadia.getCurrentGame().getGameMap().getLocationAt(playerLocation.getLocRow(), playerLocation.getLocColumn()).setLocationVisited(true);
+            case SOUTH:
+                playerLocation.setLocRow(playerLocation.getLocRow() - 1);
+                MathCadia.getPlayer().setPlayerPosition(playerLocation);
+                
+                MathCadia.getCurrentGame().getGameMap().getLocationAt(playerLocation.getLocRow(), playerLocation.getLocColumn()).setLocationVisited(true);
+            case EAST:
+                playerLocation.setLocColumn(playerLocation.getLocColumn() + 1);
+                MathCadia.getPlayer().setPlayerPosition(playerLocation);
+                
+                MathCadia.getCurrentGame().getGameMap().getLocationAt(playerLocation.getLocRow(), playerLocation.getLocColumn()).setLocationVisited(true);
+            case WEST:
+                playerLocation.setLocColumn(playerLocation.getLocColumn() - 1);
+                MathCadia.getPlayer().setPlayerPosition(playerLocation);
+                
+                MathCadia.getCurrentGame().getGameMap().getLocationAt(playerLocation.getLocRow(), playerLocation.getLocColumn()).setLocationVisited(true);
         }
+        
     }
 
     public static void recoverHealth(int potionAmt, int healthPoints) throws PlayerControlException {

@@ -5,13 +5,6 @@
  */
 package byui.cit260.mathcadia.view;
 
-import MathCadia.MathCadia;
-import byui.cit260.mathcadia.view.MainMenuView;
-import byui.cit260.mathcadia.view.GameMenuView;
-import byui.cit260.mathcadia.control.GameControl;
-import byui.cit260.mathcadia.model.Player;
-import java.util.Scanner;
-
 /**
  *
  * @author ethan

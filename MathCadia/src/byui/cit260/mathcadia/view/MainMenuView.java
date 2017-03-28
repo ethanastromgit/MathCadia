@@ -11,6 +11,12 @@ import byui.cit260.mathcadia.exceptions.GameControlException;
 import byui.cit260.mathcadia.exceptions.LoseGameException;
 import byui.cit260.mathcadia.exceptions.MapControlException;
 import byui.cit260.mathcadia.exceptions.WinGameException;
+import byui.cit260.mathcadia.model.Game;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -51,12 +57,20 @@ public class MainMenuView extends View {
             case "S": //Save Current Game
                 this.saveGame();
                 break;
-            case "L": //Load Saved Game
-                this.loadGame();
+            case "L":
+                try {
+                    this.loadGame();
+                } catch (GameControlException ex) {
+                    Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             case "H": //Display Help Menu
                 HelpMenuView helpMenuView = new HelpMenuView();
-                helpMenuView.display();
+                try {
+                    helpMenuView.display();
+                } catch (GameControlException ex) {
+                    Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             case "X": //Exit Game
                 this.exitGame();
@@ -93,7 +107,11 @@ public class MainMenuView extends View {
         MathCadia.getCurrentGame().getPlayer();
         GameMenuView gameMenu = new GameMenuView();
         
-        gameMenu.display();
+        try {
+            gameMenu.display();
+        } catch (GameControlException ex) {
+            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private void saveGame() {
@@ -103,31 +121,72 @@ public class MainMenuView extends View {
         
         try {
             GameControl.saveGame(MathCadia.getCurrentGame(), filePath);
-            this.console.println("\nGame has successfuly save as " + filePath + ".");
+            this.console.println("\nGame has successfuly saved as " + filePath + ".");
         } catch (Exception ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
     }
     
-    private void loadGame() {
+    private void loadGame() throws GameControlException {
         
-        this.console.print("\n\nEnter the file path for the file "
-                + "where the game is saved.");
-        
-        String filePath = this.getInput();
-        
-        try {
-            GameControl.loadGame(filePath);
-        } catch (Exception ex) {
-            ErrorView.display("MainMenuView", ex.getMessage());
+        LoadGameView loadGameView = new LoadGameView();
+        String filePath = loadGameView.getInput();
+
+        Game game = null;
+
+        try (FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream input = new ObjectInputStream(fips);
+
+            game = (Game) input.readObject();
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
         }
+
+        MathCadia.setCurrentGame(game);
+        MathCadia.setPlayer(MathCadia.getCurrentGame().getGamePlayer());
         
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
+        try {
+            gameMenu.display();
+        } catch (GameControlException ex) {
+            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+//        this.console.print("\n\nEnter the file path for the file "
+//                + "where the game is saved.");
+//        
+//        String filePath = this.getInput();
+//        
+//        try {
+//            GameControl.loadGame(filePath);
+//        } catch (Exception ex) {
+//            ErrorView.display("MainMenuView", ex.getMessage());
+//        }
+//        
+//        GameMenuView gameMenu = new GameMenuView();
+//        gameMenu.display();
     }
 
     private void exitGame() {
         
+        try {
+            this.console.println("Do you wish to save the game before exiting?  Y/N");
+
+            String answer = null;
+
+            answer = this.keyboard.readLine();
+            answer.trim();
+            
+            if ((answer.toUpperCase().charAt(0)) == 'Y') {
+                this.saveGame();
+            }
+            
+            System.exit(0);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
     }
 
 }

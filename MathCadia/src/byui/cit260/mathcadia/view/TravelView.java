@@ -10,6 +10,9 @@ import byui.cit260.mathcadia.control.PlayerControl;
 import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Player;
 import byui.cit260.mathcadia.exceptions.PlayerControlException;
+import byui.cit260.mathcadia.model.DirectionEnum;
+import byui.cit260.mathcadia.model.Location;
+import byui.cit260.mathcadia.model.Map;
 
 /**
  *
@@ -17,12 +20,9 @@ import byui.cit260.mathcadia.exceptions.PlayerControlException;
  */
 public class TravelView extends View {
 
-    Player player = MathCadia.getCurrentGame().getPlayer();
-    Inventory inv = MathCadia.getCurrentGame().getPlayer().getInventory();
-    
-    int potionAmt = 1;
-    int maxPotionAmt = 3;
-    boolean hasPotion = false;
+    Map map = MathCadia.getCurrentGame().getGameMap();
+    Player player = MathCadia.getCurrentGame().getGamePlayer();
+    Inventory inv = MathCadia.getCurrentGame().getGamePlayer().getPlayerInventory();
     
     public TravelView() {
         super("\n Choose which direction you would like to travel"
@@ -41,33 +41,36 @@ public class TravelView extends View {
     public boolean doAction(String choice) {
 
          
-         int column = player.getColumn();
-         int row = player.getRow();
+         Location playerLocation = player.getPlayerPosition();
         
         choice = choice.toUpperCase(); //Convert choice to upper case
 
         switch (choice) {
             case "N":
+                this.moveNorth();
             case "S":
+                this.moveSouth();
             case "E":
+                this.moveEast();
             case "W":
-                boolean moveValidity = false;
-                
-                try {
-                    moveValidity = PlayerControl.isMoveValid(choice, column, row);
-                } catch (PlayerControlException pce) {
-                    ErrorView.display(this.getClass().getName(),
-                            pce.getMessage());
-                }
-                    
-                if (moveValidity = true) {
-                    PlayerControl.movePlayer(choice, column, row);
-                    player.setRow(row);
-                    player.setColumn(column);
-                    this.console.println("Your player has moved " + choice + ".");
-                }
-                else
-                break;
+                this.moveWest();
+//                boolean moveValidity = false;
+//                
+//                try {
+//                    moveValidity = PlayerControl.isMoveValid(choice, playerLocation);
+//                } catch (PlayerControlException pce) {
+//                    ErrorView.display(this.getClass().getName(),
+//                            pce.getMessage());
+//                }
+//                    
+//                if (moveValidity = true) {
+//                    PlayerControl.movePlayer(choice, column, row);
+//                    player.setRow(row);
+//                    player.setColumn(column);
+//                    this.console.println("Your player has moved " + choice + ".");
+//                }
+//                else
+//                break;
             case "P":
                 int potionAmt = inv.getPotionAmt();
                 int healthPoints = player.getHealthPoints();
@@ -90,4 +93,29 @@ public class TravelView extends View {
         return false;
     }
 
+    private void moveNorth() {
+        boolean moveValidity = false;
+        
+        try {
+            moveValidity = PlayerControl.isMoveValid(player, DirectionEnum.NORTH);
+        } catch (PlayerControlException pce) {
+            ErrorView.display(this.getClass().getName(),
+                    pce.getMessage());
+        }
+        
+        PlayerControl.movePlayer(player, DirectionEnum.NORTH);
+    }
+    
+    private void moveSouth() {
+        
+    }
+    
+    private void moveEast() {
+        
+    }
+    
+    private void moveWest() {
+        
+    }
+    
 }

@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class InventoryView {
 
-    Inventory inv = MathCadia.getCurrentGame().getPlayer().getInventory();
+    Inventory inv = MathCadia.getCurrentGame().getGamePlayer().getPlayerInventory();
 
     private String menu;
     private String lengthView;

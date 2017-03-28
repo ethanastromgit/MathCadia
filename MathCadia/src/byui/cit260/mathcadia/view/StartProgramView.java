@@ -7,6 +7,7 @@ package byui.cit260.mathcadia.view;
 
 import MathCadia.MathCadia;
 import byui.cit260.mathcadia.control.GameControl;
+import byui.cit260.mathcadia.exceptions.GameControlException;
 import byui.cit260.mathcadia.model.Player;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -105,8 +106,12 @@ public class StartProgramView {
         //Create MainMenuView object
         MainMenuView mainMenuView = new MainMenuView();
 
-        //Display the main menu view
-        mainMenuView.display();
+        try {
+            //Display the main menu view
+            mainMenuView.display();
+        } catch (GameControlException ex) {
+            Logger.getLogger(StartProgramView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void displayStartProgramView() {

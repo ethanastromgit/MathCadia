@@ -6,6 +6,7 @@
 package byui.cit260.mathcadia.view;
 
 import MathCadia.MathCadia;
+import byui.cit260.mathcadia.exceptions.GameControlException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,7 +33,7 @@ public abstract class View implements ViewInterface {
     }
     
     @Override
-    public void display() {
+    public void display() throws GameControlException {
         
         boolean done = false; //Set flag to not done
         do {
@@ -42,9 +43,13 @@ public abstract class View implements ViewInterface {
                 return; //Exit game
             }
             
-            //Do the requested action and display the next view
-            done = this.doAction(value);
-            
+            try {
+                //Do the requested action and display the next view
+                done = this.doAction(value);
+            } catch (GameControlException gce) {
+                ErrorView.display(this.getClass().getName(), gce.getMessage());
+            }
+                
         } while (!done);
     }
     

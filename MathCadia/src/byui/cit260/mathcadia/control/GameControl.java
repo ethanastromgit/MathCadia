@@ -47,29 +47,23 @@ public class GameControl {
         
         map.initializeMap();
         
-        int startingColumn = 1;
-        int startingRow = 0;
+        map.setMapEntranceColumn(1);
+        map.setMapEntranceRow(0);
+        map.getLocationAt(1, 0).setLocationVisited(true);
         
-        map.setMapEntranceColumn(startingColumn);
-        map.setMapEntranceRow(startingRow);
-        map.getLocationAt(startingColumn, startingRow).setLocationVisited(true);
-        
-        int exitColumn = 2;
-        int exitRow = 8;
-        map.setMapExitColumn(exitColumn);
-        map.setMapExitRow(exitRow);
+        map.setMapExitColumn(2);
+        map.setMapExitRow(8);
         
         currentGame.setGameMap(map);
         
+        Player gamePlayer = new Player();
         
+        gamePlayer.setHealthPoints(10);
+        gamePlayer.setSkipAmt(2);
+        gamePlayer.setKeyAmt(0);
+        gamePlayer.setPlayerPosition(map.getLocationAt(1, 0));
         
-        player.setColumn(1);
-        player.setRow(0);
-        player.setHealthPoints(10);
-        player.setSkipAmt(2);
-        player.setKeyAmt(0);
-        
-        currentGame.setGamePlayer(player); //Save player in game
+        currentGame.setGamePlayer(gamePlayer); //Save player in game
         
         
         
@@ -82,7 +76,7 @@ public class GameControl {
         inv.setPotionAmt(0);
         inv.setVolume(0);
         
-        player.setInventory(inv);
+        gamePlayer.setPlayerInventory(inv);
         
         
         
