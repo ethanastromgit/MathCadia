@@ -14,8 +14,6 @@ public class Map implements Serializable{
     public static final int COLUMNS = 3;
     public static final int ROWS = 9;
     private Location[][] matrix = new Location [COLUMNS][ROWS];
-    private int mapEntranceColumn;
-    private int mapEntranceRow;
     
     
     public Map() {
@@ -46,7 +44,6 @@ public class Map implements Serializable{
             }
         }
         
-        
     }
 
     
@@ -65,22 +62,6 @@ public class Map implements Serializable{
 
     public void setLocations(Location[][] locations) {
         this.matrix = locations;
-    }
-
-    public int getMapEntranceColumn() {
-        return mapEntranceColumn;
-    }
-
-    public void setMapEntranceColumn(int mapEntranceColumn) {
-        this.mapEntranceColumn = mapEntranceColumn;
-    }
-
-    public int getMapEntranceRow() {
-        return mapEntranceRow;
-    }
-
-    public void setMapEntranceRow(int mapEntranceRow) {
-        this.mapEntranceRow = mapEntranceRow;
     }
     
 }

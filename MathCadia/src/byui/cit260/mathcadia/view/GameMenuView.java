@@ -9,6 +9,7 @@ import byui.cit260.mathcadia.control.PrintPlayerStats;
 import byui.cit260.mathcadia.control.PrintInventoryStats;
 import MathCadia.MathCadia;
 import byui.cit260.mathcadia.exceptions.GameControlException;
+import byui.cit260.mathcadia.model.Location;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +24,12 @@ public class GameMenuView extends View {
               super("\n--------------------------------"
                   + "\n Game Menu                      "
                   + "\n--------------------------------"
-                  + "\n T - Move Player                "
+                      + "\n\n"
+                      + "Your starting location is 1, 0. "
+                      + "\nUse the View Map function to find wher to go."
+                      + "\n\n"
+                  + "\n T - Move Player    "
+                  + "\n P - Display Current Position            "
                   + "\n S - Set Up Inventory           "
                   + "\n I - View Inventory             "
                   + "\n M - View Map                   "
@@ -50,6 +56,14 @@ public class GameMenuView extends View {
                 } catch (GameControlException ex) {
                     Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                break;
+            case "P":
+                Location playerLocation = MathCadia.getCurrentGame().getGamePlayer().getPlayerLocation();
+                this.console.println("Your player location is " + playerLocation.getLocColumn() + ", " + playerLocation.getLocRow() + ".");
+                break;
+            case "E":
+                Location bossLocation = MathCadia.getCurrentGame().getEnemies().getBossLocation();
+                this.console.println("Your boss location is " + bossLocation.getLocColumn() + ", " + bossLocation.getLocRow() + ".");
                 break;
             case "S": 
                 InventoryView iv = new InventoryView();

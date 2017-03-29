@@ -62,7 +62,7 @@ public class EnemiesControl {
         }
     }
 
-    public static void isBossAnswerCorrect(String playerInput, String bossAnswer, int healthPoints, int attackDamage, int keyAmt) {
+    public static void isBossAnswerCorrect(String playerInput, String bossAnswer, int healthPoints, int attackDamage) {
         if (playerInput.equals(bossAnswer)) {
             playerWins();
         } else if (!playerInput.equals(bossAnswer)) {

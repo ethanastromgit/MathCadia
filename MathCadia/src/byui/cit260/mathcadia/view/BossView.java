@@ -6,7 +6,10 @@
 package byui.cit260.mathcadia.view;
 
 import MathCadia.MathCadia;
+import byui.cit260.mathcadia.control.EnemiesControl;
 import byui.cit260.mathcadia.model.Enemies;
+import byui.cit260.mathcadia.model.Inventory;
+import byui.cit260.mathcadia.model.Player;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,8 +22,9 @@ import java.util.logging.Logger;
  */
 public class BossView {
     
-    Enemies enemies = new Enemies();
+    Enemies enemies = MathCadia.getCurrentGame().getEnemies();
     String bossDescription = enemies.getBossDescription();
+    String bossAnswer = enemies.getBossAnswer();
     String bossEquation = enemies.getBossEquation();
     
     private String menu;
@@ -82,7 +86,21 @@ public class BossView {
     }
     
     private boolean doAction(String choice) {
-        return false;
+        
+        Player player = MathCadia.getCurrentGame().getGamePlayer();
+        
+        int healthPoints = player.getHealthPoints();
+        int attackDamage = enemies.getAttackDamage();
+        
+        EnemiesControl.isBossAnswerCorrect(choice, bossAnswer, healthPoints, attackDamage);
+        player.setHealthPoints(healthPoints);
+        
+        if (choice.equals(bossAnswer)) {
+            return true;
+        } else {
+            return false;
+        }
+        
     }
     
 }

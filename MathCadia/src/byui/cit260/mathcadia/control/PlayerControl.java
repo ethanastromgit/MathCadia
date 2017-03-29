@@ -11,7 +11,6 @@ import byui.cit260.mathcadia.model.DirectionEnum;
 import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Location;
 import byui.cit260.mathcadia.model.Map;
-import byui.cit260.mathcadia.model.Player;
 
 /**
  *
@@ -19,7 +18,7 @@ import byui.cit260.mathcadia.model.Player;
  */
 public class PlayerControl {
     
-    Map map = MathCadia.getCurrentGame().getGameMap();
+    
     Inventory inv = MathCadia.getCurrentGame().getGamePlayer().getPlayerInventory();
     
     
@@ -72,25 +71,17 @@ public class PlayerControl {
         
         switch (direction) {
             case NORTH:
-                playerLocation.setLocRow(playerLocation.getLocRow() + 1);
-                MathCadia.getPlayer().setPlayerPosition(playerLocation);
-                
-                MathCadia.getCurrentGame().getGameMap().getLocationAt(playerLocation.getLocRow(), playerLocation.getLocColumn()).setLocationVisited(true);
+                playerLocation.setLocRow(playerLocation.getLocRow() + 2);
+                MathCadia.getCurrentGame().getGamePlayer().setPlayerLocation(playerLocation);
             case SOUTH:
                 playerLocation.setLocRow(playerLocation.getLocRow() - 1);
-                MathCadia.getPlayer().setPlayerPosition(playerLocation);
-                
-                MathCadia.getCurrentGame().getGameMap().getLocationAt(playerLocation.getLocRow(), playerLocation.getLocColumn()).setLocationVisited(true);
+                MathCadia.getCurrentGame().getGamePlayer().setPlayerLocation(playerLocation);
             case EAST:
                 playerLocation.setLocColumn(playerLocation.getLocColumn() + 1);
-                MathCadia.getPlayer().setPlayerPosition(playerLocation);
-                
-                MathCadia.getCurrentGame().getGameMap().getLocationAt(playerLocation.getLocRow(), playerLocation.getLocColumn()).setLocationVisited(true);
+                MathCadia.getCurrentGame().getGamePlayer().setPlayerLocation(playerLocation);
             case WEST:
                 playerLocation.setLocColumn(playerLocation.getLocColumn() - 1);
-                MathCadia.getPlayer().setPlayerPosition(playerLocation);
-                
-                MathCadia.getCurrentGame().getGameMap().getLocationAt(playerLocation.getLocRow(), playerLocation.getLocColumn()).setLocationVisited(true);
+                MathCadia.getCurrentGame().getGamePlayer().setPlayerLocation(playerLocation);
         }
         
     }
@@ -113,11 +104,16 @@ public class PlayerControl {
         }
     }
 
-    public void skipMathChallenge(int skipAmt, double equationOneAnswer, double equationTwoAnswer, double equationThreeAnswer) throws PlayerControlException {
-        if (skipAmt == 0) {
-            throw new PlayerControlException("You do not have any skips left!");
+    public static boolean isLocationVisited() {
+        Map map = MathCadia.getCurrentGame().getGameMap();
+        Location playerLocation = MathCadia.getCurrentGame().getGamePlayer().getPlayerLocation();
+        
+        if (map.getLocationAt(playerLocation.getLocColumn(), playerLocation.getLocRow()).isLocationVisited() == true) {
+            return true;
+        } else {
+            return false;
         }
-
+        
     }
-
+    
 }

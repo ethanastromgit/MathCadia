@@ -49,8 +49,6 @@ public class GameControl {
         
         gameMap.initializeMap();
         
-        gameMap.setMapEntranceColumn(1);
-        gameMap.setMapEntranceRow(0);
         gameMap.getLocationAt(1, 0).setLocationVisited(true);
         
         currentGame.setGameMap(gameMap);
@@ -62,10 +60,6 @@ public class GameControl {
         gamePlayer.setHealthPoints(10);
         gamePlayer.setSkipAmt(2);
         gamePlayer.setKeyAmt(0);
-        
-        currentGame.setGamePlayer(gamePlayer); //Save player in game
-        
-        
         
         //Set up inventory
         Inventory inv = new Inventory();
@@ -79,19 +73,38 @@ public class GameControl {
         
         gamePlayer.setPlayerInventory(inv);
         
+        currentGame.setGamePlayer(gamePlayer); //Save player in game
         
-        //Set up enemy locations
+        //Set up enemy and player locations
+        Location playerLocation = new Location();
+        Location enemyOneLocation = new Location();
+        Location enemyTwoLocation = new Location();
+        Location enemyThreeLocation = new Location();
+        Location bossLocation = new Location();
+        
         Enemies enemies = new Enemies();
-        
-        enemies.setEnemyOneLocation(gameMap.getLocationAt(1, 2));
-        enemies.setEnemyTwoLocation(gameMap.getLocationAt(1, 4));
-        enemies.setEnemyThreeLocation(gameMap.getLocationAt(1, 6));
-        enemies.setBossLocation(gameMap.getLocationAt(1, 8));
-        
         currentGame.setEnemies(enemies);
+        
+        playerLocation.setLocColumn(1);
+        playerLocation.setLocRow(0);
+        enemyOneLocation.setLocColumn(1);
+        enemyOneLocation.setLocRow(2);
+        enemyTwoLocation.setLocColumn(1);
+        enemyTwoLocation.setLocRow(4);
+        enemyThreeLocation.setLocColumn(1);
+        enemyThreeLocation.setLocRow(6);
+        bossLocation.setLocColumn(1);
+        bossLocation.setLocRow(8);
+        
+        currentGame.getGamePlayer().setPlayerLocation(playerLocation);
+        currentGame.getEnemies().setEnemyOneLocation(enemyOneLocation);
+        currentGame.getEnemies().setEnemyTwoLocation(enemyTwoLocation);
+        currentGame.getEnemies().setEnemyThreeLocation(enemyThreeLocation);
+        currentGame.getEnemies().setBossLocation(bossLocation);
         
         
         MathCadia.setCurrentGame(currentGame); //Save in MathCadia
+        
     }
 
     public static void saveGame(Game currentGame, String filePath) 

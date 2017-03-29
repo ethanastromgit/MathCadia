@@ -6,10 +6,10 @@
 package byui.cit260.mathcadia.view;
 
 import MathCadia.MathCadia;
+import byui.cit260.mathcadia.model.Enemies;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,13 +19,24 @@ import java.util.logging.Logger;
  */
 public class EnemyTwoView {
     
+    Enemies enemies = MathCadia.getCurrentGame().getEnemies();
+    String enemyTwoDescription = enemies.getEnemyTwoDescription();
+    String enemyTwoAnswer = enemies.getEnemyTwoAnswer();
+    String enemyTwoEquation = enemies.getEnemyTwoEquation();
+    
     private String menu;
     
     protected final BufferedReader keyboard = MathCadia.getInFile();
     protected final PrintWriter console = MathCadia.getOutFile();
     
     public EnemyTwoView() {
-        this.menu = "";
+        this.menu = "Description: " 
+                + enemyTwoDescription
+                + "\nYou have run into the boss! "
+                + "To defeat this enemy, "
+                + "you must answer the following question."
+                + "\n"
+                + enemyTwoEquation;
     }
     
     public void display() {

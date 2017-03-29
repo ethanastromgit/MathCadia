@@ -26,7 +26,7 @@ public class TravelView extends View {
     Player player = MathCadia.getCurrentGame().getGamePlayer();
     Inventory inv = MathCadia.getCurrentGame().getGamePlayer().getPlayerInventory();
     Enemies enemies = MathCadia.getCurrentGame().getEnemies();
-    Location playerLocation = player.getPlayerPosition();
+    Location playerLocation = MathCadia.getCurrentGame().getGamePlayer().getPlayerLocation();
     Location bossLocation = enemies.getBossLocation();
     Location enemyOneLocation = enemies.getEnemyOneLocation();
     Location enemyTwoLocation = enemies.getEnemyTwoLocation();
@@ -52,13 +52,37 @@ public class TravelView extends View {
 
         switch (choice) {
             case "N":
-                this.moveNorth();
+                try {
+                    this.moveNorth();
+                } catch (PlayerControlException ex) {
+                    ErrorView.display(this.getClass().getName(),
+                            ex.getMessage());
+                }
+                break;
             case "S":
-                this.moveSouth();
+                try {
+                    this.moveSouth();
+                } catch (PlayerControlException ex) {
+                    ErrorView.display(this.getClass().getName(),
+                            ex.getMessage());
+                }
+                break;
             case "E":
-                this.moveEast();
+                try {
+                    this.moveEast();
+                } catch (PlayerControlException ex) {
+                    ErrorView.display(this.getClass().getName(),
+                            ex.getMessage());
+                }
+                break;
             case "W":
-                this.moveWest();
+                try {
+                    this.moveWest();
+                } catch (PlayerControlException ex) {
+                    ErrorView.display(this.getClass().getName(),
+                            ex.getMessage());
+                }
+                break;
             case "P":
                 int potionAmt = inv.getPotionAmt();
                 int healthPoints = player.getHealthPoints();
@@ -81,7 +105,7 @@ public class TravelView extends View {
         return false;
     }
 
-    private void moveNorth() {
+    private void moveNorth() throws PlayerControlException {
         boolean moveValidity = false;
         boolean isPotionHere = false;
         boolean isEnemyHere = false;
@@ -91,7 +115,7 @@ public class TravelView extends View {
         } catch (PlayerControlException pce) {
             ErrorView.display(this.getClass().getName(),
                     pce.getMessage());
-            moveValidity = false;
+            return;
         }
         
         //Move Player if moveValidity is true
@@ -99,43 +123,50 @@ public class TravelView extends View {
             PlayerControl.movePlayer(playerLocation, DirectionEnum.NORTH);
             
             //Check if potion is here and add potion if true
-            Location location = MathCadia.getCurrentGame().getGameMap().getLocationAt(playerLocation.getLocColumn(), playerLocation.getLocRow());
-
+            //Location location = MathCadia.getCurrentGame().getGameMap().getLocationAt(playerLocation.getLocColumn(), playerLocation.getLocRow());
+            
+            
             int potionAmt = inv.getPotionAmt();
-            isPotionHere = PlayerControl.isPotionHere(location, potionAmt);
+            isPotionHere = PlayerControl.isPotionHere(map.getLocationAt(playerLocation.getLocColumn(), playerLocation.getLocRow()), potionAmt);
 
             if (isPotionHere == true) {
                 if (inv.getPotionAmt() < inv.getMaxPotionAmt()) {
                     inv.setPotionAmt(potionAmt++);
-                    location.setHasPotion(false);
+                    map.getLocationAt(playerLocation.getLocColumn(), playerLocation.getLocRow()).setHasPotion(false);
                     this.console.println("You found a potion!");
                 }
             }
             
-            //Check if enemy is here
-            isEnemyHere = EnemiesControl.isEnemyHere(playerLocation, bossLocation, enemyOneLocation, enemyTwoLocation, enemyThreeLocation);
+            //Check if location has already been visited
+            boolean isLocationVisited = false;
+            isLocationVisited = PlayerControl.isLocationVisited();
             
-            if (isEnemyHere == true ) {
-                if (playerLocation.getLocColumn() == enemyOneLocation.getLocColumn() && playerLocation.getLocRow() == enemyOneLocation.getLocRow()) {
-                    EnemyOneView eov = new EnemyOneView();
-                    eov.display();
-                } else if (playerLocation.getLocColumn() == enemyTwoLocation.getLocColumn() && playerLocation.getLocRow() == enemyTwoLocation.getLocRow()) {
-                    EnemyTwoView etv = new EnemyTwoView();
-                    etv.display();
-                } else if (playerLocation.getLocColumn() == enemyThreeLocation.getLocColumn() && playerLocation.getLocRow() == enemyThreeLocation.getLocRow()) {
-                    EnemyThreeView ethv = new EnemyThreeView();
-                    ethv.display();
-                } else if (playerLocation.getLocColumn() == bossLocation.getLocColumn() && playerLocation.getLocRow() ==bossLocation.getLocRow()) {
-                    BossView bv = new BossView();
-                    bv.display();
+            if (isLocationVisited == false) {
+            
+            //Check if enemy is here
+                isEnemyHere = EnemiesControl.isEnemyHere(playerLocation, bossLocation, enemyOneLocation, enemyTwoLocation, enemyThreeLocation);
+
+                if (isEnemyHere == true ) {
+                    if (playerLocation.getLocColumn() == enemyOneLocation.getLocColumn() && playerLocation.getLocRow() == enemyOneLocation.getLocRow()) {
+                        EnemyOneView eov = new EnemyOneView();
+                        eov.display();
+                    } else if (playerLocation.getLocColumn() == enemyTwoLocation.getLocColumn() && playerLocation.getLocRow() == enemyTwoLocation.getLocRow()) {
+                        EnemyTwoView etv = new EnemyTwoView();
+                        etv.display();
+                    } else if (playerLocation.getLocColumn() == enemyThreeLocation.getLocColumn() && playerLocation.getLocRow() == enemyThreeLocation.getLocRow()) {
+                        EnemyThreeView ethv = new EnemyThreeView();
+                        ethv.display();
+                    } else if (playerLocation.getLocColumn() == bossLocation.getLocColumn() && playerLocation.getLocRow() ==bossLocation.getLocRow()) {
+                        BossView bv = new BossView();
+                        bv.display();
+                    }
                 }
             }
-            
-         map.getLocationAt(player.getPlayerPosition().getLocColumn(), player.getPlayerPosition().getLocRow()).setLocationVisited(true);
-         }
+            MathCadia.getCurrentGame().getGameMap().getLocationAt(playerLocation.getLocRow(), playerLocation.getLocColumn()).setLocationVisited(true);
+        }
     }
     
-    private void moveSouth() {
+    private void moveSouth() throws PlayerControlException {
         boolean moveValidity = false;
         boolean isPotionHere = false;
         boolean isEnemyHere = false;
@@ -145,7 +176,7 @@ public class TravelView extends View {
         } catch (PlayerControlException pce) {
             ErrorView.display(this.getClass().getName(),
                     pce.getMessage());
-            moveValidity = false;
+            return;
         }
         
         //Move Player if moveValidity is true
@@ -185,11 +216,10 @@ public class TravelView extends View {
                 }
             }
             
-         map.getLocationAt(player.getPlayerPosition().getLocColumn(), player.getPlayerPosition().getLocRow()).setLocationVisited(true);
          }
     }
     
-    private void moveEast() {
+    private void moveEast() throws PlayerControlException {
         boolean moveValidity = false;
         boolean isPotionHere = false;
         boolean isEnemyHere = false;
@@ -199,7 +229,7 @@ public class TravelView extends View {
         } catch (PlayerControlException pce) {
             ErrorView.display(this.getClass().getName(),
                     pce.getMessage());
-            moveValidity = false;
+            return;
         }
         
         //Move Player if moveValidity is true
@@ -239,11 +269,10 @@ public class TravelView extends View {
                 }
             }
             
-         map.getLocationAt(player.getPlayerPosition().getLocColumn(), player.getPlayerPosition().getLocRow()).setLocationVisited(true);
          }
     }
     
-    private void moveWest() {
+    private void moveWest() throws PlayerControlException {
         boolean moveValidity = false;
         boolean isPotionHere = false;
         boolean isEnemyHere = false;
@@ -253,7 +282,7 @@ public class TravelView extends View {
         } catch (PlayerControlException pce) {
             ErrorView.display(this.getClass().getName(),
                     pce.getMessage());
-            moveValidity = false;
+            return;
         }
         
         //Move Player if moveValidity is true
@@ -293,7 +322,6 @@ public class TravelView extends View {
                 }
             }
             
-         map.getLocationAt(player.getPlayerPosition().getLocColumn(), player.getPlayerPosition().getLocRow()).setLocationVisited(true);
          }
     }
     
