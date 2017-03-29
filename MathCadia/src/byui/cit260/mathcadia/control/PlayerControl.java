@@ -8,7 +8,6 @@ package byui.cit260.mathcadia.control;
 import MathCadia.MathCadia;
 import byui.cit260.mathcadia.exceptions.PlayerControlException;
 import byui.cit260.mathcadia.model.DirectionEnum;
-import byui.cit260.mathcadia.model.Inventory;
 import byui.cit260.mathcadia.model.Location;
 import byui.cit260.mathcadia.model.Map;
 
@@ -19,14 +18,14 @@ import byui.cit260.mathcadia.model.Map;
 public class PlayerControl {
     
     
-    Inventory inv = MathCadia.getCurrentGame().getGamePlayer().getPlayerInventory();
-    
     
     public PlayerControl() {
 
     }
 
-    public static boolean isMoveValid(Location playerLocation, DirectionEnum direction) throws PlayerControlException {
+    public static void isMoveValid(DirectionEnum direction) throws PlayerControlException {
+        
+        Location playerLocation = MathCadia.getCurrentGame().getGamePlayer().getPlayerLocation();
         
         switch(direction) {
             case NORTH:
@@ -34,40 +33,34 @@ public class PlayerControl {
                     throw new PlayerControlException("\n You cannot go "
                             + direction.toString()
                             + " because you will be out of bounds.");
-                } else {
-                   return true;
                 }
             case SOUTH:
                 if (playerLocation.getLocRow() == 0) {
                     throw new PlayerControlException("\n You cannot go "
                             + direction.toString()
                             + " because you will be out of bounds.");
-                } else {
-                    return true;
                 }
             case EAST:
                 if (playerLocation.getLocColumn() == 2) {
                     throw new PlayerControlException("\n You cannot go "
                             + direction.toString()
                             + " because you will be out of bounds.");
-                } else {
-                    return true;
                 }
             case WEST:
                 if (playerLocation.getLocColumn() == 0) {
                     throw new PlayerControlException("\n You cannot go "
                             + direction.toString()
                             + " because you will be out of bounds.");
-                } else {
-                    return true;
                 }
             default:
-                return false;
+                
         }
 
     }
 
-    public static void movePlayer(Location playerLocation, DirectionEnum direction) {
+    public static void movePlayer(DirectionEnum direction) {
+        
+        Location playerLocation = MathCadia.getCurrentGame().getGamePlayer().getPlayerLocation();
         
         switch (direction) {
             case NORTH:
@@ -86,8 +79,16 @@ public class PlayerControl {
         
     }
 
-    public static boolean isPotionHere(Location location, int potionAmt) {
+    public static boolean isPotionHere() {
+        Location playerLocation = MathCadia.getCurrentGame().getGamePlayer().getPlayerLocation();
+        Location location = MathCadia.getCurrentGame().getGameMap().getLocationAt(playerLocation.getLocColumn(), playerLocation.getLocRow());
+        
+        
+        int potionAmt = MathCadia.getCurrentGame().getGamePlayer().getPlayerInventory().getPotionAmt();
+        
         if (location.isHasPotion() == true) {
+            MathCadia.getCurrentGame().getGamePlayer().getPlayerInventory().setPotionAmt(potionAmt++);
+            location.setHasPotion(false);
             return true;
         } else {
             return false;
@@ -95,10 +96,13 @@ public class PlayerControl {
             
     }
     
-    public static void recoverHealth(int potionAmt, int healthPoints) throws PlayerControlException {
+    public static void recoverHealth() throws PlayerControlException {
+        int potionAmt = MathCadia.getCurrentGame().getGamePlayer().getPlayerInventory().getPotionAmt();
+        int healthPoints = MathCadia.getCurrentGame().getGamePlayer().getHealthPoints();
+        
         if (potionAmt >= 1) {
-            healthPoints += 2;
-            potionAmt--;
+            MathCadia.getCurrentGame().getGamePlayer().setHealthPoints(healthPoints + 2);
+            MathCadia.getCurrentGame().getGamePlayer().getPlayerInventory().setPotionAmt(potionAmt - 1);
         } else if (potionAmt == 0) {
             throw new PlayerControlException("You do not have any potions left!");
         }
@@ -111,6 +115,7 @@ public class PlayerControl {
         if (map.getLocationAt(playerLocation.getLocColumn(), playerLocation.getLocRow()).isLocationVisited() == true) {
             return true;
         } else {
+            map.getLocationAt(playerLocation.getLocColumn(), playerLocation.getLocRow()).setLocationVisited(true);
             return false;
         }
         

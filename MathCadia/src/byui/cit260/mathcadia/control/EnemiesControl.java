@@ -5,6 +5,7 @@
  */
 package byui.cit260.mathcadia.control;
 
+import MathCadia.MathCadia;
 import byui.cit260.mathcadia.exceptions.LoseGameException;
 import byui.cit260.mathcadia.exceptions.WinGameException;
 import byui.cit260.mathcadia.model.Location;
@@ -17,7 +18,13 @@ public class EnemiesControl {
 
     public int playerInput;
     
-    public static boolean isEnemyHere(Location playerLocation, Location bossLocation, Location enemyOneLocation, Location enemyTwoLocation, Location enemyThreeLocation) {
+    public static boolean isEnemyHere() {
+        Location playerLocation = MathCadia.getCurrentGame().getGamePlayer().getPlayerLocation();
+        Location bossLocation = MathCadia.getCurrentGame().getEnemies().getBossLocation();
+        Location enemyOneLocation = MathCadia.getCurrentGame().getEnemies().getEnemyOneLocation();
+        Location enemyTwoLocation = MathCadia.getCurrentGame().getEnemies().getEnemyTwoLocation();
+        Location enemyThreeLocation = MathCadia.getCurrentGame().getEnemies().getEnemyThreeLocation();
+        
         if (playerLocation.getLocColumn() == bossLocation.getLocColumn() && playerLocation.getLocRow() == bossLocation.getLocRow()) {
             return true;
         } else if (playerLocation.getLocColumn() == enemyOneLocation.getLocColumn() && playerLocation.getLocRow() == enemyOneLocation.getLocRow()) {
