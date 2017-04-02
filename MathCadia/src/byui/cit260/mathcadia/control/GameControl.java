@@ -49,16 +49,15 @@ public class GameControl {
         
         gameMap.initializeMap();
         
-        gameMap.getLocationAt(1, 0).setLocationVisited(true);
+        gameMap.getLocationAt(2, 0).setLocationVisited(true);
         
-        currentGame.setGameMap(gameMap);
+        
         
         
         //Set up player
         Player gamePlayer = new Player();
         
         gamePlayer.setHealthPoints(10);
-        gamePlayer.setSkipAmt(2);
         gamePlayer.setKeyAmt(0);
         
         //Set up inventory
@@ -85,16 +84,16 @@ public class GameControl {
         Enemies enemies = new Enemies();
         currentGame.setEnemies(enemies);
         
-        playerLocation.setLocColumn(1);
-        playerLocation.setLocRow(0);
+        playerLocation.setLocColumn(0);
+        playerLocation.setLocRow(2);
         enemyOneLocation.setLocColumn(1);
         enemyOneLocation.setLocRow(2);
-        enemyTwoLocation.setLocColumn(1);
-        enemyTwoLocation.setLocRow(4);
-        enemyThreeLocation.setLocColumn(1);
-        enemyThreeLocation.setLocRow(6);
-        bossLocation.setLocColumn(1);
-        bossLocation.setLocRow(8);
+        enemyTwoLocation.setLocColumn(2);
+        enemyTwoLocation.setLocRow(2);
+        enemyThreeLocation.setLocColumn(3);
+        enemyThreeLocation.setLocRow(2);
+        bossLocation.setLocColumn(4);
+        bossLocation.setLocRow(2);
         
         currentGame.getGamePlayer().setPlayerLocation(playerLocation);
         currentGame.getEnemies().setEnemyOneLocation(enemyOneLocation);
@@ -102,7 +101,7 @@ public class GameControl {
         currentGame.getEnemies().setEnemyThreeLocation(enemyThreeLocation);
         currentGame.getEnemies().setBossLocation(bossLocation);
         
-        
+        currentGame.setGameMap(gameMap);
         MathCadia.setCurrentGame(currentGame); //Save in MathCadia
         
     }

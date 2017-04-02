@@ -11,9 +11,9 @@ public class Map implements Serializable{
     protected final BufferedReader keyboard = MathCadia.getInFile();
     protected final PrintWriter console = MathCadia.getOutFile();
     
-    public static final int COLUMNS = 3;
-    public static final int ROWS = 9;
-    private Location[][] matrix = new Location [COLUMNS][ROWS];
+    public static final int COLUMNS = 5;
+    public static final int ROWS = 5;
+    private Location[][] matrix = new Location [ROWS][COLUMNS];
     
     
     public Map() {
@@ -25,8 +25,8 @@ public class Map implements Serializable{
         Random rand = new Random();
         Location location = new Location();
         
-        for (int locColumn = 0; locColumn < COLUMNS; locColumn++) {
-            for (int locRow = 0; locRow < ROWS; locRow++) {
+        for (int locRow = 0; locRow < ROWS; locRow++) {
+            for (int locColumn = 0; locColumn < COLUMNS; locColumn++) {
 
                 //Create and initialize new Loaction object instance
                 
@@ -40,7 +40,7 @@ public class Map implements Serializable{
                 
                 
                 //Assign the Location object to the current position in array
-                matrix[locColumn][locRow] = location;
+                matrix[locRow][locColumn] = location;
             }
         }
         
@@ -56,8 +56,8 @@ public class Map implements Serializable{
         return COLUMNS;
     }
 
-    public Location getLocationAt(int col, int row) {
-        return matrix[col][row];
+    public Location getLocationAt(int row, int col) {
+        return matrix[row][col];
     }
 
     public void setLocations(Location[][] locations) {

@@ -25,7 +25,7 @@ public class GameMenuView extends View {
                   + "\n Game Menu                      "
                   + "\n--------------------------------"
                       + "\n\n"
-                      + "Your starting location is 1, 0. "
+                      + "Your starting location is 2, 0. "
                       + "\nUse the View Map function to find wher to go."
                       + "\n\n"
                   + "\n T - Move Player    "
@@ -58,12 +58,12 @@ public class GameMenuView extends View {
                 }
                 break;
             case "P":
-                Location playerLocation = MathCadia.getCurrentGame().getGamePlayer().getPlayerLocation();
-                this.console.println("Your player location is " + playerLocation.getLocColumn() + ", " + playerLocation.getLocRow() + ".");
+                PlayerCoordinateView pcv = new PlayerCoordinateView();
+                pcv.display();
                 break;
             case "E":
                 Location bossLocation = MathCadia.getCurrentGame().getEnemies().getBossLocation();
-                this.console.println("Your boss location is " + bossLocation.getLocColumn() + ", " + bossLocation.getLocRow() + ".");
+                this.console.println("Your boss location is " + bossLocation.getLocRow() + ", " + bossLocation.getLocColumn() + ".");
                 break;
             case "S": 
                 InventoryView iv = new InventoryView();

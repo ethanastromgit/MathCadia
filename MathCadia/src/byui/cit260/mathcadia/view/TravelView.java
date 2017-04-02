@@ -100,7 +100,8 @@ public class TravelView extends View {
 
         PlayerControl.movePlayer(DirectionEnum.NORTH);
 
-        boolean isPotionHere = PlayerControl.isPotionHere();
+        boolean isPotionHere = false; 
+        isPotionHere = PlayerControl.isPotionHere();
         if (isPotionHere = true) {
             this.console.println("You found a potion.");
         }
@@ -146,7 +147,8 @@ public class TravelView extends View {
 
         PlayerControl.movePlayer(DirectionEnum.SOUTH);
 
-        boolean isPotionHere = PlayerControl.isPotionHere();
+         boolean isPotionHere = false; 
+        isPotionHere = PlayerControl.isPotionHere();
         if (isPotionHere = true) {
             this.console.println("You found a potion.");
         }
@@ -192,7 +194,8 @@ public class TravelView extends View {
 
         PlayerControl.movePlayer(DirectionEnum.EAST);
 
-        boolean isPotionHere = PlayerControl.isPotionHere();
+         boolean isPotionHere = false; 
+        isPotionHere = PlayerControl.isPotionHere();
         if (isPotionHere = true) {
             this.console.println("You found a potion.");
         }
@@ -238,7 +241,8 @@ public class TravelView extends View {
 
         PlayerControl.movePlayer(DirectionEnum.WEST);
 
-        boolean isPotionHere = PlayerControl.isPotionHere();
+         boolean isPotionHere = false; 
+        isPotionHere = PlayerControl.isPotionHere();
         if (isPotionHere = true) {
             this.console.println("You found a potion.");
         }

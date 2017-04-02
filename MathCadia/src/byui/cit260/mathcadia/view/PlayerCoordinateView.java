@@ -6,9 +6,7 @@
 package byui.cit260.mathcadia.view;
 
 import MathCadia.MathCadia;
-import byui.cit260.mathcadia.control.EnemiesControl;
-import byui.cit260.mathcadia.model.Enemies;
-import byui.cit260.mathcadia.model.Player;
+import byui.cit260.mathcadia.model.Location;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,28 +17,21 @@ import java.util.logging.Logger;
  *
  * @author ethan
  */
-public class BossView {
+public class PlayerCoordinateView {
     
-    Enemies enemies = MathCadia.getCurrentGame().getEnemies();
-    String bossDescription = enemies.getBossDescription();
-    String bossAnswer = enemies.getBossAnswer();
-    String bossEquation = enemies.getBossEquation();
+    Location playerLocation = MathCadia.getCurrentGame().getGamePlayer().getPlayerLocation();
     
     private String menu;
     
     protected final BufferedReader keyboard = MathCadia.getInFile();
     protected final PrintWriter console = MathCadia.getOutFile();
     
-    public BossView() {
-        
-        this.menu = "Description: " 
-                + bossDescription
-                + "\nYou have run into the boss! "
-                + "To defeat the boss and win the game, "
-                + "you must answer the following question."
-                + "\n"
-                + bossEquation;
+    public PlayerCoordinateView() {
+       this.menu = "\n Your player location is " + playerLocation.getLocRow() + ", " + playerLocation.getLocColumn() + "."
+               + "\n\n Q - Return to Game Menu";
     }
+    
+    
     
     public void display() {
         
@@ -69,7 +60,7 @@ public class BossView {
             try {
                 value = keyboard.readLine(); //Get next line typed on keyboard
             } catch (IOException ex) {
-                Logger.getLogger(BossView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(EnemyThreeView.class.getName()).log(Level.SEVERE, null, ex);
             }
             value = value.trim(); //Trim off leading and trailing blanks
             
@@ -86,20 +77,17 @@ public class BossView {
     
     private boolean doAction(String choice) {
         
-        Player player = MathCadia.getCurrentGame().getGamePlayer();
+        choice = choice.toUpperCase();
         
-        int healthPoints = player.getHealthPoints();
-        int attackDamage = enemies.getAttackDamage();
-        
-        EnemiesControl.isBossAnswerCorrect(choice, bossAnswer, healthPoints, attackDamage);
-        player.setHealthPoints(healthPoints);
-        
-        if (choice.equals(bossAnswer)) {
-            return true;
-        } else {
-            return false;
+        switch (choice) {
+            case "Q":
+                return true;
+            default:
+                ErrorView.display(this.getClass().getName(),
+                        "\n*** Invalid Selection *** Try Again");
+                break;
         }
-        
+        return false;
+            
     }
-    
 }

@@ -6,7 +6,9 @@
 package byui.cit260.mathcadia.view;
 
 import MathCadia.MathCadia;
+import byui.cit260.mathcadia.control.EnemiesControl;
 import byui.cit260.mathcadia.model.Enemies;
+import byui.cit260.mathcadia.model.Player;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,7 +34,6 @@ public class EnemyTwoView {
     public EnemyTwoView() {
         this.menu = "Description: " 
                 + enemyTwoDescription
-                + "\nYou have run into the boss! "
                 + "To defeat this enemy, "
                 + "you must answer the following question."
                 + "\n"
@@ -82,7 +83,21 @@ public class EnemyTwoView {
     }
     
     private boolean doAction(String choice) {
-        return false;
+         Player player = MathCadia.getCurrentGame().getGamePlayer();
+        
+        int healthPoints = player.getHealthPoints();
+        int attackDamage = enemies.getAttackDamage();
+        int keyAmt = player.getKeyAmt();
+        
+        EnemiesControl.isAnswerOneCorrect(choice, enemyTwoAnswer, healthPoints, attackDamage, keyAmt);
+        player.setHealthPoints(healthPoints);
+        player.setKeyAmt(keyAmt);
+        
+        if (choice.equals(enemyTwoAnswer)) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
 }

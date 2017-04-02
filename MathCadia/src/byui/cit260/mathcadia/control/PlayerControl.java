@@ -29,33 +29,32 @@ public class PlayerControl {
         
         switch(direction) {
             case NORTH:
-                if (playerLocation.getLocRow() == 8) {
+                if (playerLocation.getLocColumn() == 4) {
                     throw new PlayerControlException("\n You cannot go "
                             + direction.toString()
                             + " because you will be out of bounds.");
                 }
             case SOUTH:
-                if (playerLocation.getLocRow() == 0) {
-                    throw new PlayerControlException("\n You cannot go "
-                            + direction.toString()
-                            + " because you will be out of bounds.");
-                }
-            case EAST:
-                if (playerLocation.getLocColumn() == 2) {
-                    throw new PlayerControlException("\n You cannot go "
-                            + direction.toString()
-                            + " because you will be out of bounds.");
-                }
-            case WEST:
                 if (playerLocation.getLocColumn() == 0) {
                     throw new PlayerControlException("\n You cannot go "
                             + direction.toString()
                             + " because you will be out of bounds.");
                 }
+            case EAST:
+                if (playerLocation.getLocRow() == 4) {
+                    throw new PlayerControlException("\n You cannot go "
+                            + direction.toString()
+                            + " because you will be out of bounds.");
+                }
+            case WEST:
+                if (playerLocation.getLocRow() == 0) {
+                    throw new PlayerControlException("\n You cannot go "
+                            + direction.toString()
+                            + " because you will be out of bounds.");
+                }
             default:
-                
         }
-
+        
     }
 
     public static void movePlayer(DirectionEnum direction) {
@@ -64,16 +63,16 @@ public class PlayerControl {
         
         switch (direction) {
             case NORTH:
-                playerLocation.setLocRow(playerLocation.getLocRow() + 2);
-                MathCadia.getCurrentGame().getGamePlayer().setPlayerLocation(playerLocation);
-            case SOUTH:
-                playerLocation.setLocRow(playerLocation.getLocRow() - 1);
-                MathCadia.getCurrentGame().getGamePlayer().setPlayerLocation(playerLocation);
-            case EAST:
                 playerLocation.setLocColumn(playerLocation.getLocColumn() + 1);
                 MathCadia.getCurrentGame().getGamePlayer().setPlayerLocation(playerLocation);
-            case WEST:
+            case SOUTH:
                 playerLocation.setLocColumn(playerLocation.getLocColumn() - 1);
+                MathCadia.getCurrentGame().getGamePlayer().setPlayerLocation(playerLocation);
+            case EAST:
+                playerLocation.setLocRow(playerLocation.getLocRow() + 1);
+                MathCadia.getCurrentGame().getGamePlayer().setPlayerLocation(playerLocation);
+            case WEST:
+                playerLocation.setLocRow(playerLocation.getLocRow() - 1);
                 MathCadia.getCurrentGame().getGamePlayer().setPlayerLocation(playerLocation);
         }
         
@@ -81,7 +80,7 @@ public class PlayerControl {
 
     public static boolean isPotionHere() {
         Location playerLocation = MathCadia.getCurrentGame().getGamePlayer().getPlayerLocation();
-        Location location = MathCadia.getCurrentGame().getGameMap().getLocationAt(playerLocation.getLocColumn(), playerLocation.getLocRow());
+        Location location = MathCadia.getCurrentGame().getGameMap().getLocationAt(playerLocation.getLocRow(), playerLocation.getLocColumn());
         
         
         int potionAmt = MathCadia.getCurrentGame().getGamePlayer().getPlayerInventory().getPotionAmt();
@@ -112,10 +111,10 @@ public class PlayerControl {
         Map map = MathCadia.getCurrentGame().getGameMap();
         Location playerLocation = MathCadia.getCurrentGame().getGamePlayer().getPlayerLocation();
         
-        if (map.getLocationAt(playerLocation.getLocColumn(), playerLocation.getLocRow()).isLocationVisited() == true) {
+        if (map.getLocationAt(playerLocation.getLocRow(), playerLocation.getLocColumn()).isLocationVisited() == true) {
             return true;
         } else {
-            map.getLocationAt(playerLocation.getLocColumn(), playerLocation.getLocRow()).setLocationVisited(true);
+            map.getLocationAt(playerLocation.getLocRow(), playerLocation.getLocColumn()).setLocationVisited(true);
             return false;
         }
         

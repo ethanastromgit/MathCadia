@@ -1,7 +1,6 @@
 package byui.cit260.mathcadia.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Player implements Serializable {
 
@@ -16,7 +15,6 @@ public class Player implements Serializable {
     private String name;
     private int healthPoints;
     private int keyAmt;
-    private int skipAmt;
     private Location playerLocation;
 
     public Inventory getPlayerInventory() {
@@ -49,14 +47,6 @@ public class Player implements Serializable {
 
     public void setKeyAmt(int keyAmt) {
         this.keyAmt = keyAmt;
-    }
-
-    public int getSkipAmt() {
-        return skipAmt;
-    }
-
-    public void setSkipAmt(int skipAmt) {
-        this.skipAmt = skipAmt;
     }
 
     public Location getPlayerLocation() {
