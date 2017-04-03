@@ -84,15 +84,8 @@ public class EnemyOneView {
     }
     
     private boolean doAction(String choice) {
-        Player player = MathCadia.getCurrentGame().getGamePlayer();
         
-        int healthPoints = player.getHealthPoints();
-        int attackDamage = enemies.getAttackDamage();
-        int keyAmt = player.getKeyAmt();
-        
-        EnemiesControl.isAnswerOneCorrect(choice, enemyOneAnswer, healthPoints, attackDamage, keyAmt);
-        player.setHealthPoints(healthPoints);
-        player.setKeyAmt(keyAmt);
+        EnemiesControl.isAnswerOneCorrect(choice, enemyOneAnswer);
         
         if (choice.equals(enemyOneAnswer)) {
             return true;

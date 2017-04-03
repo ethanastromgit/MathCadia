@@ -91,7 +91,7 @@ public class BossView {
         int healthPoints = player.getHealthPoints();
         int attackDamage = enemies.getAttackDamage();
         
-        EnemiesControl.isBossAnswerCorrect(choice, bossAnswer, healthPoints, attackDamage);
+        EnemiesControl.isBossAnswerCorrect(choice, bossAnswer);
         player.setHealthPoints(healthPoints);
         
         if (choice.equals(bossAnswer)) {

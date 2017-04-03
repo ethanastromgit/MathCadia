@@ -8,7 +8,9 @@ package byui.cit260.mathcadia.control;
 import MathCadia.MathCadia;
 import byui.cit260.mathcadia.exceptions.LoseGameException;
 import byui.cit260.mathcadia.exceptions.WinGameException;
+import byui.cit260.mathcadia.model.Enemies;
 import byui.cit260.mathcadia.model.Location;
+import byui.cit260.mathcadia.model.Player;
 
 /**
  *
@@ -17,6 +19,8 @@ import byui.cit260.mathcadia.model.Location;
 public class EnemiesControl {
 
     public int playerInput;
+    
+    
     
     public static boolean isEnemyHere() {
         Location playerLocation = MathCadia.getCurrentGame().getGamePlayer().getPlayerLocation();
@@ -38,45 +42,83 @@ public class EnemiesControl {
         }
     }
     
-    public static void isAnswerOneCorrect(String playerInput, String enemyOneAnswer, int healthPoints, int attackDamage, int keyAmt) {
+    public static void isAnswerOneCorrect(String playerInput, String enemyOneAnswer) {
+        Player player = MathCadia.getCurrentGame().getGamePlayer();
+        Enemies enemiesAttDam = new Enemies();
+        
+        int healthPoints = player.getHealthPoints();
+        int attackDamage = enemiesAttDam.getAttackDamage();
+        int keyAmt = player.getKeyAmt();
+        
         if (playerInput.equals(enemyOneAnswer)) {
             keyAmt++;
-        } else if (!playerInput.equals(enemyOneAnswer)) {
+        } else {
             healthPoints -= attackDamage;
+            player.setHealthPoints(healthPoints);
+                if (healthPoints <= 0) {
+            playerDies();
+        }
+        }
+        
+    }
+        
+    public static void isAnswerTwoCorrect(String playerInput, String enemyTwoAnswer) {
+        Player player = MathCadia.getCurrentGame().getGamePlayer();
+        Enemies enemiesAttDam = new Enemies();
+        
+        int healthPoints = player.getHealthPoints();
+        int attackDamage = enemiesAttDam.getAttackDamage();
+        int keyAmt = player.getKeyAmt();
+        
+        if (playerInput.equals(enemyTwoAnswer)) {
+            keyAmt++;
+        } else {
+            healthPoints -= attackDamage;
+            player.setHealthPoints(healthPoints);
         }
         if (healthPoints == 0) {
             playerDies();
         }
+        
     }
 
-    public static void isAnswerTwoCorrect(String playerInput, String enemyTwoAnswer, int healthPoints, int attackDamage, int keyAmt) {
-        if (playerInput.equals(enemyTwoAnswer)) {
-            keyAmt++;
-        } else if (!playerInput.equals(enemyTwoAnswer)) {
-            healthPoints -= attackDamage;
-        } else if (healthPoints == 0) {
-            playerDies();
-        }
-    }
-
-    public static void isAnswerThreeCorrect(String playerInput, String enemyThreeAnswer, int healthPoints, int attackDamage, int keyAmt) {
+    public static void isAnswerThreeCorrect(String playerInput, String enemyThreeAnswer) {
+        Player player = MathCadia.getCurrentGame().getGamePlayer();
+        Enemies enemiesAttDam = new Enemies();
+        
+        int healthPoints = player.getHealthPoints();
+        int attackDamage = enemiesAttDam.getAttackDamage();
+        int keyAmt = player.getKeyAmt();
+        
         if (playerInput.equals(enemyThreeAnswer)) {
             keyAmt++;
-        } else if (!playerInput.equals(enemyThreeAnswer)) {
+        } else {
             healthPoints -= attackDamage;
-        } else if (healthPoints == 0) {
+            player.setHealthPoints(healthPoints);
+        }
+        if (healthPoints == 0) {
             playerDies();
         }
+        
     }
 
-    public static void isBossAnswerCorrect(String playerInput, String bossAnswer, int healthPoints, int attackDamage) {
+    public static void isBossAnswerCorrect(String playerInput, String bossAnswer) {
+       Player player = MathCadia.getCurrentGame().getGamePlayer();
+        Enemies enemiesAttDam = new Enemies();
+        
+        int healthPoints = player.getHealthPoints();
+        int attackDamage = enemiesAttDam.getAttackDamage();
+        
         if (playerInput.equals(bossAnswer)) {
             playerWins();
-        } else if (!playerInput.equals(bossAnswer)) {
+        } else {
             healthPoints -= attackDamage;
-        } else if (healthPoints == 0) {
+            player.setHealthPoints(healthPoints);
+        }
+        if (healthPoints == 0) {
             playerDies();
         }
+        
     }
 
     public static void playerDies() {

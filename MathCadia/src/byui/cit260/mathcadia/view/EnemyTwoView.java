@@ -89,7 +89,7 @@ public class EnemyTwoView {
         int attackDamage = enemies.getAttackDamage();
         int keyAmt = player.getKeyAmt();
         
-        EnemiesControl.isAnswerOneCorrect(choice, enemyTwoAnswer, healthPoints, attackDamage, keyAmt);
+        EnemiesControl.isAnswerOneCorrect(choice, enemyTwoAnswer);
         player.setHealthPoints(healthPoints);
         player.setKeyAmt(keyAmt);
         

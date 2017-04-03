@@ -26,6 +26,11 @@ public class TravelView extends View {
                 + "\n E - East"
                 + "\n W - West"
                 + "\n"
+                + "\n Z - Fight enemy one, two, three, and boss."
+                + "\n X - Fight enemy two, three, and boss."
+                + "\n C - Fight enemy three and boss."
+                + "\n B - Fight boss."
+                + "\n"
                 + "\n P - Use Potion"
                 + "\n"
                 + "\n Q - Return to Game Menu");
@@ -69,6 +74,18 @@ public class TravelView extends View {
                             ex.getMessage());
                 }
                 break;
+            case "Z":
+                EnemyOneView eov = new EnemyOneView();
+                eov.display();
+            case "X":
+                EnemyTwoView etv = new EnemyTwoView();
+                etv.display();
+            case "C":
+                EnemyThreeView ethv = new EnemyThreeView();
+                ethv.display();
+            case "B":
+                BossView bv = new BossView();
+                bv.display();
             case "P":
                 try {
                     PlayerControl.recoverHealth();
