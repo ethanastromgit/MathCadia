@@ -145,7 +145,7 @@ public class GameMenuView extends View {
         String filePath = null;
         boolean valid = false;
         
-        this.console.println("\n\nEnter the file path for the file where the stats will be saved.");
+        this.console.println("\n\nEnter the file name for the file that will be saved.");
         
         while (!valid) {
             try {

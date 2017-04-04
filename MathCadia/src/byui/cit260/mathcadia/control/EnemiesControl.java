@@ -81,7 +81,7 @@ public class EnemiesControl {
         }
         
     }
-
+    
     public static void isAnswerThreeCorrect(String playerInput, String enemyThreeAnswer) {
         Player player = MathCadia.getCurrentGame().getGamePlayer();
         Enemies enemiesAttDam = new Enemies();
